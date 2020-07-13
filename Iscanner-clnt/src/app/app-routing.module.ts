@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
-const routes: Routes = [{ path:'g',component:QuestionnaireComponent}];
+import { HomeComponent } from './home/home.component';
+const routes: Routes = [{ path:'',component:HomeComponent},
+{ path:'questionnaire',component:QuestionnaireComponent}];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
