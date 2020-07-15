@@ -6,8 +6,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Iscanner-clnt';
-  StartClick()
-  {
-    console.log('clicked')
-  }
+ 
 }
