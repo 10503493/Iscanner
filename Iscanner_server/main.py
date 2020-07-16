@@ -6,9 +6,8 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'root'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_DB'] = 'iscanner'
-
 mysql = MySQL(app)#for the route test
-@app.route('/')
+@app.route('/api/',methods=['GET', 'POST'])
 def test():
     cur = mysql.connection.cursor()
     cur.execute("insert into passengers (FirstName,LastName,Email,phone,Address,City,County,Country,ZipCode) values('fnn','lnn','eml','252','ads','Cty','cunt','cntry','zip')")
@@ -18,7 +17,7 @@ def test():
     print (d)
     cur.close()
     return jsonify (d)
-#test()
+
 # @app.route('/api/userdet', methods=['GET', 'POST'])
 # def userdef():
 #     return 'ok'
