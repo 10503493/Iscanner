@@ -11,5 +11,32 @@ export class QuestionnaireComponent implements OnInit {
 
   ngOnInit(): void {
   }
+ travel_details()
+ {
+    var x = document.getElementById("traveldetails");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+      console.log(x.style.display)
+    } else {
+      console.log(x.style.display)
+      x.style.display = "none";
+      
+    }
+  }
+
+  symptoms()
+  {
+     var x = document.getElementById("symptoms");
+     if (x.style.display === "none") {
+       x.style.display = "block";
+       console.log(x.style.display)
+     } else {
+       console.log(x.style.display)
+       x.style.display = "none";
+       
+     }
+   }
 
 }
+
+

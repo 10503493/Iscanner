@@ -1,25 +1,100 @@
-<h3>Contact Form</h3>
+<h3>Primary details</h3>
 
 <div class="container">
   <form action="">
     <label for="fname">First Name</label>
     <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
     <label for="lname">Last Name</label>
     <input type="text" id="lname" name="lastname" placeholder="Your last name..">
     <label for="email">E-mail</label>
     <input type="email" id="email" name="email" placeholder="Your E-mail">
     <label for="Phone Number">Phone</label>
-    <input type="tel" id="phone" name="Phone" placeholder="Your Phone Number">
+    <input type="tel" id="phone" name="Phone" placeholder="Your Phone Number">  
+    <label for="Address">Address</label>
+    <input type="text" id="address" name="Address" placeholder="Your address">
     <label for="City">City</label>
     <input type="text" id="city" name="City" placeholder="Your city">
     <label for="County">County</label>
     <input type="text" id="county" name="County" placeholder="Your county">
     <label for="country">Country</label>
     <input type="text" id="country" name="country" placeholder="Your country">
-      
-
+    <label for="Zip">Zip-code</label>
+    <input type="text" id="zip code" name="City" placeholder="Your zipcode">
     <label for="subject">Subject</label>
     <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
     <input type="submit" value="Submit">
   </form>
+
+
+
+
+
+
+<h1>Travel details</h1>
+
+<p>Click the button below to enter your travel details:</p>
+
+<button (click)="travel_details()">Try it</button>
+
+<div id="traveldetails">
+  <form action="">
+    <label for="origin">Origin  </label>
+    <input type="text" id="origin" name="origin" placeholder="From where you start the journey?">
+    <label for="Departure airport">Departure airport </label>
+    <input type="text" id="departureairport" name="departureairport" placeholder="Name of the airport you started the journey?">
+    <label for="text">Destination </label>
+    <input type="destination" id="destination" name="destination" placeholder="Name of the airpot you are travelling to">
+    <label for="ticket number">Ticket number</label>
+    <input type="text" id="tickettnumber" name="tickettnumber" placeholder="Your ticket number"> 
+    <label for="Flight Number">Flight Number</label>
+    <input type="text" id="flightnumber" name="flightnumber" placeholder="The flight number in which you are travelling">  
+    <label for="seat number">Seat number</label>
+    <input type="text" id="seatnumber" name="seatnumber" placeholder="Your seat number"> 
+
+  </form>
+</div>
+
+
+<h1>Do you have any of these symptoms?</h1>
+
+<p>Click the button below and record your physical condiction''''''''''':</p>
+
+<button (click)="symptoms()">Try it</button>
+
+<div id="symptoms">
+  <form action="">
+   <p>Please check tick if you have any</p>
+      <input type="checkbox" id="symp1" name="symp1" value="symp1">
+      <label for="symp1">feaver</label><br>
+      <input type="checkbox" id="symp2" name="symp2" value="symp2">
+      <label for="symp2">Cough</label><br>
+      <input type="checkbox" id="symp3" name="symp3" value="symp3">
+      <label for="symp3">Runny nose</label><br>
+      <input type="checkbox" id="symp4" name="symp4" value="symp4">
+      <label for="symp4">Sore throat</label><br>
+      <input type="checkbox" id="symp5" name="symp5" value="symp5">
+      <label for="symp5">Shortness of breath</label><br>
+      <input type="checkbox" id="symp6" name="symp6" value="symp6">
+      <label for="symp6">Headache</label><br>
+      <input type="checkbox" id="symp7" name="symp7" value="symp7">
+      <label for="symp7">Loss of taste/smell</label><br>
+      <input type="checkbox" id="symp8" name="symp8" value="symp8">
+      <label for="symp8">Fatigue</label><br>
+      <input type="checkbox" id="symp9" name="symp9" value="symp9">
+      <label for="symp9">Muscle pain</label><br>
+      <input type="checkbox" id="symp10" name="symp10" value="symp10">
+      <label for="symp10">Joint pain</label><br>
+      <input type="checkbox" id="symp11" name="symp11" value="symp11">
+      <label for="symp11">Diarrhoea</label><br>
+      <input type="checkbox" id="symp12" name="symp12" value="symp12">
+      <label for="symp12">Vomiting</label><br>
+      <input type="checkbox" id="symp13" name="symp13" value="symp13">
+      <label for="symp13">Chest pain</label><br>
+      <input type="submit" value="Submit">
+  </form>
+</div>
+
+
+<p><b>Note:</b> Be responsible give correct details@@@@@@@###.....</p>
+
+
