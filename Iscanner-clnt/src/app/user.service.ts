@@ -14,4 +14,11 @@ export class UserService {
   {
     return this.http.get('/api/', { responseType: 'json' });
   }
+test1(uname_r,psw_r)
+{
+  let body = new FormData();
+  body.append('uname_r', uname_r);
+  body.append('psw_r', psw_r);
+  return this.http.post('/api/test', body, { responseType: 'text' });
+}
 }

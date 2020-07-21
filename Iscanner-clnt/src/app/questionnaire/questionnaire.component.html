@@ -34,7 +34,7 @@
 
 <p>Click the button below to enter your travel details:</p>
 
-<button (click)="travel_details()">Try it</button>
+<button (click)="travel_details()">Travel details</button>
 
 <div id="traveldetails">
   <form action="">
@@ -59,7 +59,7 @@
 
 <p>Click the button below and record your physical condiction''''''''''':</p>
 
-<button (click)="symptoms()">Try it</button>
+<button (click)="symptoms()">Symptoms</button>
 
 <div id="symptoms">
   <form action="">
@@ -93,6 +93,31 @@
       <input type="submit" value="Submit">
   </form>
 </div>
+
+<h1>More questions</h1>
+
+<p>Click the button below and answer the questions:</p>
+
+<button (click)="questions()">Additional questions</button>
+
+<div id="questions">
+  <form action="">
+    <p>have you been in contact with any Covid Positive patients in last 14 days?</p>
+   <label for="contact">Yes</label>
+   <input type="radio" id="positive_yes" name="positive_yes" value = "Yes"> 
+   <label for="contact">No</label>
+   <input type="radio" id="positive_no" name="positive_no" value="No">
+ </form>
+</div>
+
+<button (click)="test()">click me</button>
+<form>
+<label for="User name"><b>User Name</b></label>
+<input type="text" placeholder="User Name" [(ngModel)]="uname_r"[ngModelOptions]="{standalone:true}" required>
+<label for="Password"><b>Password</b></label>
+<input type="password" placeholder="Password" [(ngModel)]="psw_r" [ngModelOptions]="{standalone:true}" required>
+</form>
+
 
 
 <p><b>Note:</b> Be responsible give correct details@@@@@@@###.....</p>

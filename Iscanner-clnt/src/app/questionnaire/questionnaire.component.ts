@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+
 
 @Component({
   selector: 'app-questionnaire',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./questionnaire.component.css']
 })
 export class QuestionnaireComponent implements OnInit {
+  psw_r: any;
+  uname_r: any;
 
-  constructor() { }
+  constructor(private usersrv:UserService) { }
 
   ngOnInit(): void {
   }
@@ -36,7 +40,25 @@ export class QuestionnaireComponent implements OnInit {
        
      }
    }
+   questions()
+   {
+      var x = document.getElementById("questions");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        console.log(x.style.display)
+      } else {
+        console.log(x.style.display)
+        x.style.display = "none";
+        
+      }
+    }
 
+    test()
+    {
+      console.log('clicked test')
+      this.usersrv.test1(this.uname_r,this.psw_r).subscribe(x => {console.log('got')});
+
+    }
 }
 
 

@@ -47,3 +47,12 @@ input[type=submit] {
     margin-top: 20px;
     display:none;
   }
+
+  #questions {
+    width: 100%;
+    padding: 50px 0;
+    text-align: left;
+    background-color: rgb(126, 200, 212);
+    margin-top: 20px;
+    display:none;
+  }

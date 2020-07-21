@@ -10,7 +10,8 @@ mysql = MySQL(app)#for the route test
 @app.route('/api/', methods=['GET', 'POST'])
 def index():
     cur = mysql.connection.cursor()
-    #cur.execute("insert into passengers (FirstName,LastName,Email,phone,Address,City,County,Country,ZipCode) values('fnn','lnn','eml','252','ads','Cty','cunt','cntry','zip')")
+    cur.execute("insert into passengers (FirstName,LastName,Email,phone,Address,City,County,Country,ZipCode) values('fnn','lnn','eml','252','ads','Cty','cunt','cntry','zip')")
+    mysql.connection.commit()
     cur.execute("select * from passengers ")
     d = cur.fetchall()
     print (5)
@@ -21,6 +22,21 @@ def index():
     # print('d1')
     # c.close()
     return jsonify (d)
+@app.route('/api/test', methods=['GET', 'POST'])
+def te():
+    usr = request.form.get('uname_r')
+    psw= request.form.get('psw_r')
+    print("reg",usr)
+    cur = mysql.connection.cursor()
+    # cur.execute("select * from users where uname=%s ",[usr])
+    # data = cur.fetchall()
+    # print (data [0][0])
+    cur.execute("insert into test(Id,t) values(%s,%s)",(usr,psw))
+    mysql.connection.commit()
+    cur.close()
+    print('inserted')
+#     return ('ok')
+
 # @app.route('/api/userdet', methods=['GET', 'POST'])
 # def userdef():
 #     return 'ok'
