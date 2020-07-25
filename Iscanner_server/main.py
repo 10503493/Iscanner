@@ -12,12 +12,21 @@ def index():
     un = request.form.get('uname_l')
     ps = request.form.get('psw_l')
     print (un,ps)
-    # cur = mysql.connection.cursor()
-    # cur.execute("insert into passengers (FirstName,LastName,Email,phone,Address,City,County,Country,ZipCode) values('fnn','lnn','eml','252','ads','Cty','cunt','cntry','zip')")
-    # mysql.connection.commit()
-    # cur.execute("select * from passengers ")
-    # d = cur.fetchall()
-    # print (5)
+    cur = mysql.connection.cursor()
+    cur.execute("select * from users where uname=%s and pword=%s",[un.strip(),ps.strip()])
+    data = cur.fetchall() 
+    print (data)
+    cur.close()
+    print('sql close')
+    print (len(data))#
+    if len(data) > 0:
+        #print('if true')
+        return( jsonify(data))
+        #return render_template('products.html',useridx = data[0][2])
+    else:
+        print ('if false')
+        return (jsonify(data))
+    print (5)
     # print (d)
     # cur.close()
     # # c= mysql.connection.cursor()
@@ -87,22 +96,22 @@ def register():
     ph = request.form.get('phone_r')
     ad = request.form.get('address_r')
     pw = request.form.get('psw_r')
-    #cur = mysql.connection.cursor()
+    cur = mysql.connection.cursor()
     print('brf',eml,pw)
-    #cur.execute("select * from users where uname=%s or email=%s",[un,eml])
-    #data = cur.fetchall()
-    #print(data)
-    #print ("here in reg___",len(data))
-#     if len(data) == 0:
-#         cur.execute("insert into users (uname,pword,firstname,lastname,email,phone,address) values (%s,%s,%s,%s,%s,%s,%s)",(un,pw,fn,ln,eml,ph,ad))
-#         mysql.connection.commit()
-#         cur.close()
-#         print('inserted')
-#         return 'ok'
-#     elif len(data) == 1:
-#         cur.close()    
-#         print('donr---reg already in table not inserted')
-#         return 'not'
+    cur.execute("select * from users where uname=%s or email=%s",[un,eml])
+    data = cur.fetchall()
+    print(data)
+    print ("here in reg___",len(data))
+    if len(data) == 0:
+        cur.execute("insert into users (uname,pword,firstname,lastname,email,phone,address) values (%s,%s,%s,%s,%s,%s,%s)",(un,pw,fn,ln,eml,ph,ad))
+        mysql.connection.commit()
+        cur.close()
+        print('inserted')
+        return 'ok'
+    elif len(data) == 1:
+        cur.close()    
+        print('donr---reg already in table not inserted')
+        return 'not'
 # # #login
 # @app.route('/api/login', methods=['GET','POST'])
 # def login():
