@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
     QuestionnaireComponent,
     HomeComponent,
+    RegisterComponent,
   ],
   imports: [
     FormsModule,

@@ -8,6 +8,8 @@ import { UserService } from '../user.service';
 })
 export class HomeComponent implements OnInit {
   sha;
+  uname_l :any;
+  psw_l:any;
 
   constructor(private usersrv:UserService) { }
 
@@ -17,8 +19,16 @@ export class HomeComponent implements OnInit {
   StartClick()
   {
     console.log('clicked')
-    this.usersrv.test().subscribe(x => this.sha= x);
+    this.usersrv.login(this.uname_l,this.psw_l).subscribe(x => {});
     console.log('ff',this.sha)
+   
+      document.getElementById("myForm").style.display = "block";
+    }
+    
+   CloseClick() 
+   {
+      document.getElementById("myForm").style.display = "none";
+    }
 
   }
-}
+

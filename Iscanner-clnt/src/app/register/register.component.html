@@ -1,0 +1,33 @@
+
+
+
+<form action="">
+    <div class="container">
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <label for="User name"><b>User Name</b></label>
+      <input type="text" placeholder="User Name" [(ngModel)]="uname_r"[ngModelOptions]="{standalone:true}" required>
+      <label for="Password"><b>Password</b></label>
+      <input type="password" placeholder="Password" [(ngModel)]="psw_r" [ngModelOptions]="{standalone:true}" required>
+      <label for="First Name"><b>First Name</b></label>
+      <input type="text" placeholder="First Name" [(ngModel)]="fname_r"[ngModelOptions]="{standalone:true}" required>
+      <label for="Last Name"><b>Last Name</b></label>
+      <input type="text" placeholder="Last Name" [(ngModel)]="lname_r"[ngModelOptions]="{standalone:true}" required>
+      <label for="Email "><b>Email</b></label>
+      <input type="text" placeholder="Email" [(ngModel)]="email_r"[ngModelOptions]="{standalone:true}" required>
+      <label for="Address"><b>Address</b></label>
+      <input type="text" placeholder="Address here" [(ngModel)]="address_r"[ngModelOptions]="{standalone:true}" required>
+      <label for="Phone"><b>Phone</b></label>
+      <input type="text" placeholder="Enter Phonenumber " [(ngModel)]="phone_r"[ngModelOptions]="{standalone:true}" required>
+  
+      <hr>
+  
+      <button type="submit" class="registerbtn"  (click)="RegisterClick()">Register</button>
+    </div>
+    
+    <div class="container signin">
+      <p>Already have an account? <a href="/login">Sign in</a>.</p>
+    </div>
+  </form>
+  
+  
