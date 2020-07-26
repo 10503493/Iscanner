@@ -9,6 +9,15 @@
       <input type="text" placeholder="User Name" [(ngModel)]="uname_r"[ngModelOptions]="{standalone:true}" required>
       <label for="Password"><b>Password</b></label>
       <input type="password" placeholder="Password" [(ngModel)]="psw_r" [ngModelOptions]="{standalone:true}" required>
+      
+      <p>plzzzz</p>
+        <select [(ngModel)]="status_r" [ngModelOptions]="{standalone:true}"matNativeControl required>
+          <option value="user">Passenger</option>
+          <option value="airport_authority">Airport Authority</option>
+          <option value="hse">HSE Staff</option>
+        </select>
+        <br>
+      
       <label for="First Name"><b>First Name</b></label>
       <input type="text" placeholder="First Name" [(ngModel)]="fname_r"[ngModelOptions]="{standalone:true}" required>
       <label for="Last Name"><b>Last Name</b></label>

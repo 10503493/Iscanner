@@ -15,7 +15,7 @@ def index():
     cur = mysql.connection.cursor()
     cur.execute("select * from users where uname=%s and pword=%s",[un.strip(),ps.strip()])
     data = cur.fetchall() 
-    print (data)
+    print ('data',data)
     cur.close()
     print('sql close')
     print (len(data))#
@@ -96,6 +96,7 @@ def register():
     ph = request.form.get('phone_r')
     ad = request.form.get('address_r')
     pw = request.form.get('psw_r')
+    st = request.form.get('status_r')
     cur = mysql.connection.cursor()
     print('brf',eml,pw)
     cur.execute("select * from users where uname=%s or email=%s",[un,eml])
@@ -103,7 +104,9 @@ def register():
     print(data)
     print ("here in reg___",len(data))
     if len(data) == 0:
-        cur.execute("insert into users (uname,pword,firstname,lastname,email,phone,address) values (%s,%s,%s,%s,%s,%s,%s)",(un,pw,fn,ln,eml,ph,ad))
+        print('@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+        print(st)
+        cur.execute("insert into users (uname,pword,status,firstname,lastname,email,phone,address) values (%s,%s,%s,%s,%s,%s,%s,%s)",(un,pw,st,fn,ln,eml,ph,ad))
         mysql.connection.commit()
         cur.close()
         print('inserted')

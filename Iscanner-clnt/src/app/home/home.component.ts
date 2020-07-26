@@ -33,18 +33,13 @@ export class HomeComponent implements OnInit {
     LoginClick() 
     {
       this.usersrv.login(this.uname_l,this.psw_l).subscribe(x => {
-      console.log('sha=',x)//test
-      localStorage.setItem('logdIn',JSON.stringify(x));
-      this.a=JSON.parse(localStorage.getItem('logdIn'));
-  console.log (this.a[0][0])
-      if ((x.length)&&(this.a[0][0]=='t')) 
+    // console.log('sha=',x)//test
+     console.log(x[0][0])
+      if ((x[0][0]=='t')||(x[15]=='tony')) 
         {
-         
          window.location.href="/register";
         }
-        
-       
-      else
+          else
         {
           alert(" Username or password is wrong.Try again.. " );  
         }

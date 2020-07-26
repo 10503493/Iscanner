@@ -18,9 +18,9 @@ export class UserService {
     let body= new FormData();
     body.append('uname_l',uname_l);
     body.append('psw_l',psw_l);
-    return this.http.post('/api/', body,{ responseType: 'text' });
+    return this.http.post('/api/', body,{ responseType: 'json' });
   }
-  register(uname_r,psw_r,fname_r,lname_r,email_r,address_r,phone_r)  
+  register(uname_r,psw_r,ststus_r,fname_r,lname_r,email_r,address_r,phone_r)  
   {
     console.log('this is from reg___userser')
     let body = new FormData();
