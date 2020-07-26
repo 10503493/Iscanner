@@ -20,7 +20,7 @@ export class UserService {
     body.append('psw_l',psw_l);
     return this.http.post('/api/', body,{ responseType: 'json' });
   }
-  register(uname_r,psw_r,ststus_r,fname_r,lname_r,email_r,address_r,phone_r)  
+  register(uname_r,psw_r,status_r,fname_r,lname_r,email_r,address_r,phone_r)  
   {
     console.log('this is from reg___userser')
     let body = new FormData();
@@ -31,6 +31,7 @@ export class UserService {
     body.append('email_r', email_r);
     body.append('address_r', address_r);
     body.append('phone_r', phone_r);
+    body.append('status_r', status_r);
     return this.http.post('/api/register', body, { responseType: 'text' });
 
   }
