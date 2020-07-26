@@ -1,4 +1,69 @@
-<h3>Primary details</h3>
+<h1>Covid-19 Passenger locator form</h1>
+<p><b>Passengers arriving to Ireland from overseas are required to complete this form,
+  including Irish citizens</b></p>
+  <p>If you are under any of these category please check the box</p>
+  <p>>	 Passengers arriving from Northern Ireland.<br>
+    >	 Passengers leaving the State from their port or airport of arrival without otherwise
+    exiting the port or airport.<br>
+    >	 Holders of a Certificate for International Transport Workers, or drivers of a heavy
+    goods vehicle, who are in the State in the course of performing their duties.<br>
+    >	 Aircraft crew, including the pilot, who are in the State in the course of performing
+    their duties.<br>
+    >	 Ship crew, including the maritime master, who are in the State in the course of
+    performing their duties.<br>
+    >	 Foreign diplomats<br></p>
+    <!-- need to change the operation after discussion with sir -->
+    <input type="checkbox" (click)="travel_details()"[(ngModel)]="exception_q"[ngModelOptions]="{standalone:true}" required>
+    <label for="exception">Yes i'm in one or more of the above list</label><br>
+    <h4>Instructions</h4>
+    <p>•	 One form should be completed for each passenger aged 16 or older. Details of children
+      under the age of 16 should be included on a form completed by an adult accompanying
+      them.<br>
+      •	 If you will be remaining in the State overnight, please complete sections 1 and 2,
+      provide contact details in section 3.<br>
+      •	 If you are leaving the State today by aircraft or ferry or travelling to Northern Ireland please complete sections 1 and 2, tick the box in section 3 and sign and date section 4.<br>
+      •	 If any of the information you provide on this form changes in the next 14 days, you are
+      required to send an email with your complete and updated information to the following
+      email address: passengerlocatorform@plf.ie <br>
+      •	 You may be contacted during the 14 days following your arrival in the State to verify the
+      information you have given in the form.<br>
+      </p>
+      <h4>Offences and penalties</h4>
+      <p>The following offences are punishable by a fine not exceeding €2,500 or imprisonment for a
+        term not exceeding 6 months, or both.<br>
+        •	 It is an offence not to complete this form in the manner specified.<br>
+        •	 It is an offence to provide false or misleading information in this form.<br>
+        •	 It is an offence not to provide an update if any of the information in section 3 of the
+        form changes in the next 14 days or period of stay, whichever is the shorter.<br>
+        •	 It is an offence to fail to give an officer who requests it information required to verify
+        the details on this form.<br>
+        •	 In addition to these offences, a member of An Garda Síochána may direct a person who
+        is not complying with the requirements in respect of this form to so comply. Failing to
+        comply with that direction is an offence for which you may be arrested.<br>
+        •	 A member of An Garda Síochána who suspects that an offence has been committed
+        may demand the name and address of the person who is suspected of committing the
+        offence. Failure to comply with this demand or the production of a false name and/or
+        address is an offence for which a person may be arrested.<br></p>
+        <h4>Data Protection</h4>
+        <p>•	 The Minister for Health and the Health Service Executive are the data controllers for
+        the information provided on this form.<br>
+        •	 The information provided on this form, and any updates that you send using the
+        passengerlocatorform@plf.ie email address, may be used for the following purposes:<br>
+        >	 To contact you to verify this information on this form in the 14 days following your
+        arrival.<br>
+        >	 This form may also be used for the purposes of contact tracing in relation to
+        confirmed or suspected cases of Covid-19.<br>
+        •	 Personal data contained in this form may be collected and processed by the following:
+        >	 Border Management Unit of the Department of Justice and Equality.<br>
+        >	 Garda Immigration Officers.<br>
+        >	 Health Service Executive.<br>
+        •	 This form and any copies of it, and any updates that you send using the
+        passengerlocatorform@plf.ie email address, will be destroyed 28 days after your
+        arrival, unless the form is required for law enforcement purposes.<br>
+        •	 If you wish to exercise your rights under the General Data Protection Regulation,
+        you should contact the Data Protection Officer in the Health Service Executive
+        Email: DPO@hse.ie</p><br>
+<h3>1.Personal details</h3>
 
 <div class="container">
   <form action="">

@@ -1,6 +1,5 @@
 
 
-
 <form action="">
     <div class="container">
       <p>Please fill in this form to create an account.</p>
@@ -10,11 +9,11 @@
       <label for="Password"><b>Password</b></label>
       <input type="password" placeholder="Password" [(ngModel)]="psw_r" [ngModelOptions]="{standalone:true}" required>
       
-      <p>plzzzz</p>
+      <p>Chose your designation</p>
         <select [(ngModel)]="status_r" [ngModelOptions]="{standalone:true}"matNativeControl required>
           <option value="user">Passenger</option>
-          <option value="airport_authority">Airport Authority</option>
-          <option value="hse">HSE Staff</option>
+          <option value="airport_authority">I am a staff member of Airport Authority </option>
+          <option value="hse">I am a staff member of HSE</option>
         </select>
         <br>
       

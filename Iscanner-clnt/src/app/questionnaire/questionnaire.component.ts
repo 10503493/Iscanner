@@ -10,13 +10,15 @@ import { UserService } from '../user.service';
 export class QuestionnaireComponent implements OnInit {
   psw_r: any;
   uname_r: any;
-
+  exception_q:any;
   constructor(private usersrv:UserService) { }
 
   ngOnInit(): void {
   }
  travel_details()
  {
+  console.log('exception_q')
+
     var x = document.getElementById("traveldetails");
     if (x.style.display === "none") {
       x.style.display = "block";

@@ -104,8 +104,6 @@ def register():
     print(data)
     print ("here in reg___",len(data))
     if len(data) == 0:
-        print('@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-        print(st)
         cur.execute("insert into users (uname,pword,status,firstname,lastname,email,phone,address) values (%s,%s,%s,%s,%s,%s,%s,%s)",(un,pw,st,fn,ln,eml,ph,ad))
         mysql.connection.commit()
         cur.close()
