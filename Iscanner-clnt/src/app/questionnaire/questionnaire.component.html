@@ -1,7 +1,7 @@
 <h1>Covid-19 Passenger locator form</h1>
 <p><b>Passengers arriving to Ireland from overseas are required to complete this form,
   including Irish citizens</b></p>
-  <p>If you are under any of these category please check the box</p>
+  <!-- <p>If you are under any of these category please check the box</p>
   <p>>	 Passengers arriving from Northern Ireland.<br>
     >	 Passengers leaving the State from their port or airport of arrival without otherwise
     exiting the port or airport.<br>
@@ -12,9 +12,8 @@
     >	 Ship crew, including the maritime master, who are in the State in the course of
     performing their duties.<br>
     >	 Foreign diplomats<br></p>
-    <!-- need to change the operation after discussion with sir -->
     <input type="checkbox" (click)="travel_details()"[(ngModel)]="exception_q"[ngModelOptions]="{standalone:true}" required>
-    <label for="exception">Yes i'm in one or more of the above list</label><br>
+    <label for="exception">Yes i'm in one or more of the above list</label><br> -->
     <h4>Instructions</h4>
     <p>•	 One form should be completed for each passenger aged 16 or older. Details of children
       under the age of 16 should be included on a form completed by an adult accompanying
@@ -67,54 +66,67 @@
 
 <div class="container">
   <form action="">
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-    <label for="email">E-mail</label>
-    <input type="email" id="email" name="email" placeholder="Your E-mail">
-    <label for="Phone Number">Phone</label>
-    <input type="tel" id="phone" name="Phone" placeholder="Your Phone Number">  
-    <label for="Address">Address</label>
-    <input type="text" id="address" name="Address" placeholder="Your address">
-    <label for="City">City</label>
-    <input type="text" id="city" name="City" placeholder="Your city">
-    <label for="County">County</label>
-    <input type="text" id="county" name="County" placeholder="Your county">
-    <label for="country">Country</label>
-    <input type="text" id="country" name="country" placeholder="Your country">
-    <label for="Zip">Zip-code</label>
-    <input type="text" id="zip code" name="City" placeholder="Your zipcode">
-    <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-    <input type="submit" value="Submit">
+    <P>Session 1: Personal information</P>
+    <label for="First Name"><b>First Name</b></label>
+    <input type="text" placeholder="First Name" [(ngModel)]="fname_q"[ngModelOptions]="{standalone:true}" required>
+    <label for="Last Name"><b>Last Name</b></label>
+    <input type="text" placeholder="Last Name" [(ngModel)]="lname_q"[ngModelOptions]="{standalone:true}" required>
+    <label for="Date of birth"><b>Date of birth</b></label>
+    <input type="date" placeholder="Date of birth" [(ngModel)]="dob_q"[ngModelOptions]="{standalone:true}" required>
+    <hr>
+    <P>Session 2: Travel details</P>
+    <label for="carrier name "><b>Carrier Name</b></label>
+    <input type="text" placeholder="Carrier Name" [(ngModel)]="carrier_q"[ngModelOptions]="{standalone:true}" required>
+    <label for="date of arrival "><b>Date of arrival</b></label>
+    <input type="date" placeholder="When did you arrive?" [(ngModel)]="dt_arr_q"[ngModelOptions]="{standalone:true}" required>
+    <br><br><label for="time of arrival "><b>Time of arrival</b></label>
+    <input type="time" placeholder="Time of your arrival" [(ngModel)]="tm_arr_q"[ngModelOptions]="{standalone:true}" required>
+    <br><br><label for="point of departure"><b>Point of Departure</b></label>
+    <input type="text" placeholder="Point of departure" [(ngModel)]="departure_q"[ngModelOptions]="{standalone:true}" required>
+    <br><br><label for="point of arrival"><b>Point of Arrival</b></label>
+    <input type="text" placeholder="Point of arrival" [(ngModel)]="arrival_q"[ngModelOptions]="{standalone:true}" required>
+  <h3>Session 3: Contact details where you can be reached</h3>
+  <p><b>Exemption</b><br> If you are leaving the port or airport but will not be residing in the State overnight because
+    you are travelling on to Northern Ireland or overseas, you do not need to provide further
+    contact information. You may be asked for evidence in support of this.</p>
   </form>
 
 
-
-
-
-
-<h1>Travel details</h1>
-
-<p>Click the button below to enter your travel details:</p>
-
-<button (click)="travel_details()">Travel details</button>
-
+    <input type="checkbox" (click)="travel_details()"[(ngModel)]="exp_tra_q"[ngModelOptions]="{standalone:true}" required>
+    <label for="exception">If you wish to claim this exemption please tick here, and fill session 4.</label><br>
 <div id="traveldetails">
+  <h1>Travel details</h1>
+  <label for="mobile "><b>Mobile</b></label>
+  <input type="tel" placeholder="Mobile Number" [(ngModel)]="mob_q"[ngModelOptions]="{standalone:true}" required>
+  <br><label for="phone "><b>Phone</b></label>
+  <input type="tel" placeholder="Phone Number" [(ngModel)]="ph_q"[ngModelOptions]="{standalone:true}" required>
+  <br><label for="email"><b>Email</b></label>
+  <input type="email" placeholder="Email Id" [(ngModel)]="email_q"[ngModelOptions]="{standalone:true}" required>
+  <br> <p>Place of residence for next 14 days?</p>
+  <label for="address"><b>Address</b></label>
+  <input type="text" placeholder="Address" [(ngModel)]="address_q"[ngModelOptions]="{standalone:true}" required>
+  <P><b>Child 1</b></P>
+  <label for="First Name"><b>First Name</b></label>
+  <input type="text" placeholder="First Name" [(ngModel)]="fname_ch1_q"[ngModelOptions]="{standalone:true}" required>
+  <label for="Last Name"><b>Last Name</b></label>
+  <input type="text" placeholder="Last Name" [(ngModel)]="lname_ch1_q"[ngModelOptions]="{standalone:true}" required>
+  <label for="Date of birth"><b>Date of birth</b></label>
+  <input type="date" placeholder="Date of birth" [(ngModel)]="dob_ch1_q"[ngModelOptions]="{standalone:true}" required>
+  <br><label for="address"><b>Address if different from accompanying adult</b></label>
+  <input type="text" placeholder="Address" [(ngModel)]="address_ch1_q"[ngModelOptions]="{standalone:true}" required>
+
+  <P><b>Child 2</b></P>
+  <label for="First Name"><b>First Name</b></label>
+  <input type="text" placeholder="First Name" [(ngModel)]="fname_ch2_q"[ngModelOptions]="{standalone:true}" required>
+  <label for="Last Name"><b>Last Name</b></label>
+  <input type="text" placeholder="Last Name" [(ngModel)]="lname_ch2_q"[ngModelOptions]="{standalone:true}" required>
+  <label for="Date of birth"><b>Date of birth</b></label>
+  <input type="date" placeholder="Date of birth" [(ngModel)]="dob_ch2_q"[ngModelOptions]="{standalone:true}" required>
+  <br> <label for="address"><b>Address if different from accompanying adult</b></label>
+  <input type="text" placeholder="Address" [(ngModel)]="address_ch2_q"[ngModelOptions]="{standalone:true}" required>
+
   <form action="">
-    <label for="origin">Origin  </label>
-    <input type="text" id="origin" name="origin" placeholder="From where you start the journey?">
-    <label for="Departure airport">Departure airport </label>
-    <input type="text" id="departureairport" name="departureairport" placeholder="Name of the airport you started the journey?">
-    <label for="text">Destination </label>
-    <input type="destination" id="destination" name="destination" placeholder="Name of the airpot you are travelling to">
-    <label for="ticket number">Ticket number</label>
-    <input type="text" id="tickettnumber" name="tickettnumber" placeholder="Your ticket number"> 
-    <label for="Flight Number">Flight Number</label>
-    <input type="text" id="flightnumber" name="flightnumber" placeholder="The flight number in which you are travelling">  
-    <label for="seat number">Seat number</label>
-    <input type="text" id="seatnumber" name="seatnumber" placeholder="Your seat number"> 
+    
 
   </form>
 </div>
@@ -129,33 +141,32 @@
 <div id="symptoms">
   <form action="">
    <p>Please check tick if you have any</p>
-      <input type="checkbox" id="symp1" name="symp1" value="symp1">
-      <label for="symp1">feaver</label><br>
-      <input type="checkbox" id="symp2" name="symp2" value="symp2">
+   <input type="checkbox"[(ngModel)]="symp1_q"[ngModelOptions]="{standalone:true}" >
+    <label for="symp1">Feaver</label><br>
+      <input type="checkbox" [(ngModel)]="symp2_q"[ngModelOptions]="{standalone:true}">
       <label for="symp2">Cough</label><br>
-      <input type="checkbox" id="symp3" name="symp3" value="symp3">
+      <input type="checkbox" [(ngModel)]="symp3_q"[ngModelOptions]="{standalone:true}">
       <label for="symp3">Runny nose</label><br>
-      <input type="checkbox" id="symp4" name="symp4" value="symp4">
+      <input type="checkbox" [(ngModel)]="symp4_q"[ngModelOptions]="{standalone:true}">
       <label for="symp4">Sore throat</label><br>
-      <input type="checkbox" id="symp5" name="symp5" value="symp5">
+      <input type="checkbox" [(ngModel)]="symp5_q"[ngModelOptions]="{standalone:true}">
       <label for="symp5">Shortness of breath</label><br>
-      <input type="checkbox" id="symp6" name="symp6" value="symp6">
+      <input type="checkbox"[(ngModel)]="symp6_q"[ngModelOptions]="{standalone:true}">
       <label for="symp6">Headache</label><br>
-      <input type="checkbox" id="symp7" name="symp7" value="symp7">
+      <input type="checkbox" [(ngModel)]="symp7_q"[ngModelOptions]="{standalone:true}">
       <label for="symp7">Loss of taste/smell</label><br>
-      <input type="checkbox" id="symp8" name="symp8" value="symp8">
+      <input type="checkbox" [(ngModel)]="symp8_q"[ngModelOptions]="{standalone:true}">
       <label for="symp8">Fatigue</label><br>
-      <input type="checkbox" id="symp9" name="symp9" value="symp9">
+      <input type="checkbox" [(ngModel)]="symp9_q"[ngModelOptions]="{standalone:true}">
       <label for="symp9">Muscle pain</label><br>
-      <input type="checkbox" id="symp10" name="symp10" value="symp10">
+      <input type="checkbox" [(ngModel)]="symp10_q"[ngModelOptions]="{standalone:true}">
       <label for="symp10">Joint pain</label><br>
-      <input type="checkbox" id="symp11" name="symp11" value="symp11">
+      <input type="checkbox" [(ngModel)]="symp11_q"[ngModelOptions]="{standalone:true}">
       <label for="symp11">Diarrhoea</label><br>
-      <input type="checkbox" id="symp12" name="symp12" value="symp12">
+      <input type="checkbox" [(ngModel)]="symp12_q"[ngModelOptions]="{standalone:true}">
       <label for="symp12">Vomiting</label><br>
-      <input type="checkbox" id="symp13" name="symp13" value="symp13">
+      <input type="checkbox" [(ngModel)]="symp13_q"[ngModelOptions]="{standalone:true}">
       <label for="symp13">Chest pain</label><br>
-      <input type="submit" value="Submit">
   </form>
 </div>
 
@@ -176,12 +187,12 @@
 </div>
 
 <button (click)="test()">click me</button>
-<form>
+<!-- <form>
 <label for="User name"><b>User Name</b></label>
 <input type="text" placeholder="User Name" [(ngModel)]="uname_r"[ngModelOptions]="{standalone:true}" required>
 <label for="Password"><b>Password</b></label>
 <input type="password" placeholder="Password" [(ngModel)]="psw_r" [ngModelOptions]="{standalone:true}" required>
-</form>
+</form> -->
 
 
 
