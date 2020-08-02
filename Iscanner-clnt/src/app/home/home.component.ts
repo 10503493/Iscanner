@@ -33,18 +33,19 @@ export class HomeComponent implements OnInit {
     LoginClick() 
     {
       this.usersrv.login(this.uname_l,this.psw_l).subscribe(x => {
-     //console.log('sha=',x)//test
-     //console.log( Object.keys(x).length)
-       if ( Object.keys(x).length==0)
-       alert('Username or password is wrong.Try again..')
-       else if (x[0][2]=='user')
-       window.location.href="/register";
-          else if(x[0][2]=='airport_authority')
-          alert('airpport')
-          else if (x[0][2]=='hse')
-          alert('hse')
-        else
-         alert(" Username or password is wrong.Try again.. " );  
+     console.log('sha=',x)//test
+     console.log( Object.keys(x).length)
+      //  if ( Object.keys(x).length==0)
+      //  alert('Username or password is wrong.Try again..')
+      //  else if (x[0][2]=='user')
+      //  window.location.href="/register";
+      //     else if(x[0][2]=='airport_authority')
+      //     alert('airpport')
+      //     else if (x[0][2]=='hse')
+      //     alert('hse')
+          
+      //   else
+      //    alert(" Username or password is wrong.Try again.. " );  
       });     
     }
   }

@@ -13,7 +13,7 @@ def index():
     ps = request.form.get('psw_l')
     print (un,ps)
     cur = mysql.connection.cursor()
-    cur.execute("select * from users where uname=%s and pword=%s",[un.strip(),ps.strip()])
+    cur.execute("select * from users,adm where uname=%s and pword=%s",[un.strip(),ps.strip()])
     data = cur.fetchall() 
     print ('data',data)
     cur.close()

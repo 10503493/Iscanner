@@ -49,12 +49,11 @@ Phone VARCHAR(20),
 CovidStatus TINYINT(1)  DEFAULT 0,
 TemperatureReading DECIMAL(3,2)
 ); 
-
 CREATE TABLE TravelDetails(
 PassengerId INT PRIMARY KEY AUTO_INCREMENT,
 PassportNumber VARCHAR(30) ,
-CarrierName VARCHAR(30)  NOT NULL,
 FlightNumber VARCHAR (20) NOT NULL,
+SeatNumber VARCHAR(30) NOT NULL,
 DateOfArrival DATE  NOT NULL,
 TimeOfArrival TIME  NOT NULL,
 PointOfArrival VARCHAR(30) NOT NULL,
@@ -68,7 +67,7 @@ ZipCode VARCHAR(30),
 FOREIGN KEY (PassportNumber) REFERENCES Passenger (PassportNumber));
 
 CREATE TABLE Child(
-PassportNumber VARCHAR(30) NOT NULL,
+PassportNumber VARCHAR(30) NOT NULL PRIMARY KEY ,
 ParentPassportNumber VARCHAR(30) ,
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(30) NOT NULL,
@@ -111,7 +110,7 @@ EmployeStatus VARCHAR (20));
 
 CREATE TABLE Adm(
 Id VARCHAR(30) DEFAULT 'admin',
-Password  VARCHAR(30) DEFAULT '123');
+Pasword  VARCHAR(30) DEFAULT '123');
 
 CREATE TABLE AirportSeq
 (

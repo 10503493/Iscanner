@@ -1,0 +1,39 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div id="mySidenav" class="sidenav">
+    <a (click)=" AddClick()">Add Employe</a> <br>
+    <hr><br>
+    <a href="#">Suspend Employe</a><br><br><br>
+    <hr><br>
+    <a href="#">Remove Employe</a> <br> <br><br>   <hr>
+
+  </div>
+  <div id="main">
+    <h2>Sgfchjkl;ljgfxchj</h2>
+    <p>gfghgjkhljk;l';lkgfb'oliuytrec hvgfdf</p>
+</div>
+
+     
+  <div class="form-popup" id="add_employe_form">
+    <form action="" class="form-container">
+      <h1>Add New Employe</h1>
+      <a href="javascript:void(0)"class="closebtn"  (click)="CloseClick()">&times;</a>
+      <label for="First Name"><b>First Name</b></label>
+      <input type="text" placeholder="First Name" [(ngModel)]="fname_a"[ngModelOptions]="{standalone:true}" required>
+      <label for="Last Name"><b>Last Name</b></label>
+      <input type="text" placeholder="Last Name" [(ngModel)]="lname_a"[ngModelOptions]="{standalone:true}" required>
+      <label for="Email "><b>Email</b></label>
+      <input type="text" placeholder="Email" [(ngModel)]="email_a"[ngModelOptions]="{standalone:true}" required>
+      <br><label for="phone "><b>Phone</b></label><br>
+      <input type="tel" placeholder="Phone Number" [(ngModel)]="phone_a"[ngModelOptions]="{standalone:true}" required>
+      <br><label for="address"><b>Address</b></label>
+      <input type="text" placeholder="Address" [(ngModel)]="address_a"[ngModelOptions]="{standalone:true}" required>
+      <label for="city"><b>City</b></label>
+      <input type="text" placeholder="City" [(ngModel)]="city_a"[ngModelOptions]="{standalone:true}" required>
+      <label for="county"><b>County</b></label>
+      <input type="text" placeholder="County" [(ngModel)]="county_a"[ngModelOptions]="{standalone:true}" required>
+      <label for="country"><b>Country</b></label>
+      <input type="text" placeholder="Country" [(ngModel)]="country_a"[ngModelOptions]="{standalone:true}" required>
+      <button type="submit" class="btn">Login</button> 
+      <button type="button" class="btn cancel" (click)="CloseClick()">Close</button> 
+    </form>
+</div>
