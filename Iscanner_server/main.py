@@ -13,19 +13,25 @@ def index():
     ps = request.form.get('psw_l')
     print (un,ps)
     cur = mysql.connection.cursor()
-    cur.execute("select * from users,adm where uname=%s and pword=%s",[un.strip(),ps.strip()])
+    cu = mysql.connection.cursor()
+
+    cur.execute("select * from Passenger where PassportNumber=%s and Pasword=%s",[un.strip(),ps.strip()])
+    cu.execute("select * from Adm where Id=%s and Pasword=%s",[un.strip(),ps.strip()])
+
     data = cur.fetchall() 
-    print ('data',data)
+    d=cu.fetchall()
+    print ('data','d',data,d)
     cur.close()
+    cu.close()
     print('sql close')
-    print (len(data))#
-    if len(data) > 0:
+    print (len(d))#
+    #if len(data) > 0:
         #print('if true')
-        return( jsonify(data))
+    return( jsonify(data,d))
         #return render_template('products.html',useridx = data[0][2])
-    else:
-        print ('if false')
-        return (jsonify(data))
+   # else:
+       # print ('if false')
+       # return (jsonify(data,d))
     print (5)
     # print (d)
     # cur.close()

@@ -35,17 +35,17 @@ export class HomeComponent implements OnInit {
       this.usersrv.login(this.uname_l,this.psw_l).subscribe(x => {
      console.log('sha=',x)//test
      console.log( Object.keys(x).length)
-      //  if ( Object.keys(x).length==0)
-      //  alert('Username or password is wrong.Try again..')
-      //  else if (x[0][2]=='user')
-      //  window.location.href="/register";
-      //     else if(x[0][2]=='airport_authority')
-      //     alert('airpport')
-      //     else if (x[0][2]=='hse')
-      //     alert('hse')
+     //console.log (x[1][0][2])
+       if ((Object.keys(x).length!=0 )&& (x[1][0][2]=='admin'))
+       window.location.href="/admin";
+       else if( (Object.keys(x).length!=0 )&& (x[0][0][3]=='passenger'))
+       window.location.href="/questionnaire";
+          else if((Object.keys(x).length==0 )&& (x[0][0][2]=='admin'))
+          window.location.href="/admin";
+         
           
-      //   else
-      //    alert(" Username or password is wrong.Try again.. " );  
+        else
+         alert(" Username or password is wrong.Try again.. " );  
       });     
     }
   }
