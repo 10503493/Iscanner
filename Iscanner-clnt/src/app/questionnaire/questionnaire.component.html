@@ -85,7 +85,10 @@
     <input type="text" placeholder="Point of departure" [(ngModel)]="departure_q"[ngModelOptions]="{standalone:true}" required>
     <br><br><label for="point of arrival"><b>Point of Arrival</b></label>
     <input type="text" placeholder="Point of arrival" [(ngModel)]="arrival_q"[ngModelOptions]="{standalone:true}" required>
-  <h3>Session 3: Contact details where you can be reached</h3>
+    <br><br><label for="numberofchildern"><b>Number of childern under 16 with you     </b></label>
+    <input type="number" placeholder="Number of childern" [(ngModel)]="childern_q"[ngModelOptions]="{standalone:true}" required>
+
+    <h3>Session 3: Contact details where you can be reached</h3>
   <p><b>Exemption</b><br> If you are leaving the port or airport but will not be residing in the State overnight because
     you are travelling on to Northern Ireland or overseas, you do not need to provide further
     contact information. You may be asked for evidence in support of this.</p>
@@ -186,7 +189,7 @@
  </form>
 </div>
 
-<button (click)="test()">click me</button>
+<button (click)="submit()">submit</button>
 <!-- <form>
 <label for="User name"><b>User Name</b></label>
 <input type="text" placeholder="User Name" [(ngModel)]="uname_r"[ngModelOptions]="{standalone:true}" required>

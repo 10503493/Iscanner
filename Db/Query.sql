@@ -36,13 +36,12 @@ ADD status varchar(20) NOT NULL
 AFTER pword;
 
 #https://www3.ntu.edu.sg/home/ehchua/programming/sql/MySQL_Beginner.html
-
 CREATE TABLE Passenger(
 PassportNumber VARCHAR(30)  PRIMARY KEY,
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(30) NOT NULL,
-DateOfBirth DATE NOT NULL,
 Pasword VARCHAR (50)NOT NULL,
+DateOfBirth DATE NOT NULL,
 Email VARCHAR(50),
 Mobile VARCHAR(20),
 Phone VARCHAR(20),
@@ -85,6 +84,7 @@ EmployeNumber VARCHAR(30) DEFAULT '0' PRIMARY KEY,
 Pasword VARCHAR(30) DEFAULT '123',
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(30) NOT NULL,
+usertype VARCHAR (10) DEFAULT 'airport',
 Email VARCHAR(50) NOT NULL,
 PhoneNumber VARCHAR(20),
 Address VARCHAR(300),
@@ -99,6 +99,7 @@ EmployeNumber VARCHAR(30) DEFAULT '0' PRIMARY KEY,
 Pasword VARCHAR(30) DEFAULT '123',
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(30) NOT NULL,
+usertype VARCHAR(10) DEFAULT 'hse',
 Email VARCHAR(50) NOT NULL,
 PhoneNumber VARCHAR(20),
 Address VARCHAR(300),
@@ -107,11 +108,13 @@ County VARCHAR(30),
 ZipCode VARCHAR(30),
 Country VARCHAR (30),
 EmployeStatus VARCHAR (20));
-
 CREATE TABLE Adm(
 Id VARCHAR(30) DEFAULT 'admin',
-Pasword  VARCHAR(30) DEFAULT '123');
-
+Pasword  VARCHAR(30) DEFAULT '123',
+usertype VARCHAR(10) DEFAULT "admin");
+insert into Passenger(PassportNumber,FirstName,LastName,DateofBirth,Pasword)values('aa','a','a',10/12/20,'a')
+select * from Adm
+select * from Adm,Passenger where( Adm.Id='a'and Adm.Pasword='1') and (Passenger.PassportNumber='a' and Passenger.Pasword='1');
 CREATE TABLE AirportSeq
 (
   Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
@@ -121,6 +124,7 @@ CREATE TABLE HseSeq
 (
   Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
 );
+
 
 DELIMITER $$
 CREATE TRIGGER AirportEmpNo_Insert 

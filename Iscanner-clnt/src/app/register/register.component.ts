@@ -12,10 +12,10 @@ export class RegisterComponent implements OnInit {
   lname_r: any;
   email_r: any;
   uname_r: any;
-  phone_r: any;
+ // phone_r: any;
   psw_r: any;
-  address_r:any;
-  status_r:any;
+ // address_r:any;
+  dob_r:any;
 
   constructor(private usersrv:UserService) { }
 
@@ -23,8 +23,8 @@ export class RegisterComponent implements OnInit {
   }
   RegisterClick() 
   {
-    
-    this.usersrv.register(this.uname_r,this.psw_r,this.status_r,this.fname_r,this.lname_r,this.email_r,this.address_r,this.phone_r).subscribe(x => {
+    console.log (this.dob_r)
+    this.usersrv.register(this.uname_r,this.psw_r,this.dob_r,this.fname_r,this.lname_r,this.email_r).subscribe(x => {
       if (x=='ok')
     {      
       console.log('sha=',x)//test
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
     else 
     {
       //console.log('sha=',x)//test
-      alert("This username or Email is in use " ) ;
+      alert("This Pasport Number  or Email Id is in use! please try agin. " ) ;
 
     }
   });

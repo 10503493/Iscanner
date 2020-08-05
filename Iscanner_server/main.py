@@ -25,14 +25,15 @@ def index():
     cu.close()
     print('sql close')
     print (len(d))#
-    #if len(data) > 0:
-        #print('if true')
-    return( jsonify(data,d))
+    if len(data) > 0:
+        print('if true')
+        return( jsonify(data))
+    elif len(d)>0:
+        return(jsonify(d))
         #return render_template('products.html',useridx = data[0][2])
-   # else:
-       # print ('if false')
-       # return (jsonify(data,d))
-    print (5)
+    else:
+        return (jsonify(data))
+    #print (5)
     # print (d)
     # cur.close()
     # # c= mysql.connection.cursor()
@@ -40,6 +41,20 @@ def index():
     # # print('d1')
     # # c.close()
     # return jsonify (d)
+@app.route('/api/question', methods=['GET', 'POST'])
+def questionnaire():
+    print('question')
+    ld = request.form.get('details_q')
+    fn = request.form.get('fname_q')
+    ln = request.form.get('lname_q')
+    db = request.form.get('dob_q')
+    cur = mysql.connection.cursor()
+    cur.execute("insert into passenger(PassportNumber,FirstName,LastName,DateOfBirth) values(%s,%s,%s,%s)",(ld,fn,ln,db))
+    mysql.connection.commit()
+    cur.close()
+    return('ok')
+
+
 @app.route('/api/test', methods=['GET', 'POST'])
 def te():
     usr = request.form.get('uname_r')
@@ -53,6 +68,12 @@ def te():
     mysql.connection.commit()
     cur.close()
     print('inserted')
+
+
+
+
+
+    
 #     return ('ok')
 
 # @app.route('/api/userdet', methods=['GET', 'POST'])
@@ -98,19 +119,17 @@ def register():
     fn = request.form.get('fname_r')
     ln = request.form.get('lname_r')
     eml = request.form.get('email_r')
-    un = request.form.get('uname_r')
-    ph = request.form.get('phone_r')
-    ad = request.form.get('address_r')
+    un = request.form.get('uname_r') # passport number
     pw = request.form.get('psw_r')
-    st = request.form.get('status_r')
+    db = request.form.get('dob_r')
     cur = mysql.connection.cursor()
     print('brf',eml,pw)
     cur.execute("select * from users where uname=%s or email=%s",[un,eml])
     data = cur.fetchall()
     print(data)
-    print ("here in reg___",len(data))
+    print ("here in reg___",len(data), db)
     if len(data) == 0:
-        cur.execute("insert into users (uname,pword,status,firstname,lastname,email,phone,address) values (%s,%s,%s,%s,%s,%s,%s,%s)",(un,pw,st,fn,ln,eml,ph,ad))
+        cur.execute("insert into passenger (PassportNumber,FirstName,LastName,Pasword,Email,DateOfBirth) values (%s,%s,%s,%s,%s,%s)",(un,fn,ln,pw,eml,db))
         mysql.connection.commit()
         cur.close()
         print('inserted')

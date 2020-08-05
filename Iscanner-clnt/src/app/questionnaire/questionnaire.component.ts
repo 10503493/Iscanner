@@ -19,6 +19,7 @@ export class QuestionnaireComponent implements OnInit {
   tm_arr_q: any;
   departure_q:any;
   arrival_q:any;
+  childern_q:any;
   exp_tra_q:any;
   mob_q:any;
   ph_q:any;
@@ -46,10 +47,15 @@ export class QuestionnaireComponent implements OnInit {
   symp11_q:any;
   symp12_q:any;
   symp13_q:any;
+  details: any;
+  details_q:any;//for geting the pasport number
 
   constructor(private usersrv:UserService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    if(localStorage.getItem('user')!='passenger')
+    window.location.href="/admin";
   }
  travel_details()
  {
@@ -96,6 +102,14 @@ export class QuestionnaireComponent implements OnInit {
       console.log('clicked test')
       this.usersrv.test1(this.uname_r,this.psw_r).subscribe(x => {console.log('got')});
 
+    }
+    submit()    
+    {
+      this.details=JSON.parse(localStorage.getItem('logindetails'));
+      //console.log(this.details[0][0],this.fname_q,this.lname_q,this.dob_q);
+     this. details_q= this.details[0][0]
+     this.usersrv.SubmitQuestion(this.details_q,this.fname_q,this.lname_q,this.dob_q)
+     console.log('lkd')
     }
 }
 

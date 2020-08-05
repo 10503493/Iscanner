@@ -4,17 +4,17 @@
     <div class="container">
       <p>Please fill in this form to create an account.</p>
       <hr>
-      <label for="User name"><b>User Name</b></label>
-      <input type="text" placeholder="User Name" [(ngModel)]="uname_r"[ngModelOptions]="{standalone:true}" required>
+      <label for="Passport Number"><b>Passport Number</b></label>
+      <input type="text" placeholder="Enter your passport number" [(ngModel)]="uname_r"[ngModelOptions]="{standalone:true}" required>
       <label for="Password"><b>Password</b></label>
       <input type="password" placeholder="Password" [(ngModel)]="psw_r" [ngModelOptions]="{standalone:true}" required>
       
-      <p>Chose your designation</p>
+      <!-- <p>Chose your designation</p>
         <select [(ngModel)]="status_r" [ngModelOptions]="{standalone:true}"matNativeControl required>
           <option value="user">Passenger</option>
           <option value="airport_authority">I am a staff member of Airport Authority </option>
           <option value="hse">I am a staff member of HSE</option>
-        </select>
+        </select> -->
         <br>
       
       <label for="First Name"><b>First Name</b></label>
@@ -23,11 +23,13 @@
       <input type="text" placeholder="Last Name" [(ngModel)]="lname_r"[ngModelOptions]="{standalone:true}" required>
       <label for="Email "><b>Email</b></label>
       <input type="text" placeholder="Email" [(ngModel)]="email_r"[ngModelOptions]="{standalone:true}" required>
-      <label for="Address"><b>Address</b></label>
+      <!-- <label for="Address"><b>Address</b></label>
       <input type="text" placeholder="Address here" [(ngModel)]="address_r"[ngModelOptions]="{standalone:true}" required>
       <label for="Phone"><b>Phone</b></label>
-      <input type="text" placeholder="Enter Phonenumber " [(ngModel)]="phone_r"[ngModelOptions]="{standalone:true}" required>
-  
+      <input type="text" placeholder="Enter Phonenumber " [(ngModel)]="phone_r"[ngModelOptions]="{standalone:true}" required> -->
+      <label for="Date of birth"><b>dob</b></label>
+      <input type="date" placeholder="Date of Birth " [(ngModel)]="dob_r"[ngModelOptions]="{standalone:true}" required>
+
       <hr>
   
       <button type="submit" class="registerbtn"  (click)="RegisterClick()">Register</button>

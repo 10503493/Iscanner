@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
   uname_l :any;
   psw_l:any;
   a: any;
+  user:any;
+  //details:any;
 
   constructor(private usersrv:UserService) { }
 
@@ -36,11 +38,18 @@ export class HomeComponent implements OnInit {
      console.log('sha=',x)//test
      console.log( Object.keys(x).length)
      //console.log (x[1][0][2])
-       if ((Object.keys(x).length!=0 )&& (x[1][0][2]=='admin'))
+  localStorage.setItem('logindetails',JSON.stringify(x));//to take the user deatils and make it autofill in the next tab
+       if ((Object.keys(x).length!=0 )&& (x[0][2]=='admin'))
+       {
+       localStorage.setItem('user','admin')// to make login the correct user
        window.location.href="/admin";
-       else if( (Object.keys(x).length!=0 )&& (x[0][0][3]=='passenger'))
+       }
+       else if( (Object.keys(x).length!=0 )&& (x[0][3]=='passenger'))
+       {
+        localStorage.setItem('user','passenger')
        window.location.href="/questionnaire";
-          else if((Object.keys(x).length==0 )&& (x[0][0][2]=='admin'))
+       }
+          else if((Object.keys(x).length!=0 )&& (x[0][2]=='admin'))
           window.location.href="/admin";
          
           
