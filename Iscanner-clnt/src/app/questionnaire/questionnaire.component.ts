@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 
 
+
 @Component({
   selector: 'app-questionnaire',
   templateUrl: './questionnaire.component.html',
@@ -21,6 +22,8 @@ export class QuestionnaireComponent implements OnInit {
   departure_q:any;
   arrival_q:any;
   childern_q:any;
+  reason_q  :any;
+  reasono_q  :any;
   exp_tra_q:any;
   mob_q:any;
   ph_q:any;
@@ -52,6 +55,9 @@ export class QuestionnaireComponent implements OnInit {
   details_q:any;//for geting the pasport number
   //a:any;
 
+
+
+
   constructor(private usersrv:UserService) { }
 
   ngOnInit(): void 
@@ -60,6 +66,9 @@ export class QuestionnaireComponent implements OnInit {
     window.location.href="/admin";
     // this.a=JSON.parse(localStorage.getItem('logindetails') )
     // console.log(this.a[0][2])
+    this.details=JSON.parse(localStorage.getItem('logindetails'));
+   this. details_q= this.details[0][0]
+
   }
  travel_details()
  {
@@ -109,11 +118,12 @@ export class QuestionnaireComponent implements OnInit {
     }
     submit()    
     {
-      this.details=JSON.parse(localStorage.getItem('logindetails'));
-      //console.log(this.details[0][0],this.fname_q,this.lname_q,this.dob_q);
-     this. details_q= this.details[0][0]
-     this.usersrv.SubmitQuestion(this.details_q,this.carrier_q,this.seat_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.childern_q);
-     console.log('lkd')
+
+     
+     console.log(this.reason_q)
+     this.usersrv.SubmitQuestion(this.details_q,this.carrier_q,this.seat_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.childern_q,this.reason_q,this.mob_q,this.ph_q, this.address_q).subscribe(x => {});
+     console.log('f')
+
     }
 }
 

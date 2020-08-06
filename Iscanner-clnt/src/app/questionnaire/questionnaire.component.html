@@ -88,8 +88,26 @@
     <br><br><label for="point of arrival"><b>Point of Arrival</b></label>
     <input type="text" placeholder="Point of arrival" [(ngModel)]="arrival_q"[ngModelOptions]="{standalone:true}" required>
     <br><br><label for="numberofchildern"><b>Number of childern under 16 with you     </b></label>
-    <input type="number" placeholder="Number of childern" [(ngModel)]="childern_q"[ngModelOptions]="{standalone:true}" required>
-    <button (click)="submit()">submit</button>
+    <input type="number" placeholder="Number of childern" [(ngModel)]=" childern_q"[ngModelOptions]="{standalone:true}" required>
+
+    <label for="reason">Reason for travel (choose one):</label>
+    <select name="reason" [(ngModel)]="reason_q"[ngModelOptions]="{standalone:true}" multiple>
+    <option value="resident">Resident in Ireland</option>
+    <option value="visiting">Visiting Family/Friends</option>
+    <option value="holiday">Holiday/Travel</option>
+    <option value="work">Work</option>
+    <option value="transfer">Transfer flight</option>
+    <option value="realocating">Relocating to Ireland</option>
+    <option value="othres">Other reason</option>
+    <input  type="text" placeholder="Please specify">
+ 
+   </select>
+   <label for="otherreason "><b>Others</b></label>
+   <input type="text" placeholder="Please specify" [(ngModel)]="reasono_q"[ngModelOptions]="{standalone:true}" required>
+
+
+
+    
 
     <h3>Session 3: Contact details where you can be reached</h3>
   <p><b>Exemption</b><br> If you are leaving the port or airport but will not be residing in the State overnight because

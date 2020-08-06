@@ -51,12 +51,22 @@ def question():
     dp = request.form.get('departure_q')
     ap = request.form.get('arrival_q')
     nc = request.form.get('childern_q')
+    rt = request.form.get('reason_q')
+    mb = request.form.get('mob_q')
+    ph = request.form.get('ph_q')
+    ad = request.form.get('address_q')
+    print(rt)
     cur = mysql.connection.cursor()
-   # cur.execute("update  traveldetails set FlightNumber='cn',SeatNumber='sn',DateOfArrival='dt',TimeOfArrival='tm,PointOfarrival='ap',PoinOfDeparture='dp',NumberOfChild='nc' where PassportNumber ='a'")
-    cur.execute("insert into TravelDetails (PasportNumber,FlightNumber,SeatNumber,DateOfArrival,TimeOfArrival,PointOfarrival,PoinOfDeparture,NumberOfChild) values (%s,%s,%s,%s,%s,%s,%s,%s)",(pn,cn,sn,dt,tm,dp,ap,nc))
+    c = mysql.connection.cursor()
+    cur.execute("insert into TravelDetails (PassportNumber,FlightNumber,SeatNumber,DateOfArrival,TimeOfArrival,PointOfarrival,PoinOfDeparture,NumberOfChild,ReasonForTravel,Address) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(pn,cn,sn,dt,tm,ap,dp,nc,rt,ad))
+    c.execute("update  passenger set Mobile=%s, Phone=%s where PassportNumber =%s",(mb,ph,pn))
+    print('kk')
 
     mysql.connection.commit()
+    mysql.connection.commit()
+
     cur.close()
+    c.close()
     return('ok')
 
 

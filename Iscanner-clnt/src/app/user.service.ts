@@ -4,11 +4,14 @@ import { HttpClient } from '@angular/common/http'
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
-  Register(uname_r: any, psw_r: any, fname_r: any, lname_r: any, email_r: any, address_r: any, phone_r: any) {
+export class UserService 
+{
+  Register(uname_r: any, psw_r: any, fname_r: any, lname_r: any, email_r: any, address_r: any, phone_r: any) 
+  {
     throw new Error("Method not implemented.");
   }
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) 
+  {
 
   }
 
@@ -41,7 +44,7 @@ test1(uname_r,psw_r)
   body.append('psw_r', psw_r);
   return this.http.post('/api/test', body, { responseType: 'text' });
 }
-SubmitQuestion(details_q,carrier_q, seat_q,dt_arr_q, tm_arr_q,departure_q,arrival_q,childern_q)
+SubmitQuestion(details_q,carrier_q, seat_q,dt_arr_q, tm_arr_q,departure_q,arrival_q,childern_q,reason_q,mob_q,ph_q,address_q)
 {
   console.log('hkjh')
   let body = new FormData();
@@ -54,9 +57,16 @@ SubmitQuestion(details_q,carrier_q, seat_q,dt_arr_q, tm_arr_q,departure_q,arriva
   body.append('dt_arr_q', dt_arr_q);
   body.append('tm_arr', tm_arr_q);
   body.append('departure_q',departure_q);
-  body.append('arrival', arrival_q);
+  body.append('arrival_q', arrival_q);
   body.append('childern_q', childern_q);
-  console.log('hfddgkjh');
+  body.append('reason_q', reason_q);
+  body.append('mob_q', mob_q);
+  body.append('ph_q', ph_q);
+  body.append('address_q',address_q);
+
+  console.log('hfddgkjh',reason_q);
+
+
   return this.http.post('/api/question', body, { responseType: 'text' });
 }
 
