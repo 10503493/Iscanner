@@ -41,19 +41,23 @@ test1(uname_r,psw_r)
   body.append('psw_r', psw_r);
   return this.http.post('/api/test', body, { responseType: 'text' });
 }
-SubmitQuestion(details_q,fname_q,lanme_q,dob_q)
+SubmitQuestion(details_q,carrier_q, seat_q,dt_arr_q, tm_arr_q,departure_q,arrival_q,childern_q)
 {
   console.log('hkjh')
   let body = new FormData();
   body.append('details_q', details_q);
-  body.append('fname_q', fname_q);
-  body.append('lname_q', lanme_q);
-  body.append('dob_q', dob_q);
-  console.log('hfddgkjh')
-
+  body.append('carrier_q', carrier_q);
+  body.append('dt_arr_q', dt_arr_q);
+  body.append('tm_arr_q', tm_arr_q);
+  body.append('carrier_q', carrier_q);
+  body.append('seat_q', seat_q);
+  body.append('dt_arr_q', dt_arr_q);
+  body.append('tm_arr', tm_arr_q);
+  body.append('departure_q',departure_q);
+  body.append('arrival', arrival_q);
+  body.append('childern_q', childern_q);
+  console.log('hfddgkjh');
   return this.http.post('/api/question', body, { responseType: 'text' });
-
-
 }
 
 }

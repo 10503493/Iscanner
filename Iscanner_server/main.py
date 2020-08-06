@@ -41,15 +41,20 @@ def index():
     # # print('d1')
     # # c.close()
     # return jsonify (d)
-@app.route('/api/question', methods=['GET', 'POST'])
-def questionnaire():
-    print('question')
-    ld = request.form.get('details_q')
-    fn = request.form.get('fname_q')
-    ln = request.form.get('lname_q')
-    db = request.form.get('dob_q')
+@app.route('/api/question', methods=['POST'])
+def question():
+    pn = request.form.get('details_q')#passportnumber
+    cn = request.form.get('carrier_q')
+    sn=  request.form.get('seat_q')
+    dt = request.form.get('dt_arr_q')
+    tm = request.form.get('tm_arr_q')
+    dp = request.form.get('departure_q')
+    ap = request.form.get('arrival_q')
+    nc = request.form.get('childern_q')
     cur = mysql.connection.cursor()
-    cur.execute("insert into passenger(PassportNumber,FirstName,LastName,DateOfBirth) values(%s,%s,%s,%s)",(ld,fn,ln,db))
+   # cur.execute("update  traveldetails set FlightNumber='cn',SeatNumber='sn',DateOfArrival='dt',TimeOfArrival='tm,PointOfarrival='ap',PoinOfDeparture='dp',NumberOfChild='nc' where PassportNumber ='a'")
+    cur.execute("insert into TravelDetails (PasportNumber,FlightNumber,SeatNumber,DateOfArrival,TimeOfArrival,PointOfarrival,PoinOfDeparture,NumberOfChild) values (%s,%s,%s,%s,%s,%s,%s,%s)",(pn,cn,sn,dt,tm,dp,ap,nc))
+
     mysql.connection.commit()
     cur.close()
     return('ok')

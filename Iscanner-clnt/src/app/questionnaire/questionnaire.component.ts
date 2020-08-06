@@ -15,6 +15,7 @@ export class QuestionnaireComponent implements OnInit {
   lname_q: any;
   dob_q: any;
   carrier_q: any;
+  seat_q:any;
   dt_arr_q: any;
   tm_arr_q: any;
   departure_q:any;
@@ -49,6 +50,7 @@ export class QuestionnaireComponent implements OnInit {
   symp13_q:any;
   details: any;
   details_q:any;//for geting the pasport number
+  //a:any;
 
   constructor(private usersrv:UserService) { }
 
@@ -56,6 +58,8 @@ export class QuestionnaireComponent implements OnInit {
   {
     if(localStorage.getItem('user')!='passenger')
     window.location.href="/admin";
+    // this.a=JSON.parse(localStorage.getItem('logindetails') )
+    // console.log(this.a[0][2])
   }
  travel_details()
  {
@@ -108,7 +112,7 @@ export class QuestionnaireComponent implements OnInit {
       this.details=JSON.parse(localStorage.getItem('logindetails'));
       //console.log(this.details[0][0],this.fname_q,this.lname_q,this.dob_q);
      this. details_q= this.details[0][0]
-     this.usersrv.SubmitQuestion(this.details_q,this.fname_q,this.lname_q,this.dob_q)
+     this.usersrv.SubmitQuestion(this.details_q,this.carrier_q,this.seat_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.childern_q);
      console.log('lkd')
     }
 }
