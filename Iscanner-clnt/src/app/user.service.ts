@@ -44,7 +44,7 @@ test1(uname_r,psw_r)
   body.append('psw_r', psw_r);
   return this.http.post('/api/test', body, { responseType: 'text' });
 }
-SubmitQuestion(details_q,carrier_q, seat_q,dt_arr_q, tm_arr_q,departure_q,arrival_q,childern_q,reason_q,mob_q,ph_q,address_q)
+SubmitQuestion(details_q,carrier_q, seat_q,dt_arr_q, tm_arr_q,departure_q,arrival_q,children_q,reason_q,mob_q,ph_q,address_q,pn_ch1_q,symp1_q,symp2_q,symp3_q,symp4_q,symp5_q,symp6_q,symp7_q,symp8_q,symp9_q,symp10_q,symp11_q,symp12_q,symp13_q)
 {
   console.log('hkjh')
   let body = new FormData();
@@ -58,13 +58,28 @@ SubmitQuestion(details_q,carrier_q, seat_q,dt_arr_q, tm_arr_q,departure_q,arriva
   body.append('tm_arr', tm_arr_q);
   body.append('departure_q',departure_q);
   body.append('arrival_q', arrival_q);
-  body.append('childern_q', childern_q);
+  body.append('children_q', children_q);
   body.append('reason_q', reason_q);
   body.append('mob_q', mob_q);
   body.append('ph_q', ph_q);
   body.append('address_q',address_q);
+  body.append('pn_ch1_q',pn_ch1_q);
+  body.append('symp1_q',symp1_q);
+  body.append('symp2_q',symp2_q);
+  body.append('symp2_q',symp2_q);
+  body.append('symp3_q',symp3_q);
+  body.append('symp4_q',symp4_q);
+  body.append('symp5_q',symp5_q);
+  body.append('symp6_q',symp6_q);
+  body.append('symp7_q',symp7_q);
+  body.append('symp8_q',symp8_q);
+  body.append('symp9_q',symp9_q);
+  body.append('symp10_q',symp10_q);
+  body.append('symp11_q',symp11_q);
+  body.append('symp12_q',symp12_q);
+  body.append('symp13_q',symp13_q);
 
-  console.log('hfddgkjh',reason_q);
+  console.log('hfddgkjh',pn_ch1_q[0][0] ,children_q);
 
 
   return this.http.post('/api/question', body, { responseType: 'text' });

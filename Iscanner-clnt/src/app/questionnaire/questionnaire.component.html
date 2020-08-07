@@ -87,8 +87,8 @@
     <input type="text" placeholder="Point of departure" [(ngModel)]="departure_q"[ngModelOptions]="{standalone:true}" required>
     <br><br><label for="point of arrival"><b>Point of Arrival</b></label>
     <input type="text" placeholder="Point of arrival" [(ngModel)]="arrival_q"[ngModelOptions]="{standalone:true}" required>
-    <br><br><label for="numberofchildern"><b>Number of childern under 16 with you     </b></label>
-    <input type="number" placeholder="Number of childern" [(ngModel)]=" childern_q"[ngModelOptions]="{standalone:true}" required>
+    <br><br><label for="numberofchildren"><b>Number of children under 16 with you     </b></label>
+    <input type="number" placeholder="Number of children" [(ngModel)]=" children_q"[ngModelOptions]="{standalone:true}" required>
 
     <label for="reason">Reason for travel (choose one):</label>
     <select name="reason" [(ngModel)]="reason_q"[ngModelOptions]="{standalone:true}" multiple>
@@ -98,9 +98,7 @@
     <option value="work">Work</option>
     <option value="transfer">Transfer flight</option>
     <option value="realocating">Relocating to Ireland</option>
-    <option value="othres">Other reason</option>
-    <input  type="text" placeholder="Please specify">
- 
+    <option value="othres">Other reason</option> 
    </select>
    <label for="otherreason "><b>Others</b></label>
    <input type="text" placeholder="Please specify" [(ngModel)]="reasono_q"[ngModelOptions]="{standalone:true}" required>
@@ -122,13 +120,44 @@
 <input type="tel" placeholder="Mobile Number" [(ngModel)]="mob_q"[ngModelOptions]="{standalone:true}" required>
 <br><label for="phone "><b>Phone</b></label>
 <input type="tel" placeholder="Phone Number" [(ngModel)]="ph_q"[ngModelOptions]="{standalone:true}" required>
-<br><label for="email"><b>Email</b></label>
-<input type="email" placeholder="Email Id" [(ngModel)]="email_q"[ngModelOptions]="{standalone:true}" required>
 <br> <p>Place of residence for next 14 days?</p>
 <label for="address"><b>Address</b></label>
 <input type="text" placeholder="Address" [(ngModel)]="address_q"[ngModelOptions]="{standalone:true}" required>
-<P><b>Child 1</b></P>
-<label for="First Name"><b>First Name</b></label>
+
+
+
+
+<form #addressForm="ngForm"  (ngSubmit)="logValue()">
+ 
+        <button type="button"  (click)="addChild()">Add A Child</button>
+        <section  *ngFor="let child of children; let i = index;">
+       
+              <h4>Child {{i + 1}}</h4>
+         
+              <button type="button"  (click)="removeChild(i)">Remove</button>
+      
+              <label for="Passport Number"><b>Passport Number</b></label>
+              <input type="text" placeholder="Passport Number" [(ngModel)]="child.pn_ch1_q"[ngModelOptions]="{standalone:true}" required>
+              <label for="First Name"><b>First Name</b></label>
+              <input type="text" placeholder="First Name" [(ngModel)]="child.fname_ch1_q"[ngModelOptions]="{standalone:true}" required>
+              <label for="Last Name"><b>Last Name</b></label>
+              <input type="text" placeholder="Last Name" [(ngModel)]="child.lname_ch1_q"[ngModelOptions]="{standalone:true}" required>
+              <label for="Date of birth"><b>Date of birth</b></label>
+              <input type="date" placeholder="Date of birth" [(ngModel)]="child.dob_ch1_q"[ngModelOptions]="{standalone:true}" required>
+              <br><label for="address"><b>Address if different from accompanying adult</b></label>
+              <input type="text" placeholder="Address" [(ngModel)]="child.address_ch1_q"[ngModelOptions]="{standalone:true}" required>
+                          
+      </section>
+
+
+</form>
+
+
+
+<!-- <P><b>Child 1</b></P>
+<label for="Passport Number"><b>Passport Number</b></label>
+<input type="text" placeholder="Passport Number" [(ngModel)]="pn_ch1_q"[ngModelOptions]="{standalone:true}" required>
+<label for="Last Name"><b>Last Name</b></label>
 <input type="text" placeholder="First Name" [(ngModel)]="fname_ch1_q"[ngModelOptions]="{standalone:true}" required>
 <label for="Last Name"><b>Last Name</b></label>
 <input type="text" placeholder="Last Name" [(ngModel)]="lname_ch1_q"[ngModelOptions]="{standalone:true}" required>
@@ -138,15 +167,17 @@
 <input type="text" placeholder="Address" [(ngModel)]="address_ch1_q"[ngModelOptions]="{standalone:true}" required>
 
 <P><b>Child 2</b></P>
+<label for="Passport Number"><b>Passport Number</b></label>
+<input type="text" placeholder="Passport Number" [(ngModel)]="pn_ch1_q"[ngModelOptions]="{standalone:true}" required>
 <label for="First Name"><b>First Name</b></label>
-<input type="text" placeholder="First Name" [(ngModel)]="fname_ch2_q"[ngModelOptions]="{standalone:true}" required>
+<input type="text" placeholder="First Name" [(ngModel)]="fname_ch1_q"[ngModelOptions]="{standalone:true}" required>
 <label for="Last Name"><b>Last Name</b></label>
-<input type="text" placeholder="Last Name" [(ngModel)]="lname_ch2_q"[ngModelOptions]="{standalone:true}" required>
+<input type="text" placeholder="Last Name" [(ngModel)]="lname_ch1_q"[ngModelOptions]="{standalone:true}" required>
 <label for="Date of birth"><b>Date of birth</b></label>
-<input type="date" placeholder="Date of birth" [(ngModel)]="dob_ch2_q"[ngModelOptions]="{standalone:true}" required>
+<input type="date" placeholder="Date of birth" [(ngModel)]="dob_ch1_q"[ngModelOptions]="{standalone:true}" required>
 <br> <label for="address"><b>Address if different from accompanying adult</b></label>
 <input type="text" placeholder="Address" [(ngModel)]="address_ch2_q"[ngModelOptions]="{standalone:true}" required>
-
+ -->
 <form action="">
   
 

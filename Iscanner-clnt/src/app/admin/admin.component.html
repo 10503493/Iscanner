@@ -21,9 +21,15 @@
       <input type="text" placeholder="First Name" [(ngModel)]="fname_a"[ngModelOptions]="{standalone:true}" required>
       <label for="Last Name"><b>Last Name</b></label>
       <input type="text" placeholder="Last Name" [(ngModel)]="lname_a"[ngModelOptions]="{standalone:true}" required>
-      <label for="Email "><b>Email</b></label>
-      <input type="text" placeholder="Email" [(ngModel)]="email_a"[ngModelOptions]="{standalone:true}" required>
-      <br><label for="phone "><b>Phone</b></label><br>
+      <label for="Email "><b>Email</b></label><br><br>
+      <input type="email" placeholder="Email" [(ngModel)]="email_a"[ngModelOptions]="{standalone:true}" required>
+<br>
+<p><b>Staff Type</b></p>
+      <select  [(ngModel)]="type_ar" [ngModelOptions]="{standalone:true}"matNativeControl required>
+        <option value="hse">HSE Staff</option>
+        <option value="airport_authority"> Airport Authority Staff</option>  
+      </select>    <br>
+      <label for="phone "><b>Phone</b></label><br>
       <input type="tel" placeholder="Phone Number" [(ngModel)]="phone_a"[ngModelOptions]="{standalone:true}" required>
       <br><label for="address"><b>Address</b></label>
       <input type="text" placeholder="Address" [(ngModel)]="address_a"[ngModelOptions]="{standalone:true}" required>

@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit {
   city_a : any;
   county_a:any;
   country_a:any;
-
+  type_ar:any;
 
 
   constructor() { }

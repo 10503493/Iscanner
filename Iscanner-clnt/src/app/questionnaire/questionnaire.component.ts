@@ -21,7 +21,7 @@ export class QuestionnaireComponent implements OnInit {
   tm_arr_q: any;
   departure_q:any;
   arrival_q:any;
-  childern_q:any;
+  children_q:any;
   reason_q  :any;
   reasono_q  :any;
   exp_tra_q:any;
@@ -29,6 +29,16 @@ export class QuestionnaireComponent implements OnInit {
   ph_q:any;
   email_q:any;
   address_q:any;
+
+  public children: any[] = [{
+  id: 1,
+  pn_ch1_q:'',
+  fname_ch1_q:'',
+  lname_ch1_q:'',
+  dob_ch1_q:'',
+  address_ch1_q:'',
+  }];
+  pn_ch1_q:any;
   fname_ch1_q:any;
   lname_ch1_q:any;
   dob_ch1_q:any;
@@ -37,6 +47,7 @@ export class QuestionnaireComponent implements OnInit {
   lname_ch2_q:any;
   dob_ch2_q:any;
   address_ch2_q:any;
+
 
   symp1_q:any;
   symp2_q:any;
@@ -53,8 +64,9 @@ export class QuestionnaireComponent implements OnInit {
   symp13_q:any;
   details: any;
   details_q:any;//for geting the pasport number
-  //a:any;
-
+  i:any;//for loop to disply n numner of child
+c:any;//for extract objects
+  g: any;
 
 
 
@@ -68,16 +80,29 @@ export class QuestionnaireComponent implements OnInit {
     // console.log(this.a[0][2])
     this.details=JSON.parse(localStorage.getItem('logindetails'));
    this. details_q= this.details[0][0]
-
+// for providing child data
+   for(this.i=1;this.i<this.children_q;this.i++)
+   {
+    this.children.push({
+    id: this.children.length + this.i,
+    pn_ch1_q: '',
+    fname_ch1_q: '',
+    lname_ch1_q: '',
+    dob_ch1_q: '',
+    address_ch1_q: ''
+  });
+   }
   }
  travel_details()
  {
   console.log('exception_q')
-
+  
     var x = document.getElementById("traveldetails");
     if (x.style.display === "none") {
       x.style.display = "block";
       console.log(x.style.display)
+     
+
     } else {
       console.log(x.style.display)
       x.style.display = "none";
@@ -121,10 +146,44 @@ export class QuestionnaireComponent implements OnInit {
 
      
      console.log(this.reason_q)
-     this.usersrv.SubmitQuestion(this.details_q,this.carrier_q,this.seat_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.childern_q,this.reason_q,this.mob_q,this.ph_q, this.address_q).subscribe(x => {});
-     console.log('f')
-
+     this.usersrv.SubmitQuestion(this.details_q,this.carrier_q,this.seat_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.children_q,this.reason_q,this.mob_q,this.ph_q, this.address_q,this.children,this.symp1_q,this.symp2_q,this.symp3_q,this.symp4_q,this.symp5_q,this.symp6_q,this.symp7_q,this.symp8_q,this.symp9_q,this.symp10_q,this.symp11_q,this.symp12_q,this.symp13_q).subscribe(x => {});
+     console.log(this.pn_ch1_q ,this.children)
+     this.c=Object.values(this.children)
+     this.g=JSON.parse(this.c)
+     console.log('objjjjj',this.g[0][1])
     }
+
+
+    addChild() 
+    {
+      console.log(this.children_q)
+  if(this.children_q==0  || this.children_q=='undefined')
+  alert('no child with you!')
+  else
+      for(;this.i<this.children_q;this.i++)
+  this.children.push({
+    id: this.children.length + this.i,
+    pn_ch1_q: '',
+    fname_ch1_q: '',
+    lname_ch1_q: '',
+    dob_ch1_q: '',
+    address_ch1_q: ''
+  });
+
+     
+    }
+  
+    removeChild(i: number) {
+      this.children.splice(i, 1);
+    }
+  
+    logValue() {
+      console.log(this.children);
+    }
+  
+
+
+
 }
 
 
