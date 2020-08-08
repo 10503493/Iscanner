@@ -106,6 +106,49 @@ def te():
     cur.close()
     print('inserted')
 
+@app.route('/api/adminadd_airport', methods=[ 'POST'])
+def adminadd_airport():
+    fn = request.form.get('fname_a')
+    ln = request.form.get('lname_a')
+    ut = request.form.get('type_a')
+    em = request.form.get('email_a')
+    ph = request.form.get('phone_a')
+    ad = request.form.get('address_a')
+    ct = request.form.get('city_a')
+    co = request.form.get('county_a')
+    zp = request.form.get('zipcode_a')
+    cn = request.form.get('country_a')
+    es = request.form.get('employestatus_a')
+
+    cur = mysql.connection.cursor()
+    cur.execute("insert into AirportAuthority(FirstName,LastName,usertype,Email,PhoneNumber,Address,City,County,ZipCode,Country,EmployeStatus) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)" ,(fn,ln,ut,em,ph,ad,ct,co,zp,cn,es))
+    mysql.connection.commit()
+    cur.close()
+    return('ok')
+
+
+
+@app.route('/api/adminadd_hse', methods=[ 'POST'])
+def adminadd_hse():
+    fn = request.form.get('fname_a')
+    ln = request.form.get('lname_a')
+    ut = request.form.get('type_a')
+    em = request.form.get('email_a')
+    ph = request.form.get('phone_a')
+    ad = request.form.get('address_a')
+    ct = request.form.get('city_a')
+    co = request.form.get('county_a')
+    zp = request.form.get('zipcode_a')
+    cn = request.form.get('country_a')
+    es = request.form.get('employestatus_a')
+
+    cur = mysql.connection.cursor()
+    cur.execute("insert into HseStaff (FirstName,LastName,usertype,Email,PhoneNumber,Address,City,County,ZipCode,Country,EmployeStatus) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)" ,(fn,ln,ut,em,ph,ad,ct,co,zp,cn,es))
+    mysql.connection.commit()
+    cur.close()
+    return('ok')
+
+
 
 
 

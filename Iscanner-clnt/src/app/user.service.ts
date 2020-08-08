@@ -84,5 +84,43 @@ SubmitQuestion(details_q,carrier_q, seat_q,dt_arr_q, tm_arr_q,departure_q,arriva
 
   return this.http.post('/api/question', body, { responseType: 'text' });
 }
+AddAirport(fname_a,lname_a,email_a,type_a,phone_a,address_a,city_a,county_a,zipcode_a,country_a,employestatus_a)
+{
+  let body = new FormData();
+  body.append('fname_a', fname_a);
+  body.append('lname_a', lname_a);
+  body.append('email_a', email_a);
+  body.append('type_a', type_a);
+  body.append('phone_a', phone_a);
+  body.append('address_a', address_a);
+  body.append('city_a', city_a);
+  body.append('county_a', county_a);
+  body.append('zipcode_a', zipcode_a);
+  body.append('employestatus_a', employestatus_a);
+  body.append('country_a', country_a);
+  return this.http.post('/api/adminadd_airport', body, { responseType: 'text' });
 
+}
+AddHse(fname_a,lname_a,email_a,type_a,phone_a,address_a,city_a,county_a,zipcode_a,country_a,employestatus_a)
+{
+  let body = new FormData();
+  body.append('fname_a', fname_a);
+  body.append('lname_a', lname_a);
+  body.append('email_a', email_a);
+  body.append('type_a', type_a);
+  body.append('phone_a', phone_a);
+  body.append('address_a', address_a);
+  body.append('city_a', city_a);
+  body.append('county_a', county_a);
+  body.append('zipcode_a', zipcode_a);
+  body.append('employestatus_a', employestatus_a);
+  body.append('country_a', country_a);
+  return this.http.post('/api/adminadd_hse', body, { responseType: 'text' });
+
+}
+EmpGetData()
+{
+  return this.http.get('/api/empgetdata', { responseType: 'json' });
+
+}
 }

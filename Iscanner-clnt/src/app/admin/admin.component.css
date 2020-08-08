@@ -109,3 +109,9 @@ body {
     font-size: 36px;
     margin-left: 50px;
   }
+
+  /*border for table*/
+
+  table, th, td {
+    border: 1px solid blue;
+  }

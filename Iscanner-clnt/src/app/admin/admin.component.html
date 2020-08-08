@@ -2,7 +2,7 @@
 <div id="mySidenav" class="sidenav">
     <a (click)=" AddClick()">Add Employe</a> <br>
     <hr><br>
-    <a href="#">Suspend Employe</a><br><br><br>
+    <a  (click)=" SuspendClick()">Suspend Employe</a><br><br><br>
     <hr><br>
     <a href="#">Remove Employe</a> <br> <br><br>   <hr>
 
@@ -25,9 +25,9 @@
       <input type="email" placeholder="Email" [(ngModel)]="email_a"[ngModelOptions]="{standalone:true}" required>
 <br>
 <p><b>Staff Type</b></p>
-      <select  [(ngModel)]="type_ar" [ngModelOptions]="{standalone:true}"matNativeControl required>
+      <select  [(ngModel)]="type_a" [ngModelOptions]="{standalone:true}"matNativeControl required>
         <option value="hse">HSE Staff</option>
-        <option value="airport_authority"> Airport Authority Staff</option>  
+        <option value="airport"> Airport Authority Staff</option>  
       </select>    <br>
       <label for="phone "><b>Phone</b></label><br>
       <input type="tel" placeholder="Phone Number" [(ngModel)]="phone_a"[ngModelOptions]="{standalone:true}" required>
@@ -37,9 +37,38 @@
       <input type="text" placeholder="City" [(ngModel)]="city_a"[ngModelOptions]="{standalone:true}" required>
       <label for="county"><b>County</b></label>
       <input type="text" placeholder="County" [(ngModel)]="county_a"[ngModelOptions]="{standalone:true}" required>
+      <label for="zipcode"><b>Zipcode</b></label>
+      <input type="text" placeholder="Zipcode" [(ngModel)]="zipcode_a"[ngModelOptions]="{standalone:true}" required>
       <label for="country"><b>Country</b></label>
       <input type="text" placeholder="Country" [(ngModel)]="country_a"[ngModelOptions]="{standalone:true}" required>
-      <button type="submit" class="btn">Login</button> 
+      <p><b>Employe status</b></p>
+      <select  [(ngModel)]="employestatus_a" [ngModelOptions]="{standalone:true}"matNativeControl required>
+        <option value="active">Active</option>
+        <option value="suspend"> Suspend</option>  
+        <option value="remove"> Remove</option>  
+      </select>    <br>
+      <button type="submit" class="btn"(click)="LoginClick()">Login</button> 
       <button type="button" class="btn cancel" (click)="CloseClick()">Close</button> 
     </form>
+
+</div>
+<div class="form-popup" id="suspend_employe_form">
+  <form action="" class="form-container">
+    <h1>Suspend An Employe</h1>
+    <a href="javascript:void(0)"class="closebtn"  (click)="CloseClick()">&times;</a>
+   
+
+      
+    <table id="myTable"style="width:100%">
+        <tr>
+          <td>Name</td>
+          <td>Employe Id</td>
+          <td>Type</td>
+          <td>Status</td>
+        </tr>
+      </table> 
+    
+    
+
+</form>
 </div>
