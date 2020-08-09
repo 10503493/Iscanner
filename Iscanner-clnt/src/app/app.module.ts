@@ -8,6 +8,8 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
+import { AirportauthorityComponent } from './airportauthority/airportauthority.component';
+import { HseComponent } from './hse/hse.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,6 +17,8 @@ import { AdminComponent } from './admin/admin.component';
     HomeComponent,
     RegisterComponent,
     AdminComponent,
+    AirportauthorityComponent,
+    HseComponent,
   ],
   imports: [
     FormsModule,

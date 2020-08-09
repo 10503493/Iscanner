@@ -49,10 +49,16 @@ export class HomeComponent implements OnInit {
         localStorage.setItem('user','passenger')
        window.location.href="/questionnaire";
        }
-          else if((Object.keys(x).length!=0 )&& (x[0][2]=='admin'))
-          window.location.href="/admin";
-         
-          
+          else if((Object.keys(x).length!=0 )&& (x[0][4]=='hse')&&(x[0][12]=='active'))
+          {
+          localStorage.setItem('user','hse')
+          window.location.href="/hse";
+          }
+          else if((Object.keys(x).length!=0 )&& (x[0][4]=='airport')&&(x[0][12]=='active'))
+          {
+          localStorage.setItem('user','airport')
+         window.location.href="/airport";
+          }
         else
          alert(" Username or password is wrong.Try again.. " );  
       });     

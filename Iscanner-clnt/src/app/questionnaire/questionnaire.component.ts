@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-
-
-
 @Component({
   selector: 'app-questionnaire',
   templateUrl: './questionnaire.component.html',
@@ -75,7 +72,7 @@ c:any;//for extract objects
   ngOnInit(): void 
   {
     if(localStorage.getItem('user')!='passenger')
-    window.location.href="/admin";
+    window.location.href="/home";
     // this.a=JSON.parse(localStorage.getItem('logindetails') )
     // console.log(this.a[0][2])
     this.details=JSON.parse(localStorage.getItem('logindetails'));
@@ -180,7 +177,11 @@ c:any;//for extract objects
     logValue() {
       console.log(this.children);
     }
-  
+  logout()
+  {
+    localStorage.setItem('user','null') 
+    window.location.href="/home";
+  }
 
 
 

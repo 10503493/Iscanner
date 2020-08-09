@@ -14,15 +14,23 @@ def index():
     print (un,ps)
     cur = mysql.connection.cursor()
     cu = mysql.connection.cursor()
+    ca = mysql.connection.cursor()
+    ch = mysql.connection.cursor()
 
     cur.execute("select * from Passenger where PassportNumber=%s and Pasword=%s",[un.strip(),ps.strip()])
     cu.execute("select * from Adm where Id=%s and Pasword=%s",[un.strip(),ps.strip()])
+    ca.execute("select * from AirportAuthority where EmployeNumber=%s and Pasword=%s",[un.strip(),ps.strip()])
+    ch.execute("select * from HseStaff where EmployeNumber=%s and Pasword=%s",[un.strip(),ps.strip()])
 
     data = cur.fetchall() 
     d=cu.fetchall()
+    da=ca.fetchall()
+    dh=ch.fetchall()
     print ('data','d',data,d)
     cur.close()
     cu.close()
+    ca.close()
+    ch.close()
     print('sql close')
     print (len(d))#
     if len(data) > 0:
@@ -31,6 +39,10 @@ def index():
     elif len(d)>0:
         return(jsonify(d))
         #return render_template('products.html',useridx = data[0][2])
+    elif len(da)>0:
+        return(jsonify(da))
+    elif len(dh)>0:
+        return(jsonify(dh))
     else:
         return (jsonify(data))
     #print (5)
@@ -148,7 +160,15 @@ def adminadd_hse():
     cur.close()
     return('ok')
 
-
+@app.route('/api/empgetdata',methods=['GET'])
+def empgetdata():
+    cur = mysql.connection.cursor()
+    cur.execute("select * from HseStaff ")
+    d = cur.fetchall()
+    print (d[0][2])
+    cur.close()
+    return  jsonify (d)
+@app.route('/api/otp',methods=['POST','GET'])
 
 
 

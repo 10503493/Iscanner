@@ -17,6 +17,9 @@ export class AdminComponent implements OnInit {
   type_a:any;
   zipcode_a: any;
   employestatus_a: any;
+  empdetails:object;
+  id: any;
+  i: any;
 
 
   constructor(private usersrv:UserService) { }
@@ -33,8 +36,16 @@ export class AdminComponent implements OnInit {
   }
   SuspendClick()
   {
-   
-    this.usersrv.EmpGetData().subscribe(x => {});
+    document.getElementById("suspend_employe_form").style.display = "block";
+    this.usersrv.EmpGetData().subscribe(x => { this.empdetails=x
+    console.log(this.empdetails[0][0],' - ',this.empdetails[0][2],' ',this.empdetails[0][3],  Object.keys(x).length,'jhg')
+  for (this.i=0;this.i<=Object.keys(x).length;this.i++) 
+  {
+   console.log(this.id[this.i][0])
+    return this.id[this.i][0]
+  }
+  });
+
   }
     CloseClick() 
     {
@@ -48,5 +59,9 @@ export class AdminComponent implements OnInit {
      else(this.type_a=='hse')
      this.usersrv.AddHse(this.fname_a,this.lname_a,this.email_a,this.type_a,this.phone_a,this.address_a,this.city_a,this.county_a,this.zipcode_a,this.country_a,this.employestatus_a).subscribe(x => {});
     }
-
+    logout()
+    {
+      localStorage.setItem('user','null') 
+      window.location.href="/home";
+    }
 }
