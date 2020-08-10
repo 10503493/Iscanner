@@ -18,7 +18,7 @@ export class AdminComponent implements OnInit {
   zipcode_a: any;
   employestatus_a: any;
   empdetails:object;
-  id: any;
+  j: any;
   i: any;
 
 
@@ -39,10 +39,15 @@ export class AdminComponent implements OnInit {
     document.getElementById("suspend_employe_form").style.display = "block";
     this.usersrv.EmpGetData().subscribe(x => { this.empdetails=x
     console.log(this.empdetails[0][0],' - ',this.empdetails[0][2],' ',this.empdetails[0][3],  Object.keys(x).length,'jhg')
-  for (this.i=0;this.i<=Object.keys(x).length;this.i++) 
+    console.log(this.empdetails)
+  for (this.i=0;this.i<Object.keys(x).length;this.i++) 
   {
-   console.log(this.id[this.i][0])
-    return this.id[this.i][0]
+    console.log(this.empdetails[this.i][0])
+    console.log(this.empdetails[this.i][2])
+    console.log(this.empdetails[this.i][3])
+    console.log(this.empdetails[this.i][4])
+
+    
   }
   });
 

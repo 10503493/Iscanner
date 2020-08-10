@@ -163,9 +163,9 @@ def adminadd_hse():
 @app.route('/api/empgetdata',methods=['GET'])
 def empgetdata():
     cur = mysql.connection.cursor()
-    cur.execute("select * from HseStaff ")
+    cur.execute("SELECT *  from  HseStaff union select * from AirportAuthority ")
     d = cur.fetchall()
-    print (d[0][2])
+    print (d)
     cur.close()
     return  jsonify (d)
 @app.route('/api/otp',methods=['POST','GET'])
