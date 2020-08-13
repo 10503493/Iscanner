@@ -77,6 +77,7 @@ c:any;//for extract objects
     // console.log(this.a[0][2])
     this.details=JSON.parse(localStorage.getItem('logindetails'));
    this. details_q= this.details[0][0]
+   console.log('pass',this. details_q)
 // for providing child data
    for(this.i=1;this.i<this.children_q;this.i++)
    {
@@ -143,7 +144,7 @@ c:any;//for extract objects
 
      
      console.log(this.reason_q)
-     this.usersrv.SubmitQuestion(this.details_q,this.carrier_q,this.seat_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.children_q,this.reason_q,this.mob_q,this.ph_q, this.address_q,this.children,this.symp1_q,this.symp2_q,this.symp3_q,this.symp4_q,this.symp5_q,this.symp6_q,this.symp7_q,this.symp8_q,this.symp9_q,this.symp10_q,this.symp11_q,this.symp12_q,this.symp13_q).subscribe(x => {});
+     this.usersrv.SubmitQuestion(this.details_q,this.carrier_q,this.seat_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.children_q,this.reason_q,this.mob_q,this.ph_q, this.address_q,this.pn_ch1_q,this.symp1_q,this.symp2_q,this.symp3_q,this.symp4_q,this.symp5_q,this.symp6_q,this.symp7_q,this.symp8_q,this.symp9_q,this.symp10_q,this.symp11_q,this.symp12_q,this.symp13_q).subscribe(x => {});
      console.log(this.pn_ch1_q ,this.children)
      this.c=Object.values(this.children)
      this.g=JSON.parse(this.c)

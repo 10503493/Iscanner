@@ -123,4 +123,24 @@ EmpGetData()
   return this.http.get('/api/empgetdata', { responseType: 'json' });
 
 }
+HseUpdate(psn_h)
+{
+  let body = new FormData();
+  body.append('psn_h', psn_h);
+  return this.http.post('/api/hse_getdata', body, { responseType: 'json' });
+
+}
+hsestatusupdate(psn_h,status_h)
+{
+  let body = new FormData();
+  body.append('psn_h', psn_h);
+  body.append('status_h', status_h);
+  return this.http.post('/api/update_hse', body, { responseType: 'text' });
+}
+airportdisplay()
+{
+  return this.http.post('/api/air_getdata', { responseType: 'json' });
+
+}
+
 }

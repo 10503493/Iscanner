@@ -1,6 +1,8 @@
 from flask import Flask,render_template,request
 from flask_mysqldb import MySQL
 from flask import jsonify
+import requests
+
 app = Flask(__name__)
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'root'
@@ -169,6 +171,64 @@ def empgetdata():
     cur.close()
     return  jsonify (d)
 @app.route('/api/otp',methods=['POST','GET'])
+def otp():
+    a.Serial.print("fff")
+@app.route('/updates',methods=['GET'])
+def updatesapi():
+    r = requests.get('https://api.covid19api.com/summary')
+    print(r.json())
+    return (r.json())
+@app.route('/api/hse_getdata',methods=['GET','POST'])
+def getdata():
+    pn = request.form.get('psn_h')
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT *  from  Passenger where PassportNumber= %s union  select* from Child  where PassportNumber=%s ",(pn,pn))
+    d = cur.fetchall()
+    print (d)
+    cur.close()
+    return  jsonify (d)
+@app.route('/api/update_hse',methods=['POST'])
+def statusupdate():
+
+    pn = request.form.get('psn_h')
+    st = request.form.get('status_h')
+    cur = mysql.connection.cursor()
+    cu = mysql.connection.cursor()
+    print(st)
+    if(st=='positive'):
+
+        cur.execute("update  Passenger set CovidStatus='1' where PassportNumber =%s"  ,(pn))
+        cu.execute("update  Child set CovidStatus='1' where PassportNumber =%s",  (pn))
+        mysql.connection.commit()
+        print('post')
+    elif (st=='negative'):
+        cur.execute("update  Passenger set CovidStatus='0' where PassportNumber =%s"  ,(pn))
+        cu.execute("update  Child set CovidStatus='0' where PassportNumber =%s",  (pn))
+        mysql.connection.commit()
+        print('negg')
+    cur.close()
+    cu.close()
+    return('ok')
+@app.route('/api/air_getdata',methods=['GET','POST'])
+def getcoviddata():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT *  from  Passenger where CovidStatus= '1' union  select* from Child  where CovidStatus= '1'")
+    d = cur.fetchall()
+    if(d[0][9]==1):
+        pn=d[0][0]
+        c=mysql.connection.cursor()
+        c.execute("select * from TravelDetails where PassportNumber=%s",pn)
+        da = c.fetchall()
+        print(da,'flightno')
+        c.close()
+
+    print (d)
+    cur.close()
+    return  jsonify (d)
+
+
+
+
 
 
 

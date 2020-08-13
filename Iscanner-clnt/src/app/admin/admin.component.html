@@ -62,15 +62,20 @@
 
       
     <table id="myTable"style="width:100%">
-        <tr>
-          <td>Name</td>
-          <td>Employe Id</td>
-          <td>Type</td>
-          <td>Status</td>
-         
+        <tr >
+        
+          <td > {{fn}} {{sn}}</td>
+          <td>  {{id}}</td>
         </tr>
+       
+
       </table> 
-    
+      <select>
+      <input placeholder= "{{id}} "[(ngModel)]="empstatus_a"[ngModelOptions]="{standalone:true}"  required>
+        <option value="active">{{id}}</option>
+        <option value="suspend"> {{fn}}</option>  
+        <option value="remove"> Remove</option>  
+      </select> <br>
     
 
 </form>

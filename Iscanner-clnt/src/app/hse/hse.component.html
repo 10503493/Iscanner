@@ -1,3 +1,13 @@
 <p>hse works!</p>
 <button (click)="logout()">Logout</button>
+<label for="Passport number"><b>Please Enter Passport Number</b></label>
+      <input type="text" placeholder="Passport number"[(ngModel)]="psn_h" [ngModelOptions]="{standalone:true}"  required>
+      
+ <p>Update covid status</p>
+  
 
+            <select [(ngModel)]="status_h"[ngModelOptions]="{standalone:true}"  required>
+            <option value="positive">Positive</option>
+            <option value="negative">Negative </option>
+        </select> 
+        <button (click)="status()">Update</button>
