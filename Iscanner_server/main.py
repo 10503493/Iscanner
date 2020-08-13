@@ -69,7 +69,8 @@ def question():
     mb = request.form.get('mob_q')
     ph = request.form.get('ph_q')
     ad = request.form.get('address_q')
-    c1p= request.form.get('pn_ch1_q')
+    c1p= request.form.get('children')
+    print(c1p)
 
 
     s1=request.form.get('symp1_q')
