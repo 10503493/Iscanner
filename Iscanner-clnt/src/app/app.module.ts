@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { AirportauthorityComponent } from './airportauthority/airportauthority.component';
 import { HseComponent } from './hse/hse.component';
+import { OtpComponent } from './otp/otp.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { HseComponent } from './hse/hse.component';
     AdminComponent,
     AirportauthorityComponent,
     HseComponent,
+    OtpComponent,
   ],
   imports: [
     FormsModule,

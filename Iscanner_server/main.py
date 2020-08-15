@@ -2,6 +2,7 @@ from flask import Flask,render_template,request
 from flask_mysqldb import MySQL
 from flask import jsonify
 import requests
+import random
 
 app = Flask(__name__)
 app.config['MYSQL_USER'] = 'root'
@@ -183,7 +184,8 @@ def empgetdata():
     return  jsonify (d)
 @app.route('/api/otp',methods=['POST','GET'])
 def otp():
-    a.Serial.print("fff")
+    otp=random.randint(10000,100000)
+    return jsonify(otp)
 @app.route('/updates',methods=['GET'])
 def updatesapi():
     r = requests.get('https://api.covid19api.com/summary')
@@ -202,19 +204,18 @@ def getdata():
 def statusupdate():
 
     pn = request.form.get('psn_h')
-    st = request.form.get('status_h')
+    st = request.form.get('status_h')   
     cur = mysql.connection.cursor()
     cu = mysql.connection.cursor()
-    print(st)
+    print(st,pn)
     if(st=='positive'):
-
-        cur.execute("update  Passenger set CovidStatus='1' where PassportNumber =%s"  ,(pn))
-        cu.execute("update  Child set CovidStatus='1' where PassportNumber =%s",  (pn))
+        cur.execute("update  Passenger set CovidStatus=1 where PassportNumber =%s"  ,[pn])
+        cu.execute("update  Child set CovidStatus=1 where PassportNumber =%s",  [pn])
         mysql.connection.commit()
         print('post')
     elif (st=='negative'):
-        cur.execute("update  Passenger set CovidStatus='0' where PassportNumber =%s"  ,(pn))
-        cu.execute("update  Child set CovidStatus='0' where PassportNumber =%s",  (pn))
+        cur.execute("update  Passenger set CovidStatus='0' where PassportNumber =%s"  ,[pn])
+        cu.execute("update  Child set CovidStatus='0' where PassportNumber =%s",  [pn])
         mysql.connection.commit()
         print('negg')
     cur.close()
@@ -228,7 +229,7 @@ def getcoviddata():
     if(d[0][9]==1):
         pn=d[0][0]
         c=mysql.connection.cursor()
-        c.execute("select * from TravelDetails where PassportNumber=%s",pn)
+        c.execute("select * from TravelDetails where PassportNumber=%s",[pn])
         da = c.fetchall()
         print(da,'flightno')
         c.close()

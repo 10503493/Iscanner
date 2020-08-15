@@ -13,6 +13,8 @@ export class AirportauthorityComponent implements OnInit {
   cpfname: any;
   cplname: any;
   email: any;
+  i: any;
+  na: any;
 
   constructor(private usersrv:UserService) { }
 
@@ -29,12 +31,17 @@ export class AirportauthorityComponent implements OnInit {
   aprove()
   {
     this.usersrv.airportdisplay().subscribe(x => { this.details=x 
-    this.fname=this.details[0][1]
-    this.lname=this.details[0][2] 
-    this.cpfname=this.details[0][2]
-    this.cplname=this.details[0][2]
-    this.email=this.details[0][2]
-    console.log('aproved')
+   for (this.i=0;this.i<Object.keys(x).length;this.i++)
+   {
+      this.fname=this.details[this.i][1]
+    this.lname=this.details[this.i][2] 
+    this.cpfname=this.details[this.i][2]
+    this.cplname=this.details[this.i][2]
+    this.email=this.details[this.i][2]
+    console.log('aproved',Object.keys(x).length,this.fname)
+  document.getElementById("n").innerHTML =this.fname;
+    
+   }
   });
   }
 }

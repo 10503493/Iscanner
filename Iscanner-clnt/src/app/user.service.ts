@@ -157,7 +157,10 @@ hsestatusupdate(psn_h,status_h)
 airportdisplay()
 {
   return this.http.post('/api/air_getdata', { responseType: 'json' });
-
 }
-
+otpdisplay()
+{
+  return this.http.post('/api/otp', { responseType: 'json' });
+ 
+}
 }
