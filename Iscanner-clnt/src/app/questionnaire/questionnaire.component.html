@@ -240,13 +240,16 @@
 </form>
 </div>
 
-<button (click)="submit()">submit</button>
+<button (click)="submit()">Submit your response and get ready for temperature reading</button>
 <!-- <form>
 <label for="User name"><b>User Name</b></label>
 <input type="text" placeholder="User Name" [(ngModel)]="uname_r"[ngModelOptions]="{standalone:true}" required>
 <label for="Password"><b>Password</b></label>
 <input type="password" placeholder="Password" [(ngModel)]="psw_r" [ngModelOptions]="{standalone:true}" required>
 </form> -->
+<label for="otp"><b>Enter the 5 digit number displayed in the temperature screening session </b></label>
+<input type="text" placeholder="Enter the 5 digit code here" [(ngModel)]="otp_q"[ngModelOptions]="{standalone:true}" required>
+<button (click)="OtpDone()">done</button>
 
 </div>
 <p><b>Note:</b> Be responsible give correct details@@@@@@@###.....</p>

@@ -160,7 +160,17 @@ airportdisplay()
 }
 otpdisplay()
 {
+  
   return this.http.post('/api/otp', { responseType: 'json' });
+ 
+}
+otpcheck(otp_q,parentpassprot_q)
+{
+  let body = new FormData();
+  body.append('otp_q', otp_q);
+  body.append('details_q', parentpassprot_q);
+  console.log('ans',otp_q)
+  return this.http.post('/api/otpcheck', body,{ responseType: 'text' });
  
 }
 }

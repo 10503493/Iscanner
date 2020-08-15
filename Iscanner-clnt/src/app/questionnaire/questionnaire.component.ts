@@ -65,6 +65,7 @@ export class QuestionnaireComponent implements OnInit {
   i:any;//for loop to disply n numner of child
 c:any;//for extract objects
   g: any;
+  otp_q: any;
 
 
 
@@ -162,9 +163,17 @@ c:any;//for extract objects
     //  this.c=Object.values(this.children)
     //  console.log(this.c)
      //this.g=JSON.parse(this.c)
-     
     }
+OtpDone()
+{
+  this.usersrv.otpcheck(this.otp_q,this.parentpassprot_q).subscribe(x => { console.log(x)
+    if(x=='ok') 
+    console.log('sucess')
+    else if(x=='not')
+    console.log('noty')
 
+  });
+}
 
     addChild() 
     {

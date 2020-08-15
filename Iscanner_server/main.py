@@ -182,10 +182,34 @@ def empgetdata():
     print (d)
     cur.close()
     return  jsonify (d)
+ 
 @app.route('/api/otp',methods=['POST','GET'])
 def otp():
-    otp=random.randint(10000,100000)
-    return jsonify(otp)
+  
+    otpy= (random.randint(10000,100000))
+    pn=request.form.get('parentpassprot_q')#not used
+    print('otp',otpy)
+    cur = mysql.connection.cursor()
+    cur.execute("insert into OtpTable (Otp)values(%s)",[otpy])
+    mysql.connection.commit()
+    cur.close()
+
+    return jsonify(otpy)
+@app.route('/api/otpcheck',methods=['POST','GET'])
+def otpcheck():
+    otpa=request.form.get('otp_q')
+    pn=request.form.get('parentpassprot_q')#not used
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM OtpTable ORDER BY OtpTable.Id DESC LIMIT 1")
+    d= cur.fetchall()
+    cur.close()    
+    print(otpa,'y',d)
+    if (otpa==d[0][1]):
+        #print(otpa,d[0][1],'ok')
+        return('ok')
+    elif(otpa!=d[0][1]):
+        #print(otpa,d[0][1],'not')
+        return('not')
 @app.route('/updates',methods=['GET'])
 def updatesapi():
     r = requests.get('https://api.covid19api.com/summary')
