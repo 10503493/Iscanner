@@ -105,7 +105,18 @@ def question():
     c.close()
     sy.close()
     return('ok')
-
+@app.route('/api/child', methods=['GET', 'POST'])
+def child():
+    cpn=request.form.get('ch_pn_q')    
+    pn=request.form.get('details_q')
+    dob=request.form.get('dob_ch_q')
+   
+    print(cpn,pn,dob)
+    cu = mysql.connection.cursor()
+    cu.execute("insert into  Child (PassportNumber,ParentPassportNumber,FirstName,LastName,DateOfBirth)values(%s,%s,%s,%s,%s)",(cpn,pn,cpn,cpn,dob))
+    mysql.connection.commit()
+    cu.close()
+    return('ok')
 
 @app.route('/api/test', methods=['GET', 'POST'])
 def te():

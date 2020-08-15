@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class UserService 
 {
+  i: number;
   Register(uname_r: any, psw_r: any, fname_r: any, lname_r: any, email_r: any, address_r: any, phone_r: any) 
   {
     throw new Error("Method not implemented.");
@@ -83,6 +84,19 @@ SubmitQuestion(details_q,carrier_q, seat_q,dt_arr_q, tm_arr_q,departure_q,arriva
 
 
   return this.http.post('/api/question', body, { responseType: 'text' });
+}
+child(ch_pn_q ,details_q,dob_ch_q,)
+{
+  let body = new FormData();
+  for(this.i=0;this.i<3;this.i++)
+  {
+  body.append('ch_pn_q', ch_pn_q);
+  body.append('details_q', details_q);
+  body.append('dob_ch_q', dob_ch_q);
+  
+  console.log('userserv',ch_pn_q)
+  return this.http.post('/api/child', body, { responseType: 'text' });
+  }
 }
 AddAirport(fname_a,lname_a,email_a,type_a,phone_a,address_a,city_a,county_a,zipcode_a,country_a,employestatus_a)
 {

@@ -78,6 +78,22 @@ ZipCode VARCHAR(30),
 CovidStatus TINYINT(1) DEFAULT 0,
 TemperatureReading DECIMAL(3,2),
 FOREIGN KEY (ParentPassportNumber) REFERENCES Passenger (PassportNumber));
+CREATE TABLE symptomsSymptoms(
+PassportNumber VARCHAR(30) NOT NULL PRIMARY KEY ,
+Symp1 VARCHAR(30),
+Symp2 VARCHAR(30),
+Symp3 VARCHAR(30),
+Symp4 VARCHAR(30),
+Symp5 VARCHAR(30),
+Symp6 VARCHAR(30),
+Symp7 VARCHAR(30),
+Symp8 VARCHAR(30),
+Symp9 VARCHAR(30),
+Symp10 VARCHAR(30),
+Symp11 VARCHAR(30),
+Symp12 VARCHAR(30),
+Symp13 VARCHAR(30),
+FOREIGN KEY (PassportNumber) REFERENCES Passenger (PassportNumber));
 
 CREATE TABLE AirportAuthority(
 EmployeNumber VARCHAR(30) DEFAULT '0' PRIMARY KEY,
@@ -114,7 +130,19 @@ Pasword  VARCHAR(30) DEFAULT '123',
 usertype VARCHAR(10) DEFAULT "admin");
 insert into Passenger(PassportNumber,FirstName,LastName,DateofBirth,Pasword)values('aa','a','a',10/12/20,'a')
 select * from Adm
-select * from Adm,Passenger where( Adm.Id='a'and Adm.Pasword='1') and (Passenger.PassportNumber='a' and Passenger.Pasword='1');
+select*from Passenger
+select*from TravelDetails
+select*from child
+select*from Symptoms
+select*from AirportAuthority
+select*from HseStaff
+SELECT *  from  Passenger where PassportNumber= 'a' union  select* from Child  where PassportNumber= 'a'
+SELECT *  from  HseStaff union select * from AirportAuthority 
+select * from TravelDetails where PassportNumber='a'
+select * from Adm,Passenger where( Adm.Id='a'and Adm.Pasword='1') and (Passenger.PassportNumber='a' and Passenger.Pasword='a');
+update  Passenger set Email='hh.@jj',Mobile='555' where PassportNumber ='ghjk';
+
+
 CREATE TABLE AirportSeq
 (
   Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
@@ -124,6 +152,7 @@ CREATE TABLE HseSeq
 (
   Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
 );
+
 
 
 DELIMITER $$
@@ -139,7 +168,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER HseEmpNo_Insert 
 BEFORE INSERT ON HseStaff
-FOR EACH ROW
+FOR EACH ROW 
 BEGIN
   INSERT INTO HseSeq VALUES (NULL);
   SET NEW.EmployeNumber= CONCAT('HSE', LPAD(LAST_INSERT_ID(), 3, '0'));
