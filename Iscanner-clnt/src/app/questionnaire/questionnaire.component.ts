@@ -61,7 +61,7 @@ export class QuestionnaireComponent implements OnInit {
   symp12_q:any;
   symp13_q:any;
   details: any;
-  details_q:any;//for geting the pasport number
+  parentpassprot_q:any;//for geting the pasport number
   i:any;//for loop to disply n numner of child
 c:any;//for extract objects
   g: any;
@@ -77,8 +77,8 @@ c:any;//for extract objects
     // this.a=JSON.parse(localStorage.getItem('logindetails') )
     // console.log(this.a[0][2])
     this.details=JSON.parse(localStorage.getItem('logindetails'));
-   this. details_q= this.details[0][0]
-   console.log('pass',this. details_q)
+   this. parentpassprot_q= this.details[0][0]
+   console.log('pass',this. parentpassprot_q)
 // for providing child data
    for(this.i=1;this.i<this.children_q;this.i++)
    {
@@ -148,16 +148,16 @@ c:any;//for extract objects
      
      for(this.i=0;this.i<this.children_q;this.i++)
      {
-      console.log('ch1 pn',this.children[this.i].pn_ch1_q)
-      console.log('ch1 pn',this.children[this.i].fname_ch1_q)
-      console.log('ch1 pn',this.children[this.i].lname_ch1_q)
-      console.log('ch1 pn',this.children[this.i].dob_ch1_q)
-      console.log('ch1 pn',this.children[this.i].address_ch1_q)
-      this.usersrv.child(this.children[this.i].pn_ch1_q,this. details_q,this.children[this.i].dob_ch1_q).subscribe(x=>{});
-     // console.log(this.pn_ch1_q ,'and',this.children) 
+      // console.log('ch1 pn',this.children[this.i].pn_ch1_q)
+      // console.log('ch1 pn',this.children[this.i].fname_ch1_q)
+      // console.log('ch1 pn',this.children[this.i].lname_ch1_q)
+      // console.log('ch1 pn',this.children[this.i].dob_ch1_q)
+      // console.log('ch1 pn',this.children[this.i].address_ch1_q)
+      this.usersrv.child(this.children_q,this.children[this.i].pn_ch1_q,this. parentpassprot_q,this.children[this.i].fname_ch1_q,this.children[this.i].lname_ch1_q,this.children[this.i].address_ch1_q,this.children[this.i].dob_ch1_q).subscribe(x=>{});
+      console.log(this.children_q,this.children[this.i].pn_ch1_q,this. parentpassprot_q,this.children[this.i].fname_ch1_q,this.children[this.i].lname_ch1_q,this.children[this.i].address_ch1_q,this.children[this.i].dob_ch1_q) 
 
      }
-    // this.usersrv.SubmitQuestion(this.details_q,this.carrier_q,this.seat_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.children_q,this.reason_q,this.mob_q,this.ph_q, this.address_q,this.pn_ch1_q,this.symp1_q,this.symp2_q,this.symp3_q,this.symp4_q,this.symp5_q,this.symp6_q,this.symp7_q,this.symp8_q,this.symp9_q,this.symp10_q,this.symp11_q,this.symp12_q,this.symp13_q).subscribe(x => {});
+    this.usersrv.SubmitQuestion(this.parentpassprot_q,this.carrier_q,this.seat_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.children_q,this.reason_q,this.mob_q,this.ph_q, this.address_q,this.symp1_q,this.symp2_q,this.symp3_q,this.symp4_q,this.symp5_q,this.symp6_q,this.symp7_q,this.symp8_q,this.symp9_q,this.symp10_q,this.symp11_q,this.symp12_q,this.symp13_q).subscribe(x => {});
     // console.log(this.pn_ch1_q ,'and',this.children)
     //  this.c=Object.values(this.children)
     //  console.log(this.c)
