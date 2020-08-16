@@ -20,6 +20,8 @@ export class AirportauthorityComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    this.usersrv.airportdisplay().subscribe(x => { console.log(x) });
+
    
   }
 
@@ -33,13 +35,13 @@ export class AirportauthorityComponent implements OnInit {
     this.usersrv.airportdisplay().subscribe(x => { this.details=x 
    for (this.i=0;this.i<Object.keys(x).length;this.i++)
    {
-      this.fname=this.details[this.i][1]
-    this.lname=this.details[this.i][2] 
-    this.cpfname=this.details[this.i][2]
-    this.cplname=this.details[this.i][2]
-    this.email=this.details[this.i][2]
-    console.log('aproved',Object.keys(x).length,this.fname)
-  document.getElementById("n").innerHTML =this.fname;
+    //this.fname=this.details[this.i][1]
+    //this.lname=this.details[this.i][2] 
+    //this.cpfname=this.details[this.i][2]
+    //this.cplname=this.details[this.i][2]
+    this.email=this.details[this.i]
+    console.log('aproved',Object.keys(x).length,this.email)
+  document.getElementById("n").innerHTML =this.email;
     
    }
   });

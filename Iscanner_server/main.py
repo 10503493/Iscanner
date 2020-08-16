@@ -247,20 +247,45 @@ def statusupdate():
     return('ok')
 @app.route('/api/air_getdata',methods=['GET','POST'])
 def getcoviddata():
+    arr=[]
     cur = mysql.connection.cursor()
     cur.execute("SELECT *  from  Passenger where CovidStatus= '1' union  select* from Child  where CovidStatus= '1'")
     d = cur.fetchall()
-    if(d[0][9]==1):
-        pn=d[0][0]
-        c=mysql.connection.cursor()
-        c.execute("select * from TravelDetails where PassportNumber=%s",[pn])
-        da = c.fetchall()
-        print(da,'flightno')
-        c.close()
-
-    print (d)
     cur.close()
-    return  jsonify (d)
+    print(d, len(d))
+    for i in range(len(d)):
+        pn=d[i][0]
+        print(pn,i)#pasport number of positive passenger
+        c=mysql.connection.cursor()
+        c.execute("select * from TravelDetails where PassportNumber=%s",(pn,))
+        td = c.fetchall()#travel history of positive person 
+        print(td,'travel data')
+        fn=td[0][2]#flight no
+        sn=td[0][3]#seat no
+        print(fn,'flightname')
+        c.close()
+        near=mysql.connection.cursor()
+        near.execute("select * from TravelDetails where FlightNumber=%s",(fn,))
+        fd=near.fetchall()#list of travellers wo travelled in infrcted flight
+        for j in range(len(fd)):
+            #print('j',j,'fddd',len(fd))
+            print(fd, 'person no:',i+1)
+            ppn=fd[j][1]# passport numbers of passengers where positve person travelled 
+            p=mysql.connection.cursor()
+            p.execute("select * from Passenger where PassportNumber=%s ",(ppn,))#
+            cp=p.fetchall()#data of co passengers
+            print(cp[0][6])# Email id of co passengers
+            arr.append(cp[0][6])
+        near.close()
+        p.close()
+
+       
+
+        #return jsonify(fn) 
+
+    #print (d)
+    
+    return  jsonify (arr)
 
 
 
