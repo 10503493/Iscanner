@@ -49,7 +49,7 @@ SubmitQuestion(details_q,carrier_q, seat_q,dt_arr_q, tm_arr_q,departure_q,arriva
 {
   console.log('hkjh')
   let body = new FormData();
-  body.append('details_q', details_q);
+  body.append('details_q', details_q);//passport number /parent passportno/sn_ch1_q
   body.append('carrier_q', carrier_q);
   body.append('dt_arr_q', dt_arr_q);
   body.append('tm_arr_q', tm_arr_q);
@@ -84,7 +84,7 @@ SubmitQuestion(details_q,carrier_q, seat_q,dt_arr_q, tm_arr_q,departure_q,arriva
 
   return this.http.post('/api/question', body, { responseType: 'text' });
 }
-child(children_q,ch_pn_q ,parentpassprot_q,fname_ch_q,lname_ch_q,address_ch_q,dob_ch_q)
+child(children_q,ch_pn_q ,parentpassprot_q,fname_ch_q,lname_ch_q,address_ch_q,dob_ch_q,carrier_q,sn_ch_q)
 {
   let body = new FormData();
   for(this.i=0;this.i<children_q;this.i++)
@@ -96,6 +96,8 @@ child(children_q,ch_pn_q ,parentpassprot_q,fname_ch_q,lname_ch_q,address_ch_q,do
   body.append('lname_ch_q', lname_ch_q);
   body.append('address_ch_q', address_ch_q);
   body.append('dob_ch_q', dob_ch_q);
+  body.append('carrier_q', carrier_q);//cxhild carrier
+  body.append('sn_ch_q',sn_ch_q );//seat no
   
   console.log(fname_ch_q,'ussss')
   return this.http.post('/api/child', body, { responseType: 'text' });
@@ -171,6 +173,10 @@ otpcheck(otp_q,parentpassprot_q)
   body.append('details_q', parentpassprot_q);
   console.log('ans',otp_q)
   return this.http.post('/api/otpcheck', body,{ responseType: 'text' });
- 
+}
+covidupdate()
+{
+  return this.http.get('/api/updates', { responseType: 'json' });
+
 }
 }

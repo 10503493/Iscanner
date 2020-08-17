@@ -3,6 +3,8 @@ from flask_mysqldb import MySQL
 from flask import jsonify
 import requests
 import random
+import smtplib
+from email.message import EmailMessage
 
 app = Flask(__name__)
 app.config['MYSQL_USER'] = 'root'
@@ -110,10 +112,11 @@ def child():
     cln=request.form.get('lname_ch_q')
     cad=request.form.get('address_ch_q')
     dob=request.form.get('dob_ch_q')
-   
-    print(cpn,pn,cfn,cln,dob,cad)
+    csn=request.form.get('sn_ch_q')
+    ccn=request.form.get('carrier_q')
+    print('child details',cpn,pn,cfn,cln,dob,cad,csn,ccn)
     cu = mysql.connection.cursor()
-    cu.execute("insert into  Child (PassportNumber,ParentPassportNumber,FirstName,LastName,DateOfBirth,Address)values(%s,%s,%s,%s,%s,%s)",(cpn,pn,cfn,cln,dob,cad))
+    cu.execute("insert into  Child (PassportNumber,ParentPassportNumber,FirstName,LastName,DateOfBirth,Address,SeatNumber,CarrierName)values(%s,%s,%s,%s,%s,%s,%s,%s)",(cpn,pn,cfn,cln,dob,cad,csn,ccn))
     mysql.connection.commit()
     cu.close()
     return('ok')
@@ -210,10 +213,9 @@ def otpcheck():
     elif(otpa!=d[0][1]):
         #print(otpa,d[0][1],'not')
         return('not')
-@app.route('/updates',methods=['GET'])
+@app.route('/api/updates',methods=['GET'])
 def updatesapi():
     r = requests.get('https://api.covid19api.com/summary')
-    print(r.json())
     return (r.json())
 @app.route('/api/hse_getdata',methods=['GET','POST'])
 def getdata():
@@ -247,7 +249,8 @@ def statusupdate():
     return('ok')
 @app.route('/api/air_getdata',methods=['GET','POST'])
 def getcoviddata():
-    arr=[]
+    arr=[]# email ids
+    fdd=[]#infected flight details with date flight no and seat no
     cur = mysql.connection.cursor()
     cur.execute("SELECT *  from  Passenger where CovidStatus= '1' union  select* from Child  where CovidStatus= '1'")
     d = cur.fetchall()
@@ -257,15 +260,20 @@ def getcoviddata():
         pn=d[i][0]
         print(pn,i)#pasport number of positive passenger
         c=mysql.connection.cursor()
-        c.execute("select * from TravelDetails where PassportNumber=%s",(pn,))
+        c.execute("select * from TravelDetails where PassportNumber=%s union select * from Child where PassportNumber=%s",(pn,pn,))
         td = c.fetchall()#travel history of positive person 
-        print(td,'travel data')
+        print(td,'travel data',len(td))
         fn=td[0][2]#flight no
         sn=td[0][3]#seat no
+        da=td[0][4]# date of arrival
+        fdd.append(fn)#flight details to be returned
+        fdd.append(da)#flight details to be returned
+        fdd.append(sn)#flight details to be returned
         print(fn,'flightname')
+
         c.close()
         near=mysql.connection.cursor()
-        near.execute("select * from TravelDetails where FlightNumber=%s",(fn,))
+        near.execute("select * from TravelDetails where FlightNumber=%s and DateOfArrival=%s" ,(fn,da,))
         fd=near.fetchall()#list of travellers wo travelled in infrcted flight
         for j in range(len(fd)):
             #print('j',j,'fddd',len(fd))
@@ -285,9 +293,7 @@ def getcoviddata():
 
     #print (d)
     
-    return  jsonify (arr)
-
-
+    return  jsonify (arr,fdd)
 
 
 

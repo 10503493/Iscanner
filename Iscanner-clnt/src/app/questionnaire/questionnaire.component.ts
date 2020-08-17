@@ -31,12 +31,14 @@ export class QuestionnaireComponent implements OnInit {
   public children: any[] = [{
   id: 1,
   pn_ch1_q:'',
+  sn_ch1_q:'',
   fname_ch1_q:'',
   lname_ch1_q:'',
   dob_ch1_q:'',
   address_ch1_q:'',
   }];
   pn_ch1_q:any;
+  sn_ch1_q:any;
   fname_ch1_q:any;
   lname_ch1_q:any;
   dob_ch1_q:any;
@@ -86,6 +88,7 @@ c:any;//for extract objects
     this.children.push({
     id: this.children.length + this.i,
     pn_ch1_q: '',
+    sn_ch1_q:'',
     fname_ch1_q: '',
     lname_ch1_q: '',
     dob_ch1_q: '',
@@ -146,7 +149,8 @@ c:any;//for extract objects
 
      
      console.log(this.reason_q)
-     
+    
+
      for(this.i=0;this.i<this.children_q;this.i++)
      {
       // console.log('ch1 pn',this.children[this.i].pn_ch1_q)
@@ -154,10 +158,15 @@ c:any;//for extract objects
       // console.log('ch1 pn',this.children[this.i].lname_ch1_q)
       // console.log('ch1 pn',this.children[this.i].dob_ch1_q)
       // console.log('ch1 pn',this.children[this.i].address_ch1_q)
-      this.usersrv.child(this.children_q,this.children[this.i].pn_ch1_q,this. parentpassprot_q,this.children[this.i].fname_ch1_q,this.children[this.i].lname_ch1_q,this.children[this.i].address_ch1_q,this.children[this.i].dob_ch1_q).subscribe(x=>{});
-      console.log(this.children_q,this.children[this.i].pn_ch1_q,this. parentpassprot_q,this.children[this.i].fname_ch1_q,this.children[this.i].lname_ch1_q,this.children[this.i].address_ch1_q,this.children[this.i].dob_ch1_q) 
+     this.usersrv.child(this.children_q,this.children[this.i].pn_ch1_q,this. parentpassprot_q,this.children[this.i].fname_ch1_q,this.children[this.i].lname_ch1_q,this.children[this.i].address_ch1_q,this.children[this.i].dob_ch1_q,this.carrier_q,this.children[this.i].sn_ch1_q).subscribe(x=>{});
+      console.log('childdd',this.children_q,this.children[this.i].pn_ch1_q,this. parentpassprot_q,this.children[this.i].fname_ch1_q,this.children[this.i].lname_ch1_q,this.children[this.i].address_ch1_q,this.children[this.i].dob_ch1_q,this.carrier_q,this.children[this.i].sn_ch1_q) 
+     
+//chid update     
+//       this.usersrv.SubmitQuestion(this.sn_ch1_q,this.carrier_q,this.seat_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.children_q,this.reason_q,this.mob_q,this.ph_q, this.address_ch1_q,this.symp1_q,this.symp2_q,this.symp3_q,this.symp4_q,this.symp5_q,this.symp6_q,this.symp7_q,this.symp8_q,this.symp9_q,this.symp10_q,this.symp11_q,this.symp12_q,this.symp13_q).subscribe(x => {});
+// console.log('@@@@@@@@@@@@@@@@',this.children[this.i].pn_ch1_q,this.carrier_q,this.children[this.i].sn_ch1_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.children_q,this.reason_q,this.mob_q,this.ph_q, this.address_ch1_q,this.symp1_q,this.symp2_q,this.symp3_q,this.symp4_q,this.symp5_q,this.symp6_q,this.symp7_q,this.symp8_q,this.symp9_q,this.symp10_q,this.symp11_q,this.symp12_q,this.symp13_q)
 
      }
+    
     this.usersrv.SubmitQuestion(this.parentpassprot_q,this.carrier_q,this.seat_q, this.dt_arr_q, this.tm_arr_q,this.departure_q,this.arrival_q,this.children_q,this.reason_q,this.mob_q,this.ph_q, this.address_q,this.symp1_q,this.symp2_q,this.symp3_q,this.symp4_q,this.symp5_q,this.symp6_q,this.symp7_q,this.symp8_q,this.symp9_q,this.symp10_q,this.symp11_q,this.symp12_q,this.symp13_q).subscribe(x => {});
     // console.log(this.pn_ch1_q ,'and',this.children)
     //  this.c=Object.values(this.children)
