@@ -1,18 +1,22 @@
-<p>airportauthority works!</p>
-<button (click)="logout()">Logout</button>
-<button (click)="aprove()">Aprove</button>
+<div class="topright"><button (click)="logout()">Logout</button></div>
 <p id= "n">
  </p>
+
+ <div style="text-align:center">
+  <h3><b>Details of passengers who has travelled with infected person</b></h3>
  <table>
     <tr>
-      <th>Email id of passengers who has travelled with infected person </th>
+      <th>Email id  </th>
       <th>Number</th>
 
     <tr *ngFor="let pas of inf_passengers[0]">
       <td>{{pas}}</td>
       <td>{{1 }}</td>
     </tr>
-
-    
-   
   </table>
+  <img src="assets/img/covid.jpg" alt="Hse img"  style="width:30%"> 
+  <hr>
+  <div class="btn">
+  <button (click)="aprove()">Aprove</button>
+</div>
+</div>

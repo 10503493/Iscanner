@@ -1,8 +1,10 @@
-<h1>Covid-19 Passenger locator form</h1> 
-<button (click)="logout()">Logout</button>
+<h1>Covid-19 Passenger locator form -(HSE)</h1>
+<div class="topright">
+  <button (click)="logout()">Logout</button>
+</div>
 <p><b>Passengers arriving to Ireland from overseas are required to complete this form,
-  including Irish citizens</b></p>
-  <!-- <p>If you are under any of these category please check the box</p>
+    including Irish citizens</b></p>
+<!-- <p>If you are under any of these category please check the box</p>
   <p>>	 Passengers arriving from Northern Ireland.<br>
     >	 Passengers leaving the State from their port or airport of arrival without otherwise
     exiting the port or airport.<br>
@@ -15,149 +17,149 @@
     >	 Foreign diplomats<br></p>
     <input type="checkbox" (click)="travel_details()"[(ngModel)]="exception_q"[ngModelOptions]="{standalone:true}" required>
     <label for="exception">Yes i'm in one or more of the above list</label><br> -->
-    <h4>Instructions</h4>
-    <p>•	 One form should be completed for each passenger aged 16 or older. Details of children
-      under the age of 16 should be included on a form completed by an adult accompanying
-      them.<br>
-      •	 If you will be remaining in the State overnight, please complete sections 1 and 2,
-      provide contact details in section 3.<br>
-      •	 If you are leaving the State today by aircraft or ferry or travelling to Northern Ireland please complete sections 1 and 2, tick the box in section 3 and sign and date section 4.<br>
-      •	 If any of the information you provide on this form changes in the next 14 days, you are
-      required to send an email with your complete and updated information to the following
-      email address: passengerlocatorform@plf.ie <br>
-      •	 You may be contacted during the 14 days following your arrival in the State to verify the
-      information you have given in the form.<br>
-      </p>
-      <h4>Offences and penalties</h4>
-      <p>The following offences are punishable by a fine not exceeding €2,500 or imprisonment for a
-        term not exceeding 6 months, or both.<br>
-        •	 It is an offence not to complete this form in the manner specified.<br>
-        •	 It is an offence to provide false or misleading information in this form.<br>
-        •	 It is an offence not to provide an update if any of the information in section 3 of the
-        form changes in the next 14 days or period of stay, whichever is the shorter.<br>
-        •	 It is an offence to fail to give an officer who requests it information required to verify
-        the details on this form.<br>
-        •	 In addition to these offences, a member of An Garda Síochána may direct a person who
-        is not complying with the requirements in respect of this form to so comply. Failing to
-        comply with that direction is an offence for which you may be arrested.<br>
-        •	 A member of An Garda Síochána who suspects that an offence has been committed
-        may demand the name and address of the person who is suspected of committing the
-        offence. Failure to comply with this demand or the production of a false name and/or
-        address is an offence for which a person may be arrested.<br></p>
-        <h4>Data Protection</h4>
-        <p>•	 The Minister for Health and the Health Service Executive are the data controllers for
-        the information provided on this form.<br>
-        •	 The information provided on this form, and any updates that you send using the
-        passengerlocatorform@plf.ie email address, may be used for the following purposes:<br>
-        >	 To contact you to verify this information on this form in the 14 days following your
-        arrival.<br>
-        >	 This form may also be used for the purposes of contact tracing in relation to
-        confirmed or suspected cases of Covid-19.<br>
-        •	 Personal data contained in this form may be collected and processed by the following:
-        >	 Border Management Unit of the Department of Justice and Equality.<br>
-        >	 Garda Immigration Officers.<br>
-        >	 Health Service Executive.<br>
-        •	 This form and any copies of it, and any updates that you send using the
-        passengerlocatorform@plf.ie email address, will be destroyed 28 days after your
-        arrival, unless the form is required for law enforcement purposes.<br>
-        •	 If you wish to exercise your rights under the General Data Protection Regulation,
-        you should contact the Data Protection Officer in the Health Service Executive
-        Email: DPO@hse.ie</p><br>
-<h3>1.Personal details</h3>
+<div style="background-color:powderblue;">
+  <h4>Instructions</h4>
+  <p>• One form should be completed for each passenger aged 16 or older. Details of children
+    under the age of 16 should be included on a form completed by an adult accompanying
+    them.<br>
+    • If you will be remaining in the State overnight, please complete sections 1 and 2,
+    provide contact details in section 3.<br>
+    • If you are <b> leaving the State today</b> by aircraft or ferry or travelling to Northern Ireland please complete
+    sections 1 and 2, <b>tick the box in section 3 </b> then complete BMU, Symptoms from and thermal screening.<br>
+    • You may be contacted during the 14 days following your arrival in the State to verify the
+    information you have given in the form.<br>
+  </p>
+</div>
+<div style="background-color:#DB7093;">
+  <h4>Offences and penalties</h4>
+  <p><b>The following offences are punishable by a fine not exceeding €2,500 or imprisonment for a
+      term not exceeding 6 months, or both.</b><br>
+    • It is an offence not to complete this form in the manner specified.<br>
+    • It is an offence to provide false or misleading information in this form.<br>
+    • It is an offence to fail to give an officer who requests it information required to verify
+    the details on this form.<br>
+    • In addition to these offences, a member of An Garda Síochána may direct a person who
+    is not complying with the requirements in respect of this form to so comply. Failing to
+    comply with that direction is an offence for which you may be arrested.<br>
+    • A member of An Garda Síochána who suspects that an offence has been committed
+    may demand the name and address of the person who is suspected of committing the
+    offence. Failure to comply with this demand or the production of a false name and/or
+    address is an offence for which a person may be arrested.<br></p>
+</div>
+<div style="background-color:#6495ED;">
+
+<h4>Data Protection</h4>
+<p>
+  • The information provided on this form, and updates may be used for the following purposes:<br>
+      > To contact you to verify this information on this form in the 14 days following your
+  arrival.<br>
+      > This data may also be used for the purposes of contact tracing in relation to
+  confirmed or suspected cases of Covid-19.<br>
+  • If you wish to exercise your rights under the General Data Protection Regulation,
+  you should contact the Data Protection Officer in the Health Service Executive
+  Email: DPO@hse.ie</p><br>
+  </div>
+<h3>Session 1.Personal details</h3>
 
 <div class="container">
   <form action="">
-    <P>Session 1: Personal information</P>
-    <label for="First Name"><b>First Name</b></label>
-    <input type="text" placeholder="First Name" [(ngModel)]="fname_q"[ngModelOptions]="{standalone:true}" required>
-    <label for="Last Name"><b>Last Name</b></label>
-    <input type="text" placeholder="Last Name" [(ngModel)]="lname_q"[ngModelOptions]="{standalone:true}" required>
-    <label for="Date of birth"><b>Date of birth</b></label>
-    <input type="date" placeholder="Date of birth" [(ngModel)]="dob_q"[ngModelOptions]="{standalone:true}" required>
+    <label for="First Name"><b>First Name :  {{details[0][1]}}<br><br></b></label>
+    <!-- <input type="text" placeholder="First Name" [(ngModel)]="fname_q" [ngModelOptions]="{standalone:true}" required> -->
+    <label for="Last Name"><b>Last Name : {{details[0][2]}} <br><br></b></label>
+    <!-- <input type="text" placeholder="Last Name" [(ngModel)]="lname_q" [ngModelOptions]="{standalone:true}" required> -->
+    <label for="Date of birth"><b>Passport Number : {{details[0][0]}}  <br><br></b></label>
+    <!-- <input type="date" placeholder="Date of birth" [(ngModel)]="dob_q" [ngModelOptions]="{standalone:true}" required> -->
     <hr>
-    <P>Session 2: Travel details</P>
+    <h3>Session 2. Travel details</h3>
     <label for="carrier name "><b>Carrier Name</b></label>
-    <input type="text" placeholder="Carrier Name" [(ngModel)]="carrier_q"[ngModelOptions]="{standalone:true}" required>
+    <input type="text" placeholder="Carrier Name" [(ngModel)]="carrier_q" [ngModelOptions]="{standalone:true}" required>
     <label for="seat number "><b>Seat Number</b></label>
-    <input type="text" placeholder="Seat Number" [(ngModel)]="seat_q"[ngModelOptions]="{standalone:true}" required>
-    <label for="date of arrival "><b>Date of arrival</b></label>
-    <input type="date" placeholder="When did you arrive?" [(ngModel)]="dt_arr_q"[ngModelOptions]="{standalone:true}" required>
-    <br><br><label for="time of arrival "><b>Time of arrival</b></label>
-    <input type="time" placeholder="Time of your arrival" [(ngModel)]="tm_arr_q"[ngModelOptions]="{standalone:true}" required>
+    <input type="text" placeholder="Seat Number" [(ngModel)]="seat_q" [ngModelOptions]="{standalone:true}" required>
+    <label for="date of arrival "><b>Date of arrival    </b></label>
+    <input type="date" placeholder="When did you arrive?" [(ngModel)]="dt_arr_q" [ngModelOptions]="{standalone:true}"
+      required>
+    <br><br><label for="time of arrival "><b>Time of arrival     </b></label>
+    <input type="time" placeholder="Time of your arrival" [(ngModel)]="tm_arr_q" [ngModelOptions]="{standalone:true}"
+      required>
     <br><br><label for="point of departure"><b>Point of Departure</b></label>
-    <input type="text" placeholder="Point of departure" [(ngModel)]="departure_q"[ngModelOptions]="{standalone:true}" required>
+    <input type="text" placeholder="Point of departure" [(ngModel)]="departure_q" [ngModelOptions]="{standalone:true}"
+      required>
     <br><br><label for="point of arrival"><b>Point of Arrival</b></label>
-    <input type="text" placeholder="Point of arrival" [(ngModel)]="arrival_q"[ngModelOptions]="{standalone:true}" required>
-    <br><br><label for="numberofchildren"><b>Number of children under 16 with you     </b></label>
-    <input type="number" placeholder="Number of children" [(ngModel)]=" children_q"[ngModelOptions]="{standalone:true}" required>
+    <input type="text" placeholder="Point of arrival" [(ngModel)]="arrival_q" [ngModelOptions]="{standalone:true}"
+      required>
+    <br><br><label for="numberofchildren"><b>Number of children under 16, with you <br><br></b></label>
+    <input type="number" placeholder="Number of children" [(ngModel)]=" children_q" [ngModelOptions]="{standalone:true}"
+      required><br><br>
 
-    <label for="reason">Reason for travel (choose one):</label>
-    <select name="reason" [(ngModel)]="reason_q"[ngModelOptions]="{standalone:true}" multiple>
-    <option value="resident">Resident in Ireland</option>
-    <option value="visiting">Visiting Family/Friends</option>
-    <option value="holiday">Holiday/Travel</option>
-    <option value="work">Work</option>
-    <option value="transfer">Transfer flight</option>
-    <option value="realocating">Relocating to Ireland</option>
-    <option value="othres">Other reason</option> 
-   </select>
-   <label for="otherreason "><b>Others</b></label>
-   <input type="text" placeholder="Please specify" [(ngModel)]="reasono_q"[ngModelOptions]="{standalone:true}" required>
-
-
-
-    
-
+    <label for="reason"><b>Reason for travel (choose one):</b></label><br>
+    <select name="reason" [(ngModel)]="reason_q" [ngModelOptions]="{standalone:true}" multiple>
+      <option value="resident">Resident in Ireland</option>
+      <option value="visiting">Visiting Family/Friends</option>
+      <option value="holiday">Holiday/Travel</option>
+      <option value="work">Work</option>
+      <option value="transfer">Transfer flight</option>
+      <option value="realocating">Relocating to Ireland</option>
+      <option value="othres">Other reason</option>
+    </select>
+    <!-- <label for="otherreason "><b>Others</b></label>
+    <input type="text" placeholder="Please specify" [(ngModel)]="reasono_q" [ngModelOptions]="{standalone:true}"
+      required> -->
     <h3>Session 3: Contact details where you can be reached</h3>
-  <p><b>Exemption</b><br> If you are leaving the port or airport but will not be residing in the State overnight because
-    you are travelling on to Northern Ireland or overseas, you do not need to provide further
-    contact information. You may be asked for evidence in support of this.</p>
+    <p><b>Exemption</b><br><br> If you are leaving the port or airport but will not be residing in the State overnight
+      because
+      you are travelling on to Northern Ireland or overseas, you do not need to provide further
+      contact information. You may be asked for evidence in support of this.</p>
   </form>
-  <input type="checkbox" (click)="travel_details()"[(ngModel)]="exp_tra_q"[ngModelOptions]="{standalone:true}" required>
+  <input type="checkbox" (click)="travel_details()" [(ngModel)]="exp_tra_q" [ngModelOptions]="{standalone:true}"
+    required>
   <label for="exception">If you wish to claim this exemption please tick here, and fill session 4.</label><br>
-<div id="traveldetails">
-<h1>Travel details</h1>
-<label for="mobile "><b>Mobile</b></label>
-<input type="tel" placeholder="Mobile Number" [(ngModel)]="mob_q"[ngModelOptions]="{standalone:true}" required>
-<br><label for="phone "><b>Phone</b></label>
-<input type="tel" placeholder="Phone Number" [(ngModel)]="ph_q"[ngModelOptions]="{standalone:true}" required>
-<br> <p>Place of residence for next 14 days?</p>
-<label for="address"><b>Address</b></label>
-<input type="text" placeholder="Address" [(ngModel)]="address_q"[ngModelOptions]="{standalone:true}" required>
+  <div id="traveldetails">
+    <!-- <h1>Travel details</h1> -->
+    <label for="mobile "><b>Mobile :</b></label>
+    <input type="tel" placeholder="Mobile Number" [(ngModel)]="mob_q" [ngModelOptions]="{standalone:true}" required>
+    <br><br><label for="phone "><b>Phone      :</b></label>
+    <input type="tel" placeholder="Phone Number" [(ngModel)]="ph_q" [ngModelOptions]="{standalone:true}" required>
+    <br>
+    <p>Place of residence for next 14 days</p>
+    <label for="address"><b>Address</b></label>
+    <input type="text" placeholder="Address" [(ngModel)]="address_q" [ngModelOptions]="{standalone:true}" required>
+    <form #addressForm="ngForm" (ngSubmit)="logValue()">
+      <button type="button" (click)="addChild()">Add A Child</button><hr>
+      <button type="button" (click)="removeChild(i)">Remove A Child</button>
 
-
-
-
-<form #addressForm="ngForm"  (ngSubmit)="logValue()">
- 
-        <button type="button"  (click)="addChild()">Add A Child</button>
-        <section  *ngFor="let child of children; let i = index;">
-       
-              <h4>Child {{i + 1}}</h4>
-         
-              <button type="button"  (click)="removeChild(i)">Remove</button>
-      
-              <label for="Passport Number"><b>Passport Number</b></label>
-              <input type="text" placeholder="Passport Number" [(ngModel)]="child.pn_ch1_q"[ngModelOptions]="{standalone:true}" required>
-              <label for="Seat Number"><b>Seatt Number</b></label>
-              <input type="text" placeholder="Seat Number" [(ngModel)]="child.sn_ch1_q"[ngModelOptions]="{standalone:true}" required>
-              <label for="First Name"><b>First Name</b></label>
-              <input type="text" placeholder="First Name" [(ngModel)]="child.fname_ch1_q"[ngModelOptions]="{standalone:true}" required>
-              <label for="Last Name"><b>Last Name</b></label>
-              <input type="text" placeholder="Last Name" [(ngModel)]="child.lname_ch1_q"[ngModelOptions]="{standalone:true}" required>
-              <label for="Date of birth"><b>Date of birth</b></label>
-              <input type="date" placeholder="Date of birth" [(ngModel)]="child.dob_ch1_q"[ngModelOptions]="{standalone:true}" required>
-              <br><label for="address"><b>Address if different from accompanying adult</b></label>
-              <input type="text" placeholder="Address" [(ngModel)]="child.address_ch1_q"[ngModelOptions]="{standalone:true}" required>
-                          
+      <section *ngFor="let child of children; let i = index;">
+        <h4>Child {{i + 1}}</h4>
+        <label for="Passport Number"><b>Passport Number</b></label>
+        <input type="text" placeholder="Passport Number" [(ngModel)]="child.pn_ch1_q"
+          [ngModelOptions]="{standalone:true}" required>
+        <label for="Seat Number"><b>Seatt Number</b></label>
+        <input type="text" placeholder="Seat Number" [(ngModel)]="child.sn_ch1_q" [ngModelOptions]="{standalone:true}"
+          required>
+        <label for="First Name"><b>First Name</b></label>
+        <input type="text" placeholder="First Name" [(ngModel)]="child.fname_ch1_q" [ngModelOptions]="{standalone:true}"
+          required>
+        <label for="Last Name"><b>Last Name</b></label>
+        <input type="text" placeholder="Last Name" [(ngModel)]="child.lname_ch1_q" [ngModelOptions]="{standalone:true}"
+          required>
+        <label for="Date of birth"><b>Date of birth</b></label><br>
+        <input type="date" placeholder="Date of birth" [(ngModel)]="child.dob_ch1_q"
+          [ngModelOptions]="{standalone:true}" required><br>
+        <br><label for="address"><b>Address if different from accompanying adult</b></label>
+        <input type="text" placeholder="Address" [(ngModel)]="child.address_ch1_q" [ngModelOptions]="{standalone:true}"
+          required>
       </section>
+      <h3>Session 4: Border management Form</h3>
+      <label for="bmu">Do you feel you have any goods in excess of your allowances and or prohibited or restricted goods. (choose one):</label><br>
+      <select name="bmu" [(ngModel)]="bmu_q" [ngModelOptions]="{standalone:true}" multiple>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+    </form>
 
 
-</form>
 
-
-
-<!-- <P><b>Child 1</b></P>
+    <!-- <P><b>Child 1</b></P>
 <label for="Passport Number"><b>Passport Number</b></label>
 <input type="text" placeholder="Passport Number" [(ngModel)]="pn_ch1_q"[ngModelOptions]="{standalone:true}" required>
 <label for="Last Name"><b>Last Name</b></label>
@@ -181,82 +183,72 @@
 <br> <label for="address"><b>Address if different from accompanying adult</b></label>
 <input type="text" placeholder="Address" [(ngModel)]="address_ch2_q"[ngModelOptions]="{standalone:true}" required>
  -->
-<form action="">
-  
+    <form action="">
+    </form>
+  </div>
+  <h1>Do you have any of these symptoms?</h1>
+  <h3>Session 5: Record your symptoms, if any</h3>
+  <!-- <p>Click the button below and record your physical condiction''''''''''':</p> -->
+  <!-- <button (click)="symptoms()">Symptoms</button> -->
+  <div id="symptoms">
+    <form action="">
+      <p>Please check tick if you have any</p>
+      <input type="checkbox" [(ngModel)]="symp1_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp1">Feaver</label><br>
+      <input type="checkbox" [(ngModel)]="symp2_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp2">Cough</label><br>
+      <input type="checkbox" [(ngModel)]="symp3_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp3">Runny nose</label><br>
+      <input type="checkbox" [(ngModel)]="symp4_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp4">Sore throat</label><br>
+      <input type="checkbox" [(ngModel)]="symp5_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp5">Shortness of breath</label><br>
+      <input type="checkbox" [(ngModel)]="symp6_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp6">Headache</label><br>
+      <input type="checkbox" [(ngModel)]="symp7_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp7">Loss of taste/smell</label><br>
+      <input type="checkbox" [(ngModel)]="symp8_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp8">Fatigue</label><br>
+      <input type="checkbox" [(ngModel)]="symp9_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp9">Muscle pain</label><br>
+      <input type="checkbox" [(ngModel)]="symp10_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp10">Joint pain</label><br>
+      <input type="checkbox" [(ngModel)]="symp11_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp11">Diarrhoea</label><br>
+      <input type="checkbox" [(ngModel)]="symp12_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp12">Vomiting</label><br>
+      <input type="checkbox" [(ngModel)]="symp13_q" [ngModelOptions]="{standalone:true}">
+      <label for="symp13">Chest pain</label><br>
+    </form>
+  </div>
 
-</form>
-</div>
+  <!-- <h1>More questions</h1>
 
+  <p>Click the button below and answer the questions:</p>
 
-<h1>Do you have any of these symptoms?</h1>
+  <button (click)="questions()">Additional questions</button>
 
-<p>Click the button below and record your physical condiction''''''''''':</p>
-
-<button (click)="symptoms()">Symptoms</button>
-
-<div id="symptoms">
-<form action="">
- <p>Please check tick if you have any</p>
- <input type="checkbox"[(ngModel)]="symp1_q"[ngModelOptions]="{standalone:true}" >
-  <label for="symp1">Feaver</label><br>
-    <input type="checkbox" [(ngModel)]="symp2_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp2">Cough</label><br>
-    <input type="checkbox" [(ngModel)]="symp3_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp3">Runny nose</label><br>
-    <input type="checkbox" [(ngModel)]="symp4_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp4">Sore throat</label><br>
-    <input type="checkbox" [(ngModel)]="symp5_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp5">Shortness of breath</label><br>
-    <input type="checkbox"[(ngModel)]="symp6_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp6">Headache</label><br>
-    <input type="checkbox" [(ngModel)]="symp7_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp7">Loss of taste/smell</label><br>
-    <input type="checkbox" [(ngModel)]="symp8_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp8">Fatigue</label><br>
-    <input type="checkbox" [(ngModel)]="symp9_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp9">Muscle pain</label><br>
-    <input type="checkbox" [(ngModel)]="symp10_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp10">Joint pain</label><br>
-    <input type="checkbox" [(ngModel)]="symp11_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp11">Diarrhoea</label><br>
-    <input type="checkbox" [(ngModel)]="symp12_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp12">Vomiting</label><br>
-    <input type="checkbox" [(ngModel)]="symp13_q"[ngModelOptions]="{standalone:true}">
-    <label for="symp13">Chest pain</label><br>
-</form>
-</div>
-
-<h1>More questions</h1>
-
-<p>Click the button below and answer the questions:</p>
-
-<button (click)="questions()">Additional questions</button>
-
-<div id="questions">
-<form action="">
-  <p>have you been in contact with any Covid Positive patients in last 14 days?</p>
- <label for="contact">Yes</label>
- <input type="radio" id="positive_yes" name="positive_yes" value = "Yes"> 
- <label for="contact">No</label>
- <input type="radio" id="positive_no" name="positive_no" value="No">
-</form>
-</div>
-
-<button (click)="submit()">Submit your response and get ready for temperature reading</button>
-<!-- <form>
+  <div id="questions">
+    <form action="">
+      <p>have you been in contact with any Covid Positive patients in last 14 days?</p>
+      <label for="contact">Yes</label>
+      <input type="radio" id="positive_yes" name="positive_yes" value="Yes">
+      <label for="contact">No</label>
+      <input type="radio" id="positive_no" name="positive_no" value="No">
+    </form>
+  </div> -->
+<br><br>
+  <button (click)="submit()">Submit your response </button><br><br>
+  <!-- <form>
 <label for="User name"><b>User Name</b></label>
 <input type="text" placeholder="User Name" [(ngModel)]="uname_r"[ngModelOptions]="{standalone:true}" required>
 <label for="Password"><b>Password</b></label>
 <input type="password" placeholder="Password" [(ngModel)]="psw_r" [ngModelOptions]="{standalone:true}" required>
 </form> -->
-<label for="otp"><b>Enter the 5 digit number displayed in the temperature screening session </b></label>
-<input type="text" placeholder="Enter the 5 digit code here" [(ngModel)]="otp_q"[ngModelOptions]="{standalone:true}" required>
-<button (click)="OtpDone()">done</button>
+  <label for="otp"><b>Enter the 5 digit number displayed in the temperature screening session </b></label>
+  <input type="text" placeholder="Enter the 5 digit OTP code here" [(ngModel)]="otp_q" [ngModelOptions]="{standalone:true}"
+    required>
+  <button (click)="OtpDone()">done</button>
 
 </div>
-<p><b>Note:</b> Be responsible give correct details@@@@@@@###.....</p>
-
-
-
-
-
+<p><b>Note:</b> Be responsible, provide accurate data and help front line fighters.</p>

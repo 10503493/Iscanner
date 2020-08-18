@@ -68,11 +68,9 @@ export class QuestionnaireComponent implements OnInit {
 c:any;//for extract objects
   g: any;
   otp_q: any;
-
-
-
+dob:any;
+bmu_q:any;
   constructor(private usersrv:UserService) { }
-
   ngOnInit(): void 
   {
     if(localStorage.getItem('user')!='passenger')
@@ -81,7 +79,9 @@ c:any;//for extract objects
     // console.log(this.a[0][2])
     this.details=JSON.parse(localStorage.getItem('logindetails'));
    this. parentpassprot_q= this.details[0][0]
-   console.log('pass',this. parentpassprot_q)
+   this.dob = this.details[0][4];
+   console.log(this.dob,'dddddob');
+   console.log('pass',this. parentpassprot_q,this.details[0][1],this.details[0][4])
 // for providing child data
    for(this.i=1;this.i<this.children_q;this.i++)
    {
@@ -99,20 +99,16 @@ c:any;//for extract objects
  travel_details()
  {
   console.log('exception_q')
-  
     var x = document.getElementById("traveldetails");
     if (x.style.display === "none") {
       x.style.display = "block";
       console.log(x.style.display)
-     
-
     } else {
       console.log(x.style.display)
       x.style.display = "none";
       
     }
   }
-
   symptoms()
   {
      var x = document.getElementById("symptoms");

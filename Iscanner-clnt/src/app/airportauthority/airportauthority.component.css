@@ -13,3 +13,29 @@ table {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+  .topright 
+{
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+  background-color: blue;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  top:20 px;
+  opacity: 0.8;
+}
+
+  
+  .btn {
+    background-color: blue;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.9;
+  }
