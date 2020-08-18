@@ -31,7 +31,7 @@ export class AboutComponent implements OnInit
 
 
   data: any;
-  a: any;
+  a: any=[];
 
   constructor(private usersrv:UserService) { }
 
