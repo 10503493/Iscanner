@@ -176,7 +176,7 @@ otpcheck(otp_q,parentpassprot_q)
 }
 covidupdate()
 {
-  return this.http.get('/api/updates', { responseType: 'json' });
+  return this.http.get('https://api.covid19api.com/summary', { responseType: 'json' });
 
 }
 }

@@ -116,7 +116,7 @@ def child():
     ccn=request.form.get('carrier_q')
     print('child details',cpn,pn,cfn,cln,dob,cad,csn,ccn)
     cu = mysql.connection.cursor()
-    cu.execute("insert into  Child (PassportNumber,ParentPassportNumber,FirstName,LastName,DateOfBirth,Address,SeatNumber,CarrierName)values(%s,%s,%s,%s,%s,%s,%s,%s)",(cpn,pn,cfn,cln,dob,cad,csn,ccn))
+    cu.execute("insert into  Child (PassportNumber,ParentPassportNumber,FirstName,LastName,DateOfBirth,Address)values(%s,%s,%s,%s,%s,%s)",(cpn,pn,cfn,cln,dob,cad))
     mysql.connection.commit()
     cu.close()
     return('ok')
@@ -221,7 +221,7 @@ def updatesapi():
 def getdata():
     pn = request.form.get('psn_h')
     cur = mysql.connection.cursor()
-    cur.execute("SELECT *  from  Passenger where PassportNumber= %s union  select* from Child  where PassportNumber=%s ",(pn,pn))
+    cur.execute("SELECT *  from  Passenger where PassportNumber= %s ",(pn,))
     d = cur.fetchall()
     print (d)
     cur.close()
@@ -260,7 +260,7 @@ def getcoviddata():
         pn=d[i][0]
         print(pn,i)#pasport number of positive passenger
         c=mysql.connection.cursor()
-        c.execute("select * from TravelDetails where PassportNumber=%s union select * from Child where PassportNumber=%s",(pn,pn,))
+        c.execute("select * from TravelDetails where PassportNumber=%s ",(pn,))
         td = c.fetchall()#travel history of positive person 
         print(td,'travel data',len(td))
         fn=td[0][2]#flight no

@@ -3,3 +3,16 @@
 <button (click)="aprove()">Aprove</button>
 <p id= "n">
  </p>
+ <table>
+    <tr>
+      <th>Email id of passengers who has travelled with infected person </th>
+      <th>Number</th>
+
+    <tr *ngFor="let pas of inf_passengers[0]">
+      <td>{{pas}}</td>
+      <td>{{1 }}</td>
+    </tr>
+
+    
+   
+  </table>

@@ -15,12 +15,15 @@ export class AirportauthorityComponent implements OnInit {
   email: any;
   i: any;
   na: any;
+  inf_passengers:any = []
 
   constructor(private usersrv:UserService) { }
 
   ngOnInit(): void 
   {
-    this.usersrv.airportdisplay().subscribe(x => { console.log(x) });
+    this.usersrv.airportdisplay().subscribe(x => { 
+      this.inf_passengers = x; 
+    });
 
    
   }

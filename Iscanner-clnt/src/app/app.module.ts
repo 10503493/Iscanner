@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AirportauthorityComponent } from './airportauthority/airportauthority.component';
 import { HseComponent } from './hse/hse.component';
 import { OtpComponent } from './otp/otp.component';
+import { AboutComponent } from './about/about.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { OtpComponent } from './otp/otp.component';
     AirportauthorityComponent,
     HseComponent,
     OtpComponent,
+    AboutComponent
   ],
   imports: [
     FormsModule,
