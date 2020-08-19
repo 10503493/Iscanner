@@ -133,6 +133,42 @@ bmu_q:any;
         
       }
     }
+   BmuYes()
+   {
+      var x = document.getElementById("bmu_yes");
+      var y = document.getElementById("bmu_no");
+      console.log(x.style.display)
+
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+        console.log(x.style.display)
+      } 
+       else 
+      {
+        console.log(x.style.display)
+       x.style.display = "none";
+      //   y.style.display = "block";
+
+      }
+    }
+   BmuNo()
+   {
+      var x = document.getElementById("bmu_yes");
+      var y = document.getElementById("bmu_no");
+      if (y.style.display === "none") {
+        y.style.display = "block";
+        x.style.display = "none";
+        console.log(x.style.display)
+      } 
+       else 
+       {
+        console.log(x.style.display)
+        y.style.display = "none";
+      //   x.style.display = "block";
+
+       }
+    }
 
     test()
     {
@@ -173,9 +209,9 @@ OtpDone()
 {
   this.usersrv.otpcheck(this.otp_q,this.parentpassprot_q).subscribe(x => { console.log(x)
     if(x=='ok') 
-    console.log('sucess')
+    alert('Updated...Thank you for your time. ')
     else if(x=='not')
-    console.log('noty')
+    alert('Sorry that went wrong please try again with new OTP... ')
 
   });
 }

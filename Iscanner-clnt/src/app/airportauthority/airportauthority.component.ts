@@ -23,6 +23,7 @@ export class AirportauthorityComponent implements OnInit {
   {
     this.usersrv.airportdisplay().subscribe(x => { 
       this.inf_passengers = x; 
+      console.log(x)
     });
 
    

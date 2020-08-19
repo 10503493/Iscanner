@@ -149,13 +149,20 @@
           required>
       </section>
       <h3>Session 4: Border management Form</h3>
-      <label for="bmu">Do you feel you have any goods in excess of your allowances and or prohibited or restricted goods. (choose one):</label><br>
+      <label for="bmu">Do you feel you have any goods in excess of your allowances AND/OR prohibited or restricted goods. (choose one):</label><br>
       <select name="bmu" [(ngModel)]="bmu_q" [ngModelOptions]="{standalone:true}" multiple>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
+        <option value="Yes"(click)=" BmuYes()">Yes</option>
+        <option value="No"(click)=" BmuNo()">No</option>
       </select>
 
     </form>
+    <div id="bmu_no">
+      <h4 > You are requested to go thorough Green Channel</h4>
+      </div>
+    <div id="bmu_yes">
+      <h4 > You are requested to go thorough Red Channel</h4>
+      </div>
+
 
 
 

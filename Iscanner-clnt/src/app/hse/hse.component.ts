@@ -27,12 +27,12 @@ export class HseComponent implements OnInit {
     else if (Object.keys(x).length==0 )
     alert('Please enter a valid Passport Number')
     console.log(this.st)
-    if (this.status_h=='positive')
+    if ((this.status_h=='positive')&&(Object.keys(x).length!=0))
     {
       this.usersrv.hsestatusupdate(this.psn_h,this.status_h).subscribe(); 
       alert('Updated!')
     }
-    else if (this.status_h=='negative')
+    else if ((this.status_h=='negative')&&(Object.keys(x).length!=0))
     {
       this.usersrv.hsestatusupdate(this.psn_h,this.status_h).subscribe(); 
       alert('Updated!')

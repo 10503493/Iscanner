@@ -1,40 +1,54 @@
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<p> Passengers arriving by plane or ferry are expected to <b>self-isolate for 14 days</b> (instead of restricting movement for 14 days). They are requested to complete online form and temperature screening on arrival. Self-isolation came into effect on <b>Friday, 24th April 2020.</b>Further information on these requirements can be found on the<a href="https://www2.hse.ie/coronavirus/#travel"> Irish Health Service COVID-19 Advice Page. </a><br>
-  <b>There is a very close working relationship between frontline Border Management Unit staff at the Airport, the BMU and the HSE. Immigration personnel closely follow all advice from the HSE and, in the event that a suspected case arises, the clear protocols laid down are carefully followed.</b></p>
+<p> Passengers arriving by plane or ferry are expected to <b>self-isolate for 14 days</b> (instead of restricting
+  movement for 14 days). They are requested to complete online form and temperature screening on arrival. Self-isolation
+  came into effect on <b>Friday, 24th April 2020.</b>Further information on these requirements can be found on the<a
+    href="https://www2.hse.ie/coronavirus/#travel"> Irish Health Service COVID-19 Advice Page. </a><br>
+  <b>There is a very close working relationship between frontline Border Management Unit staff at the Airport, the BMU
+    and the HSE. Immigration personnel closely follow all advice from the HSE and, in the event that a suspected case
+    arises, the clear protocols laid down are carefully followed.</b></p>
 
 
-  
-    <div class ="container">
-      <img src="assets/img/img_welcome.jpg" alt="Homepage img" style="width:100%">
-      <div class="text-block">
 
-      <h1 style="font-size:25px">I-sacnner</h1>
-      <h5>A COVID-19 Airport tracker</h5>
-      <P>** Break the chain **</P>
-      <button class="open-button" (click)="StartClick()" > Start</button>
-      <div class="form-popup" id="myForm">
-        <form action="" class="form-container">
-          <h1>Login</h1>
-         <label for="User name"><b>User Name</b></label>
-          <input type="text" placeholder="Enter your I-scanner User Name" [(ngModel)]="uname_l"[ngModelOptions]="{standalone:true}" required>
+<div class="container">
+  <img src="assets/img/img_welcome.jpg" alt="Homepage img" style="width:100%">
+  <div class="text-block">
 
-          <label for="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" [(ngModel)]="psw_l" [ngModelOptions]="{standalone:true}" required>
-      
-          <button type="submit" class="btn"(click)="LoginClick()">Login</button>
-          <button type="button" class="btn cancel" (click)=" CloseClick()">Close</button>
-          <a routerLink="/register">Sign up /  Register</a>     
-           </form>
-      </div>
-      </div>
+    <h1 style="font-size:25px">I-sacnner</h1>
+    <h5>A COVID-19 Airport tracker</h5>
+    <P>** Break the chain **</P>
+    <button class="open-button" (click)="StartClick()"> Start</button>
+    <div class="form-popup" id="myForm">
+      <form action="" class="form-container">
+        <h1>Login</h1>
+        <label for="User name"><b>User Name</b></label>
+        <input type="text" placeholder="Enter your I-scanner User Name" [(ngModel)]="uname_l"
+          [ngModelOptions]="{standalone:true}" required>
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" [(ngModel)]="psw_l" [ngModelOptions]="{standalone:true}"
+          required>
+          <a (click)="ChangePswClick()">Change Password</a><br><br>
+        <button type="submit" class="btn" (click)="LoginClick()">Login</button>
+        <button type="button" class="btn cancel" (click)=" CloseClick()">Close</button>
+        <a routerLink="/register">Sign up / Register</a>
+      </form>
     </div>
+    <div class="form-popup" id="change_psw">
+    <form action="" class="form-container">
+      <label for="User name"><b>User Name</b></label>
+      <input type="text" placeholder="Enter your I-scanner User Name" [(ngModel)]="uname_l"
+        [ngModelOptions]="{standalone:true}" required>
+        <label for="oldpassword"><b>Old Password</b></label>
+    <input type="password" placeholder="Enter Password" [(ngModel)]="cpo_l" [ngModelOptions]="{standalone:true}"required>
+    <label for="newpassword"><b>New Password</b></label>
+    <input type="password" placeholder="Enter a new Password" [(ngModel)]="cpn_l" [ngModelOptions]="{standalone:true}"required>
+    <label for="newpasswordcon"><b>Confirm Your new Password</b></label>
+    <input type="password" placeholder="Re-enter your Password" [(ngModel)]="cpnr_l" [ngModelOptions]="{standalone:true}"required>
+    <button type="submit" class="btn" (click)="ChangeClick()">Update</button>
+    <button type="button" class="btn cancel" (click)=" CloseClick()">Close</button>
+  </form>
+  </div>
 
- 
-
-
-
-  
-  
+  </div>
+</div>

@@ -179,4 +179,13 @@ covidupdate()
   return this.http.get('https://api.covid19api.com/summary', { responseType: 'json' });
 
 }
+changepsw(uname_l, cpo_l, cpn_l)
+{
+  let body = new FormData();
+  body.append('uname_l', uname_l);
+  body.append('cpo_l', cpo_l);
+  body.append('cpn_l', cpn_l);
+  return this.http.post('/api/changepsw',body, { responseType: 'json' });
+}
+
 }

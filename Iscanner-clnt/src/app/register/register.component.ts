@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     {      
       console.log('sha=',x)//test
       alert('Your account has created!');
-      window.location.href="/questionnaire";
+      window.location.href="/home";
     }
     else 
     {

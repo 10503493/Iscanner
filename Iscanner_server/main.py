@@ -221,7 +221,7 @@ def updatesapi():
 def getdata():
     pn = request.form.get('psn_h')
     cur = mysql.connection.cursor()
-    cur.execute("SELECT *  from  Passenger where PassportNumber= %s ",(pn,))
+    cur.execute("SELECT *  from  Passenger where PassportNumber= %s union select* from Child  where PassportNumber= %s",(pn,pn,))
     d = cur.fetchall()
     print (d)
     cur.close()
@@ -257,43 +257,118 @@ def getcoviddata():
     cur.close()
     print(d, len(d))
     for i in range(len(d)):
-        pn=d[i][0]
-        print(pn,i)#pasport number of positive passenger
-        c=mysql.connection.cursor()
-        c.execute("select * from TravelDetails where PassportNumber=%s ",(pn,))
-        td = c.fetchall()#travel history of positive person 
-        print(td,'travel data',len(td))
-        fn=td[0][2]#flight no
-        sn=td[0][3]#seat no
-        da=td[0][4]# date of arrival
-        fdd.append(fn)#flight details to be returned
-        fdd.append(da)#flight details to be returned
-        fdd.append(sn)#flight details to be returned
-        print(fn,'flightname')
+        if(d[i][3]=='passenger'):
+            pn=d[i][0]
+            print(pn,i)#pasport number of positive passenger
+            c=mysql.connection.cursor()
+            c.execute("select * from TravelDetails where PassportNumber=%s ",(pn,))
+            td = c.fetchall()#travel history of positive person 
+            print(td,'travel data',len(td))
+            fn=td[0][2]#flight no
+            sn=td[0][3]#seat no
+            da=td[0][4]# date of arrival
+            fdd.append(fn)#flight details to be returned
+            fdd.append(da)#flight details to be returned
+            fdd.append(sn)#flight details to be returned
+            print(fn,'flightname')
 
-        c.close()
-        near=mysql.connection.cursor()
-        near.execute("select * from TravelDetails where FlightNumber=%s and DateOfArrival=%s" ,(fn,da,))
-        fd=near.fetchall()#list of travellers wo travelled in infrcted flight
-        for j in range(len(fd)):
-            #print('j',j,'fddd',len(fd))
-            print(fd, 'person no:',i+1)
-            ppn=fd[j][1]# passport numbers of passengers where positve person travelled 
-            p=mysql.connection.cursor()
-            p.execute("select * from Passenger where PassportNumber=%s ",(ppn,))#
-            cp=p.fetchall()#data of co passengers
-            print(cp[0][6])# Email id of co passengers
-            arr.append(cp[0][6])
-        near.close()
-        p.close()
+            c.close()
+            near=mysql.connection.cursor()
+            near.execute("select * from TravelDetails where FlightNumber=%s and DateOfArrival=%s" ,(fn,da,))
+            fd=near.fetchall()#list of travellers wo travelled in infrcted flight
+            near.close()
+            for j in range(len(fd)):
+                #print('j',j,'fddd',len(fd))
+                print(fd, 'person no:',i+1)
+                ppn=fd[j][1]# passport numbers of passengers where positve person travelled 
+                p=mysql.connection.cursor()
+                p.execute("select * from Passenger where PassportNumber=%s ",(ppn,))#
+                cp=p.fetchall()#data of co passengers
+                print(cp[0][6])# Email id of co passengers
+                arr.append(cp[0][6])
+                p.close()
+
+        elif(d[i][3]!='passenger'):
+            #cpn==d[i][1]#child's parent passport number
+            cc=mysql.connection.cursor()
+            cc.execute("select * from TravelDetails where PassportNumber=%s ",(d[i][1],))
+            td = cc.fetchall()#travel history of positive person 
+            print(td,'travel data',len(td))
+            fn=td[0][2]#flight no
+            sn=td[0][3]#seat no
+            da=td[0][4]# date of arrival
+            fdd.append(fn)#flight details to be returned
+            fdd.append(da)#flight details to be returned
+            fdd.append(sn)#flight details to be returned
+            print(fn,'flightname')
+
+            cc.close()
+            cnear=mysql.connection.cursor()
+            cnear.execute("select * from TravelDetails where FlightNumber=%s and DateOfArrival=%s" ,(fn,da,))
+            fd=cnear.fetchall()#list of travellers wo travelled in infrcted flight
+            for k in range(len(fd)):
+                #print('j',j,'fddd',len(fd))
+                print(fd, 'person no:',i+1)
+                ppn=fd[k][1]# passport numbers of passengers where positve person travelled 
+                ccp=mysql.connection.cursor()
+                ccp.execute("select * from Passenger where PassportNumber=%s ",(ppn,))#
+                cp=ccp.fetchall()#data of co passengers
+                print(cp[0][6])# Email id of co passengers
+                arr.append(cp[0][6])
+                cnear.close()
+                ccp.close()
+
+
+
 
        
 
         #return jsonify(fn) 
 
     #print (d)
-    
-    return  jsonify (arr,fdd)
+    res = [] #to remove duplicate insted of arr return res
+    for q in arr: 
+        if q not in res: 
+            res.append(q) 
+    print(res,'QQQQ')    
+    return  jsonify (res,fdd)
+@app.route('/api/changepsw', methods=['POST'])
+def change():
+    uname = request.form.get('uname_l')
+    cpo = request.form.get('cpo_l')
+    cpn = request.form.get('cpn_l')
+    print(uname,cpo,cpn)#
+    c=mysql.connection.cursor()
+    c.execute("select * from HseStaff where EmployeNumber=%s union select * from AirportAuthority where EmployeNumber=%s ",( uname,uname,))
+    d=c.fetchall()
+    print(d,len(d))
+    if((len(d)!=0)):
+        if(d[0][1]!=cpo):
+            return('no')
+        elif(d[0][4]=='airport'):
+            c.execute("update AirportAuthority set Pasword=%s where EmployeNumber =%s",  (cpn,uname))
+            mysql.connection.commit()
+        elif(d[0][4]=='hse'):
+            c.execute("update HseStaff set Pasword=%s where EmployeNumber =%s",  (cpn,uname))
+            mysql.connection.commit()
+
+
+
+
+    if (len(d)==0):
+        c.execute("select * from Passenger where PassportNumber=%s",(uname,))
+        d=c.fetchall()
+        print(d,uname)
+        if((len(d)!=0)):
+            if(d[0][5]!=cpo):
+                return('no')
+        c.execute("update Passenger set Pasword=%s where PassportNumber =%s",  (cpn,uname))
+        mysql.connection.commit()
+    return jsonify(d)
+
+
+
+
 
 
 

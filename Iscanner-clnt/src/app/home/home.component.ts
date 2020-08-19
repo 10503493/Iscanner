@@ -12,6 +12,9 @@ export class HomeComponent implements OnInit {
   psw_l:any;
   a: any;
   user:any;
+  cpn_l: any;
+  cpnr_l: any;
+  cpo_l: any;
   //details:any;
 
   constructor(private usersrv:UserService) { }
@@ -27,10 +30,39 @@ export class HomeComponent implements OnInit {
    
       document.getElementById("myForm").style.display = "block";
     }
+    ChangePswClick()
+    {
+      document.getElementById("change_psw").style.display = "block";
+
+    }
     
    CloseClick() 
    {
       document.getElementById("myForm").style.display = "none";
+      document.getElementById("change_psw").style.display = "none";
+    }
+    ChangeClick()
+    {
+      console.log(this.uname_l,this.cpo_l,this.cpn_l,this.cpnr_l)
+      if(this.cpn_l==this.cpnr_l)
+      {
+      this.usersrv.changepsw(this.uname_l,this.cpo_l,this.cpn_l).subscribe(x=>{console.log(x)
+      if(x=='no')
+    {
+      alert('Password you have entered is wrong')
+    } 
+    else if(x!='no')
+    {
+      alert('Updated')
+      window.location.href="/home";
+
+
+    }
+  });
+      }
+      else if (this.cpn_l!=this.cpnr_l)
+      alert('The password you have entered is not matching!')
+
     }
     LoginClick() 
     {
