@@ -5,6 +5,11 @@ import requests
 import random
 import smtplib
 from email.message import EmailMessage
+import serial
+from serial import Serial
+import logging
+import time
+port = 'COM3'
 
 app = Flask(__name__)
 app.config['MYSQL_USER'] = 'root'
@@ -213,6 +218,11 @@ def otpcheck():
     cur.close()    
     print(otpa,'y',d)
     if (otpa==d[0][1]):
+        pt = request.form.get('ptem_q')
+        print(pt,pn)#
+        c=mysql.connection.cursor()
+        c.execute("update Passenger set TemperatureReading=%s where PassportNumber =%s",  (pt,pn,))
+        mysql.connection.commit()
         #print(otpa,d[0][1],'ok')
         return('ok')
     elif(otpa!=d[0][1]):
@@ -276,7 +286,6 @@ def getcoviddata():
             fdd.append(da)#flight details to be returned
             fdd.append(sn)#flight details to be returned
             print(fn,'flightname')
-
             c.close()
             near=mysql.connection.cursor()
             near.execute("select * from TravelDetails where FlightNumber=%s and DateOfArrival=%s" ,(fn,da,))
@@ -292,7 +301,6 @@ def getcoviddata():
                 print(cp[0][6])# Email id of co passengers
                 arr.append(cp[0][6])
                 p.close()
-
         elif(d[i][3]!='passenger'):
             #cpn==d[i][1]#child's parent passport number
             cc=mysql.connection.cursor()
@@ -306,7 +314,6 @@ def getcoviddata():
             fdd.append(da)#flight details to be returned
             fdd.append(sn)#flight details to be returned
             print(fn,'flightname')
-
             cc.close()
             cnear=mysql.connection.cursor()
             cnear.execute("select * from TravelDetails where FlightNumber=%s and DateOfArrival=%s" ,(fn,da,))
@@ -322,14 +329,7 @@ def getcoviddata():
                 arr.append(cp[0][6])
                 cnear.close()
                 ccp.close()
-
-
-
-
-       
-
         #return jsonify(fn) 
-
     #print (d)
     res = [] #to remove duplicate insted of arr return res
     for q in arr: 
@@ -356,10 +356,6 @@ def change():
         elif(d[0][4]=='hse'):
             c.execute("update HseStaff set Pasword=%s where EmployeNumber =%s",  (cpn,uname))
             mysql.connection.commit()
-
-
-
-
     if (len(d)==0):
         c.execute("select * from Passenger where PassportNumber=%s",(uname,))
         d=c.fetchall()
@@ -370,8 +366,31 @@ def change():
         c.execute("update Passenger set Pasword=%s where PassportNumber =%s",  (cpn,uname))
         mysql.connection.commit()
     return jsonify(d)
+    #not used
+@app.route('/api/updatetem', methods=[ 'POST'])
+def updatetem():
+    pt = request.form.get('ptem_a')
+    print(pt)#
+    c=mysql.connection.cursor()
+    c.execute("update Passenger set TemperatureReading=%s where PassportNumber =%s",  (pt,pn))
+    mysql.connection.commit()
 
 
+
+
+@app.route('/api/userdet', methods=['GET', 'POST'])
+def userdef():
+    ard = serial.Serial(port,9600,timeout=5)
+    time.sleep(2) # wait for Arduino
+    i=0
+    while (i<15):
+        msg = ard.read(ard.inWaiting()) # read all characters in buffer
+        print ("Message from arduino: ")
+        print (msg)
+        i = i + 1
+    else:
+        print("cd Exiting")
+        exit()
 
 
 

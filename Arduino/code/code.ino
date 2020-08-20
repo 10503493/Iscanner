@@ -47,17 +47,17 @@ void loop ()
   erc = i2c_readNak ();
   i2c_stop ();
   
-  
-  temperature = (double) (((dataH & 0x007F) << 8) + dataL);
-  temperature = temperature * tempnalsb;
-  temperature = temperature - 273.15;
-   
-  
- Serial.println ("Ambient =");
- Serial.println (temperature);
- Serial.println ("");
- Serial.println (0xDF);
-Serial.println ("C");
+//  
+//  temperature = (double) (((dataH & 0x007F) << 8) + dataL);
+//  temperature = temperature * tempnalsb;
+//  temperature = temperature - 273.15;
+//   
+//  
+// Serial.println ("Ambient =");
+// Serial.println (temperature);
+// Serial.println ("");
+// Serial.println (0xDF);
+//Serial.println ("C");
 
 delay (200); // Delay 200ms
 }

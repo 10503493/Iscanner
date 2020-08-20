@@ -70,6 +70,7 @@ c:any;//for extract objects
   otp_q: any;
 dob:any;
 bmu_q:any;
+  ptem_q: any;
   constructor(private usersrv:UserService) { }
   ngOnInit(): void 
   {
@@ -207,7 +208,7 @@ bmu_q:any;
     }
 OtpDone()
 {
-  this.usersrv.otpcheck(this.otp_q,this.parentpassprot_q).subscribe(x => { console.log(x)
+  this.usersrv.otpcheck(this.otp_q,this.parentpassprot_q,this.ptem_q).subscribe(x => { console.log(x)
     if(x=='ok') 
     alert('Updated...Thank you for your time. ')
     else if(x=='not')

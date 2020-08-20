@@ -168,12 +168,13 @@ otpdisplay()
   return this.http.post('/api/otp', { responseType: 'json' });
  
 }
-otpcheck(otp_q,parentpassprot_q)
+otpcheck(otp_q,parentpassprot_q,ptem_q)
 {
   let body = new FormData();
   body.append('otp_q', otp_q);
-  body.append('details_q', parentpassprot_q);
-  console.log('ans',otp_q)
+  body.append('parentpassprot_q', parentpassprot_q);
+  body.append('ptem_q', ptem_q);
+  console.log('ans',otp_q,ptem_q)
   return this.http.post('/api/otpcheck', body,{ responseType: 'text' });
 }
 covidupdate()
@@ -189,5 +190,11 @@ changepsw(uname_l, cpo_l, cpn_l)
   body.append('cpn_l', cpn_l);
   return this.http.post('/api/changepsw',body, { responseType:'text' });
 }
+tempupdate(ptem_a)
+{
+  let body = new FormData();
+  body.append('ptem_a', ptem_a);
+  return this.http.post('/api/updatetem',body, { responseType:'text' });
 
+}
 }

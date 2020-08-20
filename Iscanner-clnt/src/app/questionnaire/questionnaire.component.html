@@ -255,6 +255,11 @@
   <label for="otp"><b>Enter the 5 digit number displayed in the temperature screening session </b></label>
   <input type="text" placeholder="Enter the 5 digit OTP code here" [(ngModel)]="otp_q" [ngModelOptions]="{standalone:true}"
     required>
+    <label for="temperature"><b>Passenger's temperature</b></label>
+    <input type="number" placeholder="Current reading" [(ngModel)]="ptem_q" [ngModelOptions]="{standalone:true}"
+      required>
+
+
   <button (click)="OtpDone()">done</button>
 
 </div>

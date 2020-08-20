@@ -15,7 +15,8 @@ export class AirportauthorityComponent implements OnInit {
   email: any;
   i: any;
   na: any;
-  inf_passengers:any = []
+  inf_passengers:any = [];
+  ptem_a:any;
 
   constructor(private usersrv:UserService) { }
 
@@ -34,7 +35,7 @@ export class AirportauthorityComponent implements OnInit {
     localStorage.setItem('user','null') 
     window.location.href="/home";
   }
-  aprove()
+  Details()
   {
     this.usersrv.airportdisplay().subscribe(x => { this.details=x 
    for (this.i=0;this.i<Object.keys(x).length;this.i++)
@@ -49,5 +50,10 @@ export class AirportauthorityComponent implements OnInit {
     
    }
   });
+  }
+  aprove()
+  {
+    this.usersrv.tempupdate(this.ptem_a).subscribe(x => { }); 
+
   }
 }

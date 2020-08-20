@@ -17,12 +17,12 @@ body {
   
   .left {
     left: 0;
-    background-color: yellow;
+    background-color:blue ;
   }
   
   .right {
     right: 0;
-    background-color: red;
+    background-color:yellow;
   }
   
   .centered {
