@@ -137,10 +137,12 @@ AddHse(fname_a,lname_a,email_a,type_a,phone_a,address_a,city_a,county_a,zipcode_
   return this.http.post('/api/adminadd_hse', body, { responseType: 'text' });
 
 }
-EmpGetData()
+EmpGetData(embn_a,empstatus_a)
 {
-  return this.http.get('/api/empgetdata', { responseType: 'json' });
-
+let body = new FormData();
+body.append('embn_a', embn_a);
+body.append('empstatus_a', empstatus_a);
+return this.http.post('/api/empgetdata', body, { responseType: 'json' });
 }
 HseUpdate(psn_h)
 {
@@ -185,7 +187,7 @@ changepsw(uname_l, cpo_l, cpn_l)
   body.append('uname_l', uname_l);
   body.append('cpo_l', cpo_l);
   body.append('cpn_l', cpn_l);
-  return this.http.post('/api/changepsw',body, { responseType: 'json' });
+  return this.http.post('/api/changepsw',body, { responseType:'text' });
 }
 
 }

@@ -24,6 +24,7 @@ export class AdminComponent implements OnInit {
   fn: any;
   sn: any;
   empstatus_a:any;
+  embn_a:any;
 
 
   constructor(private usersrv:UserService) { }
@@ -41,50 +42,39 @@ export class AdminComponent implements OnInit {
   SuspendClick()
   {
     document.getElementById("suspend_employe_form").style.display = "block";
-    this.usersrv.EmpGetData().subscribe(x => { this.empdetails=x
-    console.log(this.empdetails[0][0],' - ',this.empdetails[0][2],' ',this.empdetails[0][3],  Object.keys(x).length,'jhg')
-    console.log(this.empdetails)
-    
-  for (this.i=0;this.i<Object.keys(x).length;this.i++) 
+  }
+  Suspend()
   {
-    if(this.empdetails[this.i][12]=='active')
-    {
-      console.log('active')
-    console.log(this.empdetails[this.i][0])
-    this.id=this.empdetails[this.i][0]
-    this.fn=this.empdetails[this.i][2]
-    this.sn=this.empdetails[this.i][3]
-    console.log(this.empdetails[this.i][2])
-    console.log(this.empdetails[this.i][3])
-    console.log(this.empdetails[this.i][4])
-    console.log(this.empdetails[this.i][12])
-    console.log(this.empstatus_a)
-    }
-     if (this.empdetails[this.i][12]=='suspend')
-    {
-      console.log('sus')
-      console.log(this.empdetails[this.i][0])
-      console.log(this.empdetails[this.i][2])
-      console.log(this.empdetails[this.i][3])
-      console.log(this.empdetails[this.i][4])
-      console.log(this.empdetails[this.i][12])
-    }
-      if (this.empdetails[this.i][12]=='remove')
-     {
-      console.log(this.empdetails[this.i][0])
-      console.log(this.empdetails[this.i][2])
-      console.log(this.empdetails[this.i][3])
-      console.log(this.empdetails[this.i][4])
-      console.log(this.empdetails[this.i][12])
-     }
-  }
-  });
+    this.usersrv.EmpGetData(this.embn_a,this.empstatus_a).subscribe(x => { 
+      console.log(Object.values(x))
+    if((Object.keys(x).length==0 ))
+    alert('Please check the Employee Number!')
+    else if (Object.keys(x).length!=0 )
+    alert('Updated!')
 
+  });
   }
+  RemoveClick()
+  {
+    document.getElementById("remove_employe_form").style.display = "block";
+  }
+  Remove()
+  {
+    this.usersrv.EmpGetData(this.embn_a,this.empstatus_a).subscribe(x => { 
+      console.log(Object.values(x))
+    if((Object.keys(x).length==0 ))
+    alert('Please check the Employee Number!')
+    else if (Object.keys(x).length!=0 )
+    alert('Updated!')
+
+  });
+  }
+
     CloseClick() 
     {
        document.getElementById("add_employe_form").style.display = "none";
        document.getElementById("suspend_employe_form").style.display = "none";
+       document.getElementById("remove_employe_form").style.display = "none";
      }
      LoginClick()
      {

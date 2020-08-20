@@ -64,6 +64,35 @@ City VARCHAR(30),
 County VARCHAR(30),
 ZipCode VARCHAR(30),
 FOREIGN KEY (PassportNumber) REFERENCES Passenger (PassportNumber));
+CREATE TABLE Passenger(
+PassportNumber VARCHAR(30)  PRIMARY KEY,
+FirstName VARCHAR(30) NOT NULL,
+LastName VARCHAR(30) NOT NULL,
+Pasword VARCHAR (50)NOT NULL,
+DateOfBirth DATE NOT NULL,
+Email VARCHAR(50),
+Mobile VARCHAR(20),
+Phone VARCHAR(20),
+CovidStatus TINYINT(1)  DEFAULT 0,
+TemperatureReading DECIMAL(3,2)
+); 
+CREATE TABLE ChildTravelDetails(
+PassengerId INT PRIMARY KEY AUTO_INCREMENT,
+PassportNumber VARCHAR(30) ,
+FlightNumber VARCHAR (20) NOT NULL,
+SeatNumber VARCHAR(30) NOT NULL,
+DateOfArrival DATE  NOT NULL,
+TimeOfArrival TIME  NOT NULL,
+PointOfArrival VARCHAR(30) NOT NULL,
+PoinOfDeparture VARCHAR(30)  NOT NULL,
+ReasonForTravel VARCHAR (200)  NOT NULL,
+EmailId VARCHAR (30),
+Address VARCHAR(300),
+City VARCHAR(30),
+County VARCHAR(30),
+ZipCode VARCHAR(30),
+FOREIGN KEY (PassportNumber) REFERENCES Child (PassportNumber));
+
 
 CREATE TABLE Child(
 PassportNumber VARCHAR(30) NOT NULL PRIMARY KEY ,
@@ -136,6 +165,8 @@ select*from child
 select*from Symptoms
 select*from AirportAuthority
 select*from HseStaff
+select * from Passenger where PassportNumber='st1'
+select  from HseStaff where EmployeNumber='st1' ,Pasword union select EmployeNumber,Pasword  from AirportAuthority where EmployeNumber='st1' union select PassportNumber,Pasword  from Passenger where PassportNumber='st1'
 SELECT *  from  Passenger where PassportNumber= 'a' union  select* from Child  where PassportNumber= 'a'
 SELECT *  from  HseStaff union select * from AirportAuthority 
 select * from TravelDetails where PassportNumber='a'

@@ -177,14 +177,19 @@ def adminadd_hse():
     cur.close()
     return('ok')
 
-@app.route('/api/empgetdata',methods=['GET'])
+@app.route('/api/empgetdata',methods=['POST'])
 def empgetdata():
+    en = request.form.get('embn_a')
+    es = request.form.get('empstatus_a')
     cur = mysql.connection.cursor()
-    cur.execute("SELECT *  from  HseStaff union select * from AirportAuthority ")
-    d = cur.fetchall()
-    print (d)
+    cur.execute("update  AirportAuthority set EmployeStatus =%s where EmployeNumber =%s",  (es,en,))
+    cur.execute("update  HseStaff set EmployeStatus =%s where EmployeNumber =%s",  (es,en,))
+    mysql.connection.commit()
+    cur.execute("select*from HseStaff where EmployeNumber=%s union select*from AirportAuthority where EmployeNumber=%s",(en,en,))
+    d=cur.fetchall()
     cur.close()
-    return  jsonify (d)
+    print(d)
+    return  jsonify(d)
  
 @app.route('/api/otp',methods=['POST','GET'])
 def otp():
