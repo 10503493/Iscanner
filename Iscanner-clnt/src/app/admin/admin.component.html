@@ -1,10 +1,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <div id="mySidenav" class="sidenav">
-  <a (click)=" AddClick()">Add Employe</a> <br>
+  <a (click)=" AddClick()">Add Employee</a> <br>
   <hr><br>
-  <a (click)=" SuspendClick()">Suspend Employe</a><br><br><br>
+  <a (click)=" SuspendClick()">Suspend Employee</a><br><br><br>
   <hr><br>
-  <a (click)="RemoveClick()">Remove Employe</a> <br> <br><br>
+  <a (click)="RemoveClick()">Remove Employee</a> <br> <br><br>
   <hr>
   <a (click)="logout()">Logout</a>
 </div>
@@ -15,7 +15,7 @@
 </div>
 <div class="form-popup" id="add_employe_form">
   <form action="" class="form-container">
-    <h1>Add New Employe</h1>
+    <h1>Add New Employee</h1>
     <a href="javascript:void(0)" class="closebtn" (click)="CloseClick()">&times;</a>
     <label for="First Name"><b>First Name</b></label>
     <input type="text" placeholder="First Name" [(ngModel)]="fname_a" [ngModelOptions]="{standalone:true}" required>
@@ -41,26 +41,26 @@
     <input type="text" placeholder="Zipcode" [(ngModel)]="zipcode_a" [ngModelOptions]="{standalone:true}" required>
     <label for="country"><b>Country</b></label>
     <input type="text" placeholder="Country" [(ngModel)]="country_a" [ngModelOptions]="{standalone:true}" required>
-    <p><b>Employe status</b></p>
+    <p><b>Employee status</b></p>
     <select [(ngModel)]="employestatus_a" [ngModelOptions]="{standalone:true}" matNativeControl required>
       <option value="active">Active</option>
       <option value="suspend"> Suspend</option>
       <option value="remove"> Remove</option>
     </select> <br><br>
-    <button type="submit" class="btn" (click)="LoginClick()">Login</button>
+    <button type="submit" class="btn" (click)="LoginClick()">Add</button>
     <button type="button" class="btn cancel" (click)="CloseClick()">Close</button>
   </form>
 </div>
 <div class="form-popup" id="suspend_employe_form">
   <form action="" class="form-container">
-    <h1>Suspend An Employe</h1>
+    <h1>Suspend An Employee</h1>
     </form>
     <a href="javascript:void(0)" class="closebtn" (click)="CloseClick()">&times;</a>
     <div style="text-align:center">
       <form>
-        <label for="Employe number"><b> Enter Employee Number</b></label>
+        <label for="Employee number"><b> Enter Employee Number</b></label>
         <br>
-        <input type="text" placeholder="employe number" [(ngModel)]="embn_a" [ngModelOptions]="{standalone:true}"
+        <input type="text" placeholder="employee number" [(ngModel)]="embn_a" [ngModelOptions]="{standalone:true}"
           required>
         <select [(ngModel)]="empstatus_a" [ngModelOptions]="{standalone:true}" required>
           <option value="active">Make Active</option>
@@ -72,21 +72,20 @@
     </div>
     <div class="form-popup" id="remove_employe_form">
       <form action="" class="form-container">
-        <h1>Remove An Employe </h1>
+        <h1>Remove An Employee </h1>
       </form>
         <a href="javascript:void(0)" class="closebtn" (click)="CloseClick()">&times;</a>
         <div style="text-align:center">
           <form>
-            <label for="Employe number"><b> Enter Employee Number</b></label>
+            <label for="Employee number"><b> Enter Employee Number</b></label>
             <br>
-            <input type="text" placeholder="employe number" [(ngModel)]="embn_a" [ngModelOptions]="{standalone:true}"
+            <input type="text" placeholder="employee number" [(ngModel)]="embn_a" [ngModelOptions]="{standalone:true}"
               required>
             <select [(ngModel)]="empstatus_a" [ngModelOptions]="{standalone:true}" required>
               <option value="removed">Remove</option>
             </select> <br>
             <button type="submit" class="btn" (click)="Remove()">Update</button>
           </form>
-          
         </div>
     </div>
     

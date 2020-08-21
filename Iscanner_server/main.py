@@ -27,7 +27,7 @@ def index():
     ca = mysql.connection.cursor()
     ch = mysql.connection.cursor()
 
-    cur.execute("select * from Passenger where PassportNumber=%s and Pasword=%s",[un.strip(),ps.strip()])
+    cur.execute("select PassportNumber,FirstName,LastName,usertype,DateofBirth,Pasword,Email,Mobile,Phone,CovidStatus from Passenger where PassportNumber=%s and Pasword=%s",[un.strip(),ps.strip()])
     cu.execute("select * from Adm where Id=%s and Pasword=%s",[un.strip(),ps.strip()])
     ca.execute("select * from AirportAuthority where EmployeNumber=%s and Pasword=%s",[un.strip(),ps.strip()])
     ch.execute("select * from HseStaff where EmployeNumber=%s and Pasword=%s",[un.strip(),ps.strip()])
@@ -218,10 +218,22 @@ def otpcheck():
     cur.close()    
     print(otpa,'y',d)
     if (otpa==d[0][1]):
-        pt = request.form.get('ptem_q')
+
+        msg=[]
+        ard = serial.Serial(port,9600,timeout=5)
+        time.sleep(2) # wait for Arduino
+        i=0
+        while (i<15):
+            msg=ard.readline()[:-2]
+        #msg = ard.read(ard.inWaiting()) # read all characters in buffer
+            print ("Message from arduino: ")
+            print (msg)
+            i = i + 1
+       
+        pt = request.form.get('ptem_q')#manuel update if needed change pt to msg
         print(pt,pn)#
         c=mysql.connection.cursor()
-        c.execute("update Passenger set TemperatureReading=%s where PassportNumber =%s",  (pt,pn,))
+        c.execute("update Passenger set TemperatureReading=%s where PassportNumber =%s",  (msg,pn,))
         mysql.connection.commit()
         #print(otpa,d[0][1],'ok')
         return('ok')
@@ -236,7 +248,7 @@ def updatesapi():
 def getdata():
     pn = request.form.get('psn_h')
     cur = mysql.connection.cursor()
-    cur.execute("SELECT *  from  Passenger where PassportNumber= %s union select* from Child  where PassportNumber= %s",(pn,pn,))
+    cur.execute("SELECT PassportNumber,FirstName,LastName,usertype,DateofBirth,Pasword,Email,Mobile,Phone,CovidStatus  from  Passenger where PassportNumber= %s union select PassportNumber,ParentPassportNumber,FirstName,LastName,DateOfBirth,Address,City,County,ZipCode,CovidStatus from Child  where PassportNumber= %s",(pn,pn,))
     d = cur.fetchall()
     print (d)
     cur.close()
@@ -296,7 +308,7 @@ def getcoviddata():
                 print(fd, 'person no:',i+1)
                 ppn=fd[j][1]# passport numbers of passengers where positve person travelled 
                 p=mysql.connection.cursor()
-                p.execute("select * from Passenger where PassportNumber=%s ",(ppn,))#
+                p.execute("select PassportNumber,FirstName,LastName,usertype,DateofBirth,Pasword,Email,Mobile,Phone,CovidStatus from Passenger where PassportNumber=%s ",(ppn,))#
                 cp=p.fetchall()#data of co passengers
                 print(cp[0][6])# Email id of co passengers
                 arr.append(cp[0][6])
@@ -323,7 +335,7 @@ def getcoviddata():
                 print(fd, 'person no:',i+1)
                 ppn=fd[k][1]# passport numbers of passengers where positve person travelled 
                 ccp=mysql.connection.cursor()
-                ccp.execute("select * from Passenger where PassportNumber=%s ",(ppn,))#
+                ccp.execute("select PassportNumber,FirstName,LastName,usertype,DateofBirth,Pasword,Email,Mobile,Phone,CovidStatus from Passenger where PassportNumber=%s ",(ppn,))#
                 cp=ccp.fetchall()#data of co passengers
                 print(cp[0][6])# Email id of co passengers
                 arr.append(cp[0][6])
@@ -357,7 +369,7 @@ def change():
             c.execute("update HseStaff set Pasword=%s where EmployeNumber =%s",  (cpn,uname))
             mysql.connection.commit()
     if (len(d)==0):
-        c.execute("select * from Passenger where PassportNumber=%s",(uname,))
+        c.execute("select PassportNumber,FirstName,LastName,usertype,DateofBirth,Pasword,Email,Mobile,Phone,CovidStatus from Passenger where PassportNumber=%s",(uname,))
         d=c.fetchall()
         print(d,uname)
         if((len(d)!=0)):
@@ -369,25 +381,27 @@ def change():
     #not used
 @app.route('/api/updatetem', methods=[ 'POST'])
 def updatetem():
-    pt = request.form.get('ptem_a')
+    pt = request.form.get('sensorreading')
+    pn = request.form.get('passportid')
     print(pt)#
     c=mysql.connection.cursor()
     c.execute("update Passenger set TemperatureReading=%s where PassportNumber =%s",  (pt,pn))
     mysql.connection.commit()
+    return('ok')
 
-
-
-
-@app.route('/api/userdet', methods=['GET', 'POST'])
+@app.route('/api/arduino', methods=['GET', 'POST'])
 def userdef():
+    msg=[]
     ard = serial.Serial(port,9600,timeout=5)
     time.sleep(2) # wait for Arduino
     i=0
     while (i<15):
-        msg = ard.read(ard.inWaiting()) # read all characters in buffer
+        msg=ard.readline()[:-2]
+        #msg = ard.read(ard.inWaiting()) # read all characters in buffer
         print ("Message from arduino: ")
         print (msg)
         i = i + 1
+        return (msg)
     else:
         print("cd Exiting")
         exit()

@@ -8,8 +8,7 @@ import { Color, Label } from 'ng2-charts';
   styleUrls: ['./about.component.css']
 })
 
-export class AboutComponent implements OnInit
- {
+export class AboutComponent implements OnInit {
   // public lineChartData: ChartDataSets[] = [
   //   { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
   // ];
@@ -31,21 +30,22 @@ export class AboutComponent implements OnInit
 
 
   data: any;
-  a: any=[];
+  a: any = [];
 
-  constructor(private usersrv:UserService) { }
+  constructor(private usersrv: UserService) { }
 
-  ngOnInit(): void 
-  {
+  ngOnInit(): void {
     this.usersrv.covidupdate().subscribe(x => {
-      this.data=x; 
-     
-     console.log(this.data.Countries[80])
-     this.a=Object.values(this.data.Countries[80])
+      this.data = x;
+
+      console.log(this.data.Countries[80])
+      this.a = Object.values(this.data.Countries[80])
 
     });
-
-    
   }
+  c() {
+    this.usersrv.arduinogetdata().subscribe(x => { console.log(x) });
+  }
+
 
 }

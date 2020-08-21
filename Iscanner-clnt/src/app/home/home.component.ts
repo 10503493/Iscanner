@@ -61,6 +61,8 @@ export class HomeComponent implements OnInit {
       else if ((Object.keys(x).length != 0) && (x[0][3] == 'passenger')) {
         localStorage.setItem('user', 'passenger')
         window.location.href = "/questionnaire";
+        localStorage.setItem('id', x[0][0])
+
       }
       else if ((Object.keys(x).length != 0) && (x[0][4] == 'hse') && (x[0][12] == 'active')) {
         localStorage.setItem('user', 'hse')

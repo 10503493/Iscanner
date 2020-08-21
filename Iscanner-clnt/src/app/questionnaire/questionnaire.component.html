@@ -132,7 +132,7 @@
         <label for="Passport Number"><b>Passport Number</b></label>
         <input type="text" placeholder="Passport Number" [(ngModel)]="child.pn_ch1_q"
           [ngModelOptions]="{standalone:true}" required>
-        <label for="Seat Number"><b>Seatt Number</b></label>
+        <label for="Seat Number"><b>Seat Number</b></label>
         <input type="text" placeholder="Seat Number" [(ngModel)]="child.sn_ch1_q" [ngModelOptions]="{standalone:true}"
           required>
         <label for="First Name"><b>First Name</b></label>
@@ -201,7 +201,7 @@
     <form action="">
       <p>Please check tick if you have any</p>
       <input type="checkbox" [(ngModel)]="symp1_q" [ngModelOptions]="{standalone:true}">
-      <label for="symp1">Feaver</label><br>
+      <label for="symp1">Fever</label><br>
       <input type="checkbox" [(ngModel)]="symp2_q" [ngModelOptions]="{standalone:true}">
       <label for="symp2">Cough</label><br>
       <input type="checkbox" [(ngModel)]="symp3_q" [ngModelOptions]="{standalone:true}">
@@ -255,9 +255,9 @@
   <label for="otp"><b>Enter the 5 digit number displayed in the temperature screening session </b></label>
   <input type="text" placeholder="Enter the 5 digit OTP code here" [(ngModel)]="otp_q" [ngModelOptions]="{standalone:true}"
     required>
-    <label for="temperature"><b>Passenger's temperature</b></label>
+    <!-- <label for="temperature"><b>Passenger's temperature</b></label>
     <input type="number" placeholder="Current reading" [(ngModel)]="ptem_q" [ngModelOptions]="{standalone:true}"
-      required>
+      required> -->
 
 
   <button (click)="OtpDone()">done</button>

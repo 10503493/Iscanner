@@ -17,6 +17,8 @@ export class AirportauthorityComponent implements OnInit {
   na: any;
   inf_passengers:any = [];
   ptem_a:any;
+  sensorreading: any;
+  passportid: string;
 
   constructor(private usersrv:UserService) { }
 
@@ -24,8 +26,11 @@ export class AirportauthorityComponent implements OnInit {
   {
     this.usersrv.airportdisplay().subscribe(x => { 
       this.inf_passengers = x; 
-      console.log(x)
+      console.log(x,'@@@',localStorage.getItem('id'))
+      this.passportid=localStorage.getItem('id')
     });
+    this.usersrv.arduinogetdata().subscribe(y=>{this.sensorreading=y});
+
 
    
   }
@@ -53,7 +58,11 @@ export class AirportauthorityComponent implements OnInit {
   }
   aprove()
   {
-    this.usersrv.tempupdate(this.ptem_a).subscribe(x => { }); 
+    this.usersrv.tempupdate(this.sensorreading,this.passportid).subscribe(x => { 
+      if(x=='ok')
+      {
+        alert('Done!')
+    }}); 
 
   }
 }
