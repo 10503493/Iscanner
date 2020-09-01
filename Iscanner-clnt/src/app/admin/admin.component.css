@@ -46,8 +46,6 @@ body {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
-
-
   /* The popup the login form - (hidden by default) */
 .form-popup {
     display: none;

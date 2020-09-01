@@ -1,18 +1,16 @@
 <div class="topright"><button (click)="logout()">Logout</button></div>
 <div style="text-align:center">
     <label for="Passport number"><b>Please Enter Passport Number</b></label>
-     <br>
-     <input type="text" placeholder="Passport number"[(ngModel)]="psn_h" [ngModelOptions]="{standalone:true}"  required>
-      
- <p>Update covid status</p>
-  
-
-            <select [(ngModel)]="status_h"[ngModelOptions]="{standalone:true}"  required>
-            <option value="positive">Positive</option>
-            <option value="negative">Negative </option>
-        </select> <hr>
-        <div class="btn">
-        <button  (click)="status()">Update</button>
+    <br>
+    <input type="text" placeholder="Passport number" [(ngModel)]="psn_h" [ngModelOptions]="{standalone:true}" required>
+    <p>Update covid status</p>
+    <select [(ngModel)]="status_h" [ngModelOptions]="{standalone:true}" required>
+        <option value="positive">Positive</option>
+        <option value="negative">Negative </option>
+    </select>
+    <hr>
+    <div class="btn">
+        <button (click)="status()">Update</button>
     </div>
 </div>
-<img src="assets/img/covid.jpg" alt="Hse img"  style="width:100%"> 
+<img src="assets/img/covid.jpg" alt="Hse img" style="width:100%">

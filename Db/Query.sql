@@ -34,8 +34,6 @@ address VARCHAR(200) NOT NULL);
 ALTER TABLE users
 ADD status varchar(20) NOT NULL
 AFTER pword;
-
-#https://www3.ntu.edu.sg/home/ehchua/programming/sql/MySQL_Beginner.html
 CREATE TABLE Passenger(
 PassportNumber VARCHAR(30)  PRIMARY KEY,
 FirstName VARCHAR(30) NOT NULL,
@@ -76,24 +74,6 @@ Phone VARCHAR(20),
 CovidStatus TINYINT(1)  DEFAULT 0,
 TemperatureReading DECIMAL(3,2)
 ); 
-CREATE TABLE ChildTravelDetails(
-PassengerId INT PRIMARY KEY AUTO_INCREMENT,
-PassportNumber VARCHAR(30) ,
-FlightNumber VARCHAR (20) NOT NULL,
-SeatNumber VARCHAR(30) NOT NULL,
-DateOfArrival DATE  NOT NULL,
-TimeOfArrival TIME  NOT NULL,
-PointOfArrival VARCHAR(30) NOT NULL,
-PoinOfDeparture VARCHAR(30)  NOT NULL,
-ReasonForTravel VARCHAR (200)  NOT NULL,
-EmailId VARCHAR (30),
-Address VARCHAR(300),
-City VARCHAR(30),
-County VARCHAR(30),
-ZipCode VARCHAR(30),
-FOREIGN KEY (PassportNumber) REFERENCES Child (PassportNumber));
-
-
 CREATE TABLE Child(
 PassportNumber VARCHAR(30) NOT NULL PRIMARY KEY ,
 ParentPassportNumber VARCHAR(30) ,
@@ -123,7 +103,6 @@ Symp11 VARCHAR(30),
 Symp12 VARCHAR(30),
 Symp13 VARCHAR(30),
 FOREIGN KEY (PassportNumber) REFERENCES Passenger (PassportNumber));
-
 CREATE TABLE AirportAuthority(
 EmployeNumber VARCHAR(30) DEFAULT '0' PRIMARY KEY,
 Pasword VARCHAR(30) DEFAULT '123',
@@ -138,7 +117,6 @@ County VARCHAR(30),
 ZipCode VARCHAR(30),
 Country VARCHAR (30),
 EmployeStatus VARCHAR (20));
-
 CREATE TABLE HseStaff(
 EmployeNumber VARCHAR(30) DEFAULT '0' PRIMARY KEY,
 Pasword VARCHAR(30) DEFAULT '123',
@@ -157,8 +135,10 @@ CREATE TABLE Adm(
 Id VARCHAR(30) DEFAULT 'admin',
 Pasword  VARCHAR(30) DEFAULT '123',
 usertype VARCHAR(10) DEFAULT "admin");
+
+
 insert into Passenger(PassportNumber,FirstName,LastName,DateofBirth,Pasword)values('aa','a','a',10/12/20,'a')
-select * from Adm
+select * from Adm 
 select*from Passenger
 select*from TravelDetails
 select*from child
@@ -183,9 +163,6 @@ CREATE TABLE HseSeq
 (
   Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
 );
-
-
-
 DELIMITER $$
 CREATE TRIGGER AirportEmpNo_Insert 
 BEFORE INSERT ON AirportAuthority
@@ -195,7 +172,6 @@ BEGIN
   SET NEW.EmployeNumber = CONCAT('IRL', LPAD(LAST_INSERT_ID(), 3, '0'));
 END $$
 DELIMITER ;
-
 DELIMITER $$
 CREATE TRIGGER HseEmpNo_Insert 
 BEFORE INSERT ON HseStaff

@@ -10,7 +10,6 @@ from serial import Serial
 import logging
 import time
 port = 'COM3'
-
 app = Flask(__name__)
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'root'
@@ -26,12 +25,10 @@ def index():
     cu = mysql.connection.cursor()
     ca = mysql.connection.cursor()
     ch = mysql.connection.cursor()
-
     cur.execute("select PassportNumber,FirstName,LastName,usertype,DateofBirth,Pasword,Email,Mobile,Phone,CovidStatus from Passenger where PassportNumber=%s and Pasword=%s",[un.strip(),ps.strip()])
     cu.execute("select * from Adm where Id=%s and Pasword=%s",[un.strip(),ps.strip()])
     ca.execute("select * from AirportAuthority where EmployeNumber=%s and Pasword=%s",[un.strip(),ps.strip()])
     ch.execute("select * from HseStaff where EmployeNumber=%s and Pasword=%s",[un.strip(),ps.strip()])
-
     data = cur.fetchall() 
     d=cu.fetchall()
     da=ca.fetchall()
@@ -95,7 +92,6 @@ def question():
     c = mysql.connection.cursor()
     cu = mysql.connection.cursor()
     sy= mysql.connection.cursor()
-
     cur.execute("insert into TravelDetails (PassportNumber,FlightNumber,SeatNumber,DateOfArrival,TimeOfArrival,PointOfarrival,PoinOfDeparture,NumberOfChild,ReasonForTravel,Address) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(pn,cn,sn,dt,tm,ap,dp,nc,rt,ad))
     c.execute("update  Passenger set Mobile=%s,Phone=%s where PassportNumber =%s",  (mb,ph,pn))
     #cu.execute("insert into  Child (PassportNumber,ParentPassportNumber,FirstName,LastName,DateOfBirth)values(%s,%s,%s,%s,%s)",(c1p,pn,pn,pn,dt))
@@ -103,7 +99,6 @@ def question():
     sy.execute("insert into Symptoms (PassportNumber,symp1,symp2,symp3,symp4,symp5,symp6,symp7,symp8,symp9,symp10,symp11,symp12,symp13) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (pn,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13))
     mysql.connection.commit()
     mysql.connection.commit()
-
     cur.close()
     c.close()
     sy.close()
@@ -125,7 +120,6 @@ def child():
     mysql.connection.commit()
     cu.close()
     return('ok')
-
 @app.route('/api/test', methods=['GET', 'POST'])
 def te():
     usr = request.form.get('uname_r')
@@ -139,7 +133,6 @@ def te():
     mysql.connection.commit()
     cur.close()
     print('inserted')
-
 @app.route('/api/adminadd_airport', methods=[ 'POST'])
 def adminadd_airport():
     fn = request.form.get('fname_a')
@@ -153,15 +146,11 @@ def adminadd_airport():
     zp = request.form.get('zipcode_a')
     cn = request.form.get('country_a')
     es = request.form.get('employestatus_a')
-
     cur = mysql.connection.cursor()
     cur.execute("insert into AirportAuthority(FirstName,LastName,usertype,Email,PhoneNumber,Address,City,County,ZipCode,Country,EmployeStatus) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)" ,(fn,ln,ut,em,ph,ad,ct,co,zp,cn,es))
     mysql.connection.commit()
     cur.close()
     return('ok')
-
-
-
 @app.route('/api/adminadd_hse', methods=[ 'POST'])
 def adminadd_hse():
     fn = request.form.get('fname_a')
@@ -175,13 +164,11 @@ def adminadd_hse():
     zp = request.form.get('zipcode_a')
     cn = request.form.get('country_a')
     es = request.form.get('employestatus_a')
-
     cur = mysql.connection.cursor()
     cur.execute("insert into HseStaff (FirstName,LastName,usertype,Email,PhoneNumber,Address,City,County,ZipCode,Country,EmployeStatus) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)" ,(fn,ln,ut,em,ph,ad,ct,co,zp,cn,es))
     mysql.connection.commit()
     cur.close()
     return('ok')
-
 @app.route('/api/empgetdata',methods=['POST'])
 def empgetdata():
     en = request.form.get('embn_a')
@@ -195,10 +182,8 @@ def empgetdata():
     cur.close()
     print(d)
     return  jsonify(d)
- 
 @app.route('/api/otp',methods=['POST','GET'])
 def otp():
-  
     otpy= (random.randint(10000,100000))
     pn=request.form.get('parentpassprot_q')#not used
     print('otp',otpy)
@@ -206,7 +191,6 @@ def otp():
     cur.execute("insert into OtpTable (Otp)values(%s)",[otpy])
     mysql.connection.commit()
     cur.close()
-
     return jsonify(otpy)
 @app.route('/api/otpcheck',methods=['POST','GET'])
 def otpcheck():
@@ -218,7 +202,6 @@ def otpcheck():
     cur.close()    
     print(otpa,'y',d)
     if (otpa==d[0][1]):
-
         msg=[]
         ard = serial.Serial(port,9600,timeout=5)
         time.sleep(2) # wait for Arduino
@@ -229,7 +212,6 @@ def otpcheck():
             print ("Message from arduino: ")
             print (msg)
             i = i + 1
-       
         pt = request.form.get('ptem_q')#manuel update if needed change pt to msg
         print(pt,pn)#
         c=mysql.connection.cursor()
@@ -255,7 +237,6 @@ def getdata():
     return  jsonify (d)
 @app.route('/api/update_hse',methods=['POST'])
 def statusupdate():
-
     pn = request.form.get('psn_h')
     st = request.form.get('status_h')   
     cur = mysql.connection.cursor()
@@ -405,55 +386,6 @@ def userdef():
     else:
         print("cd Exiting")
         exit()
-
-
-
-
-
-
-
-
-    
-#     return ('ok')
-
-# @app.route('/api/userdet', methods=['GET', 'POST'])
-# def userdef():
-#     return 'ok'
-# @app.route('/api/user', methods=['GET', 'POST'])
-# def usercall():
-#     cur = mysql.connection.cursor()
-#     cur.execute("select * from users where uname='tonydbs'")
-#     d = cur.fetchall()
-#     u=d[0][0]
-#     print('usercall')
-#     print (d[0][2])
-#     cur.close()
-#     return  jsonify (d)
-   
- #for trigger call
-# @app.route('/api/reg', methods=['GET', 'POST'])
-# def reg():
-#     usr = request.form.get('uname')
-#     print("reg",usr)
-#     cur = mysql.connection.cursor()
-#     cur.execute("select * from users where uname=%s ",[usr])
-#     data = cur.fetchall()
-#     print (data [0][2])
-#     cur.execute("insert into admin (uname,phone,email) values (%s,%s,%s)",[data[0][0],data[0][5],data[0][4]])
-#     mysql.connection.commit()
-#     cur.close()
-#     print('inserted')
-#     return ('ok')
-# #admin request
-# @app.route('/api/admin', methods=['GET', 'POST'])
-# def adm():
-#     cur = mysql.connection.cursor()
-#     cur.execute("select *from admin ORDER BY id DESC")
-#     d = cur.fetchall()
-#     print (d)
-#     cur.close()
-#     return jsonify (d)
-#register
 @app.route('/api/register', methods=['POST'])
 def register():
     fn = request.form.get('fname_r')
@@ -477,28 +409,6 @@ def register():
     elif len(data) == 1:
         cur.close()    
         print('donr---reg already in table not inserted')
-        return 'not'
-# # #login
-# @app.route('/api/login', methods=['GET','POST'])
-# def login():
-#     print("now reached in flask")
-#     usr = request.form.get('uname')
-#     psd = request.form.get('psw')
-#     print (usr, psd)
-#     cur = mysql.connection.cursor()
-#     cur.execute("select * from users where uname=%s and pword=%s",[usr.strip(),psd.strip()])
-#     data = cur.fetchall() 
-#     print (data)
-#     cur.close()
-#     print('sql close')
-#     print (len(data))#
-#     if len(data) > 0:
-#         #print('if true')
-#         return( jsonify(data))
-#         #return render_template('products.html',useridx = data[0][2])
-#     else:
-#         print ('if false')
-#         return (jsonify(data))
-        
+        return 'not'        
 if __name__ == '__main__':
     app.run(debug=True)
